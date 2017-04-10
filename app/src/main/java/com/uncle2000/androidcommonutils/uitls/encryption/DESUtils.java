@@ -2,7 +2,8 @@ package com.uncle2000.androidcommonutils.uitls.encryption;
 
 import android.util.Log;
 
-import com.uncle2000.appcommonutils.uitls.GZip2Utils;
+
+import com.uncle2000.androidcommonutils.uitls.GZip2Utils;
 
 import java.security.SecureRandom;
 import java.security.Security;
