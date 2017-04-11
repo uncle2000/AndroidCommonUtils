@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.encryption;
+package com.uncle2000.androidcommonutils.uitls.encryption;
 
 import com.uncle2000.androidcommonutils.uitls.encryption.AESUtils;
 
