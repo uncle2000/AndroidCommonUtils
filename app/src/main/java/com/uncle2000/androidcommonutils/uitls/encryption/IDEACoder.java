@@ -9,6 +9,7 @@
 //import org.apache.commons.codec.binary.Base64;
 //import org.bouncycastle.jce.provider.BouncyCastleProvider;
 ///**
+// * http://ewf-momo.iteye.com/blog/1776593
 // * IDEA对称加密算法，java6不支持这个算法的实现，bouncycastle支持IDEA对称加密算法
 // * 这是一款对称分组密码。是目前比较常用的电子邮件加密算法之一
 // * 我们可以参照这个算法的实现来完成其他算法的实现：Rijndael,Serpent,Twofish等
