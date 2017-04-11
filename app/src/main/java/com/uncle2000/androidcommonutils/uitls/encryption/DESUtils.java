@@ -1,5 +1,6 @@
 package com.uncle2000.androidcommonutils.uitls.encryption;
 
+import android.support.annotation.IntDef;
 import android.util.Log;
 
 
@@ -17,9 +18,9 @@ import javax.crypto.spec.DESKeySpec;
  * Created by 2000 on 2017/3/29.
  */
 
+@Deprecated
 public class DESUtils {
     private final static String DES = "DES";
-
     public final static String PASSWORD_CRYPT_KEY = "_mapp_hz_server_";
 
     public DESUtils() {
@@ -109,12 +110,8 @@ public class DESUtils {
      */
     public final static String encrypt(String data, String pwd) {
         try {
-//            Log.w("System.out", "加密前的值为：data="+data);
-//            Log.w("System.out", "加密前的值为：pwd="+pwd);
-            String hex = byte2hex(encrypt(data.getBytes("UTF-8"),
-                    pwd.getBytes()));
+            String hex = byte2hex(encrypt(data.getBytes("UTF-8"), pwd.getBytes()));
             hex = encryptBASE64(GZip2Utils.compress(hex.getBytes("UTF-8")));
-//            Log.w("System.out", "加密后的值为："+hex);
             return hex;
 
         } catch (Exception e) {
