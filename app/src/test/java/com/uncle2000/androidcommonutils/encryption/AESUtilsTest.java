@@ -11,6 +11,8 @@ import static org.junit.Assert.assertNotNull;
  * Created by 2000 on 2017/3/29.
  */
 public class AESUtilsTest {
+    private String Sentence_0="";
+    private String Sentence_1 ="";
     private String masterPassword = "a";
     private String originalText = "0123456789";
     private String encryptingCode, decryptingCode;
@@ -27,5 +29,4 @@ public class AESUtilsTest {
         decryptingCode = AESUtils.decrypt(masterPassword, encryptingCode);
         assertEquals("加密再解密之后的结果", originalText, decryptingCode);
     }
-
 }
