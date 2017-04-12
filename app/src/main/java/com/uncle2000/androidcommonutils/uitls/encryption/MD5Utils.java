@@ -16,10 +16,16 @@ import java.security.NoSuchAlgorithmException;
  */
 
 public class MD5Utils {
+
+    private MD5Utils() {
+        /* cannot be instantiated */
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }
+
     public static String md5(String string) {
-        if (TextUtils.isEmpty(string)) {
-            return "";
-        }
+//        if (TextUtils.isEmpty(string)) {
+//            return "";
+//        }
         MessageDigest md5 = null;
         try {
             md5 = MessageDigest.getInstance("MD5");
@@ -110,9 +116,9 @@ public class MD5Utils {
 
     //对字符串多次MD5加密
     public static String md5(String string, int times) {
-        if (TextUtils.isEmpty(string)) {
-            return "";
-        }
+//        if (TextUtils.isEmpty(string)) {
+//            return "";
+//        }
         String md5 = md5(string);
         for (int i = 0; i < times - 1; i++) {
             md5 = md5(md5);
@@ -135,9 +141,9 @@ public class MD5Utils {
      * @return
      */
     public static String md5(String string, String slat) {
-        if (TextUtils.isEmpty(string)) {
-            return "";
-        }
+//        if (TextUtils.isEmpty(string)) {
+//            return "";
+//        }
         MessageDigest md5 = null;
         try {
             md5 = MessageDigest.getInstance("MD5");
