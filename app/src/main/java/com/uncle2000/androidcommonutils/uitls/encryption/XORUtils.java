@@ -8,8 +8,6 @@ public class XORUtils {
 
     /**
      * 固定key的方式
-     * byte[] bytes = encrypt("whoislcj".getBytes());//加密
-     * String str1 = new String(encrypt(bytes));//解密
      *
      * @param bytes
      * @return
@@ -40,7 +38,7 @@ public class XORUtils {
         int key = 0x12;
         for (int i = 0; i < len; i++) {
             bytes[i] = (byte) (bytes[i] ^ key);
-            key = bytes[i];
+            key = bytes[i];//这里key不断的被赋值，所以每次取反时key都不一样
         }
         return bytes;
     }
