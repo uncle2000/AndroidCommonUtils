@@ -14,7 +14,7 @@ public class XORUtils {
      * @param bytes
      * @return
      */
-    public byte[] encrypt1(byte[] bytes) {
+    public static byte[] encrypt1(byte[] bytes) {
         if (bytes == null) {
             return null;
         }
@@ -32,7 +32,7 @@ public class XORUtils {
      * @param bytes
      * @return
      */
-    public byte[] encrypt2(byte[] bytes) {
+    public static byte[] encrypt2(byte[] bytes) {
         if (bytes == null) {
             return null;
         }
@@ -51,7 +51,7 @@ public class XORUtils {
      * @param bytes
      * @return
      */
-    public byte[] decrypt2(byte[] bytes) {
+    public static byte[] decrypt2(byte[] bytes) {
         if (bytes == null) {
             return null;
         }
