@@ -1,6 +1,5 @@
 package com.uncle2000.androidcommonutils.uitls.encryption;
 
-import com.uncle2000.androidcommonutils.uitls.encryption.DESUtils;
 
 import org.junit.Test;
 
