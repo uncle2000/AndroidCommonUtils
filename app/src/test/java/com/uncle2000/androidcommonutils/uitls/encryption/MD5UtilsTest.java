@@ -2,40 +2,48 @@ package com.uncle2000.androidcommonutils.uitls.encryption;
 
 import org.junit.Test;
 
+import static com.uncle2000.androidcommonutils.uitls.encryption.Constant.*;
 import static org.junit.Assert.*;
 
 /**
  * Created by 2000 on 2017/4/11.
  */
 public class MD5UtilsTest {
-    private String sentence_0 = "\n加密后：";
-    private String sentence_1 = "\n原文:";
-    private String sentence_2 = "\n解密后:";
-    private String originalText = "0123456789";
+    /*密文*/
     private String encryptingCode;
+    /*循环md5的次数 可以为任意次数*/
+    private int times = 5;
+    /*加盐 可以为任意值*/
+    private String salt = "salt";
 
     @Test
     public void md5() throws Exception {
         /*加密*/
         encryptingCode = MD5Utils.md5(originalText);
-        /*测试*/
-        assertNull(sentence_0 + encryptingCode, encryptingCode);
+        /*控制台打印*/
+        System.out.println(sentence_0 + encryptingCode);
+        /*检测不为空*/
+        assertNotNull(encryptingCode);
     }
 
     @Test
     public void md51() throws Exception {
         /*加密*/
-        encryptingCode = MD5Utils.md5(originalText, 5);
-        /*测试*/
-        assertNull(sentence_0 + encryptingCode, encryptingCode);
+        encryptingCode = MD5Utils.md5(originalText, times);
+        /*控制台打印*/
+        System.out.println(sentence_0 + encryptingCode);
+        /*检测不为空*/
+        assertNotNull(encryptingCode);
     }
 
     @Test
     public void md52() throws Exception {
         /*加密*/
-        encryptingCode = MD5Utils.md5(originalText,"salt");
-        /*测试*/
-        assertNull(sentence_0 + encryptingCode, encryptingCode);
+        encryptingCode = MD5Utils.md5(originalText, salt);
+        /*控制台打印*/
+        System.out.println(sentence_0 + encryptingCode);
+        /*检测不为空*/
+        assertNotNull(encryptingCode);
     }
 
 }

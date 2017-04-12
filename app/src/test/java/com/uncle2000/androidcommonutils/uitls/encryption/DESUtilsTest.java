@@ -4,6 +4,7 @@ import com.uncle2000.androidcommonutils.uitls.encryption.DESUtils;
 
 import org.junit.Test;
 
+import static com.uncle2000.androidcommonutils.uitls.encryption.Constant.originalText;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -15,7 +16,6 @@ public class DESUtilsTest {
     private String sentence_1 = "\n原文:";
     private String sentence_2 = "\n解密后:";
     private String masterPassword = "a";
-    private String originalText = "0123456789";
     private String encryptingCode, decryptingCode;
 
     /**

@@ -6,6 +6,11 @@ package com.uncle2000.androidcommonutils.uitls.encryption;
 
 public class XORUtils {
 
+
+    private XORUtils() {
+        /* cannot be instantiated */
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }
     /**
      * 固定key的方式
      *

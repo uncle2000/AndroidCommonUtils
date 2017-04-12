@@ -1,7 +1,5 @@
 package com.uncle2000.androidcommonutils.uitls.encryption;
 
-import android.text.TextUtils;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,6 +14,7 @@ import java.security.NoSuchAlgorithmException;
  */
 
 public class MD5Utils {
+    private static final String MD5 = "MD5";
 
     private MD5Utils() {
         /* cannot be instantiated */
@@ -23,12 +22,9 @@ public class MD5Utils {
     }
 
     public static String md5(String string) {
-//        if (TextUtils.isEmpty(string)) {
-//            return "";
-//        }
         MessageDigest md5 = null;
         try {
-            md5 = MessageDigest.getInstance("MD5");
+            md5 = MessageDigest.getInstance(MD5);
             byte[] bytes = md5.digest(string.getBytes());
             String result = "";
             for (byte b : bytes) {
@@ -116,9 +112,6 @@ public class MD5Utils {
 
     //对字符串多次MD5加密
     public static String md5(String string, int times) {
-//        if (TextUtils.isEmpty(string)) {
-//            return "";
-//        }
         String md5 = md5(string);
         for (int i = 0; i < times - 1; i++) {
             md5 = md5(md5);
@@ -141,12 +134,9 @@ public class MD5Utils {
      * @return
      */
     public static String md5(String string, String slat) {
-//        if (TextUtils.isEmpty(string)) {
-//            return "";
-//        }
         MessageDigest md5 = null;
         try {
-            md5 = MessageDigest.getInstance("MD5");
+            md5 = MessageDigest.getInstance(MD5);
             byte[] bytes = md5.digest((string + slat).getBytes());
             String result = "";
             for (byte b : bytes) {

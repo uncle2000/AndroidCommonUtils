@@ -5,6 +5,7 @@ package com.uncle2000.androidcommonutils.uitls.encryption;
  */
 
 public class Constant {
+    public static final String sentence_0 = "\n密文：";
     /*原文*/
     public static final String originalText = "，。；‘’；,.;][" +
             "(੭‾᷄㉨‾᷅)੭" +

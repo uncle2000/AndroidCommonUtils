@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.regex.Pattern;
 
+import static com.uncle2000.androidcommonutils.uitls.encryption.Constant.originalText;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -18,7 +19,6 @@ public class AESUtilsTest {
     private String sentence_1 = "\n原文:";
     private String sentence_2 = "\n解密后:";
     private String masterPassword = "a";
-    private String originalText = "0123456789";
     private String encryptingCode, decryptingCode;
 
     @Test
