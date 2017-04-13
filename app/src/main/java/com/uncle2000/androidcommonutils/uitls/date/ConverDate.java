@@ -130,7 +130,7 @@ public class ConverDate {
     }
 
     /**
-     * date->long
+     * str->long
      *
      * @param s
      * @return 时间戳
@@ -157,7 +157,7 @@ public class ConverDate {
     }
 
     /**
-     * date->long
+     * calendar->long
      *
      * @param c
      * @return 时间戳
@@ -168,7 +168,7 @@ public class ConverDate {
 
     /***********************************时间戳->格式化的字符串**************************************/
     /**
-     * long->
+     * long->formatStr
      *
      * @param time
      * @return 年月日时分秒毫秒

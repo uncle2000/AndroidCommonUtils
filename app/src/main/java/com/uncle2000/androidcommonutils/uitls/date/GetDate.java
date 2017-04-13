@@ -118,7 +118,7 @@ public class GetDate {
     /**
      * get Chinese当前星期的第几天
      * chineseCalendar只对WEEK_OF_MONTH 与WEEK_OF_YEAR 有作用
-     *
+     * 已修改
      * @return
      */
     public static int dayOfWeek() {
