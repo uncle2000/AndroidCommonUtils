@@ -1,6 +1,6 @@
 #简介
 ##对称加密算法(加解密密钥相同)
->http://blog.csdn.net/jiht594/article/details/6954155
+>*http://blog.csdn.net/jiht594/article/details/6954155*
 <!-- 名称|密钥长度|运算速度|安全性|资源消耗 -->
 <!-- -|-|-|-|- -->
 <!-- 名称|密钥长度|运算速度|安全性|资源消耗 -->

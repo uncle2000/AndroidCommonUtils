@@ -37,7 +37,7 @@ public class BASE64UtilsTest {
         System.out.println(decryptingCode);
         /*测试*/
         assertNotNull(decryptingCode);
-        /*测试解密是否与原文相同*/
+        /*测试解密是否与原文相同，期望相同*/
         assertEquals(decryptingCode, originalText);
     }
 

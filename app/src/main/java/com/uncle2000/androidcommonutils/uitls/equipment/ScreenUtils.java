@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.uitls;
+package com.uncle2000.androidcommonutils.uitls.equipment;
 
 /**
  * Created by 2000 on 2017/3/20.

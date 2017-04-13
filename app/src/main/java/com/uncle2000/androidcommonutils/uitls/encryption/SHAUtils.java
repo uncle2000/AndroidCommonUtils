@@ -1,6 +1,6 @@
 package com.uncle2000.androidcommonutils.uitls.encryption;
 
-import com.uncle2000.androidcommonutils.uitls.unit.GetHex;
+import com.uncle2000.androidcommonutils.uitls.arith.unit.GetHex;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

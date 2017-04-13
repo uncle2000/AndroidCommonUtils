@@ -10,8 +10,9 @@ public class BigDecimalArith {
     //默认除法运算精度
     private static final int DEF_DIV_SCALE = 10;
     //这个类不能实例化
-    private BigDecimalArith(){
-        // Nothing to do
+    private BigDecimalArith() {
+        /* cannot be instantiated */
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     /**

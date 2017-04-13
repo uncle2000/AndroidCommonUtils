@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.uitls.file;
+package com.uncle2000.androidcommonutils.uitls.output.file;
 
 import android.os.Environment;
 

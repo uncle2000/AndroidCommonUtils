@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.uitls;
+package com.uncle2000.androidcommonutils.uitls.multimedia;
 
 
 import java.io.File;
@@ -9,6 +9,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
+
+import com.uncle2000.androidcommonutils.uitls.output.Logger;
 
 
 /**

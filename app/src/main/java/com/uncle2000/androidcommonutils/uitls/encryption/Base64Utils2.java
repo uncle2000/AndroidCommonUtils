@@ -1,11 +1,11 @@
-package com.uncle2000.androidcommonutils.uitls;
+package com.uncle2000.androidcommonutils.uitls.encryption;
 import java.io.UnsupportedEncodingException;
 
 /**
  * @author Mr.Zheng
  * @date 2014年8月22日 下午9:50:28
  */
-public class Base64Utils
+public class Base64Utils2
 {
     private static char[] base64EncodeChars = new char[]
             { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',

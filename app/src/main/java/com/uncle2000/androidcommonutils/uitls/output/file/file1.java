@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.uitls.file;
+package com.uncle2000.androidcommonutils.uitls.output.file;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -27,7 +27,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.uncle2000.androidcommonutils.uitls.Logger;
+import com.uncle2000.androidcommonutils.uitls.output.Logger;
 
 /**
  * Created by 2000 on 2017/4/10.

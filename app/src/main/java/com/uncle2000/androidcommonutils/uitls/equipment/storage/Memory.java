@@ -1,7 +1,10 @@
-package com.uncle2000.androidcommonutils.uitls.peripheral;
+package com.uncle2000.androidcommonutils.uitls.equipment.storage;
 
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
+import android.text.format.Formatter;
 import android.util.Log;
 
 import java.io.File;
@@ -10,19 +13,20 @@ import java.io.File;
  * Created by 2000 on 2017/4/10.
  */
 
-public class MemoryManager {
+public class Memory {
+    private static final String TAG = "Memory";
+    private static final int MAXMEMORY = 300 * 1024 * 1024;//程序运行的最大内存 模拟器(0-16m)
 
-    private static final String TAG = "MemoryManager";
-    private static final int MAXMEMORY=300*1024*1024;//程序运行的最大内存 模拟器(0-16m)
     /**
      * 判断系统是否在低内存下运行
+     *
      * @param context
      * @return
      */
     public static boolean hasAcailMemory() {
         // 获取手机内部空间大小
         long memory = getAvailableInternalMemorySize();
-        Log.i(TAG, memory+"");
+        Log.i(TAG, memory + "");
         if (memory < MAXMEMORY) {
             //应用将处于低内存状态下运行
             return false;
@@ -58,49 +62,28 @@ public class MemoryManager {
         long totalBlocks = stat.getBlockCount();// 获取该区域可用的文件系统数
         return totalBlocks * blockSize;
     }
-
     /**
-     * 获取手机外部可用空间大小
+     * 手机内存
      *
-     * @return
+     * @param context
      */
-    @SuppressWarnings("deprecation")
-    public static long getAvailableExternalMemorySize() {
-        if (externalMemoryAvailable()) {
-            File path = Environment.getExternalStorageDirectory();
-            StatFs stat = new StatFs(path.getPath());
-            long blockSize = stat.getBlockSize();
-            long availableBlocks = stat.getAvailableBlocks();
-            return availableBlocks * blockSize;
-        } else {
-            throw new RuntimeException("Don't have sdcard.");
+
+    @TargetApi(18)
+    public static void getDataInfo(Context context) {
+        try {
+            File path = Environment.getDataDirectory();
+            StatFs s = new StatFs(path.getPath());
+            long availableBlocks = s.getAvailableBlocksLong();
+            long blockCount = s.getBlockCountLong();
+            long blockSize = s.getBlockSizeLong();
+
+            long totalsize = blockSize * blockCount;
+            long availsize = blockSize * availableBlocks;
+
+            String totalsizeStr = Formatter.formatFileSize(context, totalsize);
+            String availsizeStr = Formatter.formatFileSize(context, availsize);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
-
-    /**
-     * 获取手机外部空间大小
-     *
-     * @return
-     */
-    @SuppressWarnings("deprecation")
-    public static long getTotalExternalMemorySize() {
-        if (externalMemoryAvailable()) {
-            File path = Environment.getExternalStorageDirectory();// 获取外部存储目录即 SDCard
-            StatFs stat = new StatFs(path.getPath());
-            long blockSize = stat.getBlockSize();
-            long totalBlocks = stat.getBlockCount();
-            return totalBlocks * blockSize;
-        } else {
-            throw new RuntimeException("Don't have sdcard.");
-        }
-    }
-
-    /**
-     * 外部存储是否可用
-     *
-     * @return
-     */
-    public static boolean externalMemoryAvailable() {
-        return android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
     }
 }

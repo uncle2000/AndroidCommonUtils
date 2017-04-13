@@ -1,7 +1,5 @@
 package com.uncle2000.androidcommonutils.uitls.encryption;
 
-import com.uncle2000.androidcommonutils.uitls.Base64Utils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -174,7 +172,7 @@ public final class RSAUtils {
 
     public static PublicKey loadPublicKey(String publicKeyStr) throws Exception {
         try {
-            byte[] buffer = Base64Utils.decode(publicKeyStr);
+            byte[] buffer = Base64Utils2.decode(publicKeyStr);
             KeyFactory keyFactory = KeyFactory.getInstance(RSA);
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(buffer);
             return (RSAPublicKey) keyFactory.generatePublic(keySpec);
@@ -197,7 +195,7 @@ public final class RSAUtils {
      */
     public static PrivateKey loadPrivateKey(String privateKeyStr) throws Exception {
         try {
-            byte[] buffer = Base64Utils.decode(privateKeyStr);
+            byte[] buffer = Base64Utils2.decode(privateKeyStr);
             // X509EncodedKeySpec keySpec = new X509EncodedKeySpec(buffer);
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(buffer);
             KeyFactory keyFactory = KeyFactory.getInstance(RSA);

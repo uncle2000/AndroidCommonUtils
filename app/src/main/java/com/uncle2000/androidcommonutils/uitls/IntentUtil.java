@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.uncle2000.androidcommonutils.uitls.file.FileUtil;
+import com.uncle2000.androidcommonutils.uitls.output.Logger;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

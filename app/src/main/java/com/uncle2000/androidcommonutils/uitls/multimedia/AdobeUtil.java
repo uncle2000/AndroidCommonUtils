@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.uitls;
+package com.uncle2000.androidcommonutils.uitls.multimedia;
 
 import android.app.Activity;
 import android.app.AlertDialog;
