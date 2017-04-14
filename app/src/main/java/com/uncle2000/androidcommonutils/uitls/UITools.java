@@ -64,4 +64,41 @@ public class UITools {
         listView.setLayoutParams(params);
     }
 
+
+    // 转换dip为px
+    public int convertDipOrPx(Context context, int dip) {
+        float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dip * scale + 0.5f * (dip >= 0 ? 1 : -1));
+    }
+
+    // 转换px为dip
+    public int convertPxOrDip(Context context, int px) {
+        float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (px / scale + 0.5f * (px >= 0 ? 1 : -1));
+    }
+
+    /**
+     * 将px值转换为sp值，保证文字大小不变
+     *
+     * @param pxValue
+     * @param fontScale （DisplayMetrics类中属性scaledDensity）
+     * @return
+     */
+    public int px2sp(Context context, float pxValue) {
+        float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (pxValue / fontScale + 0.5f);
+    }
+
+    /**
+     * 将sp值转换为px值，保证文字大小不变
+     *
+     * @param spValue
+     * @param fontScale （DisplayMetrics类中属性scaledDensity）
+     * @return
+     */
+    public int sp2px(Context context, float spValue) {
+        float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
+    }
+
 }

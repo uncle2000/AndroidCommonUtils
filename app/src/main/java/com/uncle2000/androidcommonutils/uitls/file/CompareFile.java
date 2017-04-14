@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.uitls.output.file;
+package com.uncle2000.androidcommonutils.uitls.file;
 
 /**
  * Created by 2000 on 2017/4/10.

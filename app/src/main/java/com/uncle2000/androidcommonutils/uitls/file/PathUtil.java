@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.uitls.output.file;
+package com.uncle2000.androidcommonutils.uitls.file;
 
 import android.os.Environment;
 
@@ -9,9 +9,9 @@ import java.io.File;
  */
 
 public class PathUtil {
-    private static final String CACHE = "cache";
-    private static final String ICON = "icon";
-    private static final String ROOT = "kooshop";
+    private static final String CACHE = "cache/";
+    private static final String ICON = "icon/";
+    private static final String ROOT = "kooshop/";
 
     /**
      * 获得文件目录
