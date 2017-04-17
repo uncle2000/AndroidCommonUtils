@@ -30,47 +30,7 @@ import java.util.Map;
 public class GetFileUtil {
 
     /**
-     * 取得文件大小
-     *
-     * @param f
-     * @return
-     * @throws Exception
-     */
-    @SuppressWarnings("resource")
-    public static long getFileSizes(File f) throws Exception {
-        long size = 0;
-        if (f.exists()) {
-            FileInputStream fis = null;
-            fis = new FileInputStream(f);
-            size = fis.available();
-        } else {
-            f.createNewFile();
-        }
-        return size;
-    }
-
-    /**
-     * 递归取得文件夹大小
-     *
-     * @param dir
-     * @return
-     * @throws Exception
-     */
-    public static long getFileSize(File dir) throws Exception {
-        long size = 0;
-        File flist[] = dir.listFiles();
-        for (int i = 0; i < flist.length; i++) {
-            if (flist[i].isDirectory()) {
-                size = size + getFileSize(flist[i]);
-            } else {
-                size = size + flist[i].length();
-            }
-        }
-        return size;
-    }
-
-    /**
-     * 从sd卡取文件
+     * 从sd卡取文件 以字符串的形式返回
      *
      * @param filename
      * @return
@@ -80,7 +40,7 @@ public class GetFileUtil {
         FileInputStream fis = null;
         try {
             outputStream = new ByteArrayOutputStream();
-            File file = new File(Environment.getExternalStorageDirectory(), filename);
+            File file = new File(filename);
             if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
                 fis = new FileInputStream(file);
                 int len = 0;
@@ -121,6 +81,25 @@ public class GetFileUtil {
         return size;
     }
 
+    /**
+     * 递归取得文件夹大小
+     *
+     * @param dir
+     * @return
+     * @throws Exception
+     */
+    public static long getFileSize(File dir) throws Exception {
+        long size = 0;
+        File flist[] = dir.listFiles();
+        for (int i = 0; i < flist.length; i++) {
+            if (flist[i].isDirectory()) {
+                size = size + getFileSize(flist[i]);
+            } else {
+                size = size + flist[i].length();
+            }
+        }
+        return size;
+    }
 
 
     /**
@@ -177,28 +156,6 @@ public class GetFileUtil {
         return list;
     }
 
-
-    /**
-     * 在根目录下搜索文件
-     *
-     * @param keyword
-     * @return
-     */
-    public static String searchFile(String keyword) {
-        String result = "";
-        File[] files = new File("/").listFiles();
-        for (File file : files) {
-            if (file.getName().indexOf(keyword) >= 0) {
-                result += file.getPath() + "\n";
-            }
-        }
-        if (result.equals("")) {
-            result = "找不到文件!!";
-        }
-        return result;
-    }
-
-
     /**
      * 得到所有文件
      *
@@ -216,7 +173,6 @@ public class GetFileUtil {
                 getAllFiles(file);
             }
         }
-        Logger.i("test", allFiles.size() + "");
         return allFiles;
     }
 
@@ -230,7 +186,6 @@ public class GetFileUtil {
             for (int i = 0; i < filesOrDirs.length; i++) {
                 if (filesOrDirs[i].isDirectory()) {
                     dir[i] = filesOrDirs[i].getName();
-
                     num++;
                 }
             }
@@ -265,35 +220,24 @@ public class GetFileUtil {
         return w;
     }
 
-    public InputStream getInputStream(String path) throws FileNotFoundException {
-        // if(Comments.DEBUG) System.out.println("path:"+path);
-        FileInputStream filein = null;
-        // if(Comments.DEBUG) System.out.println("2");
-        // File file = creatFileIfNotExist(path);
-        File file = new File(path);
-        filein = new FileInputStream(file);
-        BufferedInputStream in = null;
-        if (filein != null)
-            in = new BufferedInputStream(filein);
-        return in;
-    }
-
-    public File getAlbumStorageDir(String albumName) {
-        // Get the directory for the user's public pictures directory.
-        File file = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES), albumName);
-        if (!file.mkdirs()) {
-            Log.e("(:з」∠)", "Directory not created");
-        }
-        return file;
-    }
+//    public File getAlbumStorageDir(String albumName) {
+//        // Get the directory for the user's public pictures directory.
+//        File file = new File(Environment.getExternalStoragePublicDirectory(
+//                Environment.DIRECTORY_PICTURES), albumName);
+//        if (!file.mkdirs()) {
+//            Log.e("(:з」∠)", "Directory not created");
+//        }
+//        return file;
+//    }
 
 
     /**
-     * @detail 搜索sdcard文件
-     * @param 需要进行文件搜索的目录
-     * @param 过滤搜索文件类型
-     * */
+     * 搜索sdcard文件
+     *
+     * @param file 需要进行文件搜索的目录
+     * @param ext  过滤搜索文件类型
+     * @return 以ext结尾的文件列表
+     */
     public static List<String> search(File file, String[] ext) {
         List<String> list = new ArrayList<String>();
         if (file != null) {
@@ -321,9 +265,9 @@ public class GetFileUtil {
     /**
      * 查询文件
      *
-     * @param file
-     * @param keyword
-     * @return
+     * @param file    被搜索的文件或者文件夹
+     * @param keyword 搜索关键字
+     * @return 包含keyword的文件列表
      */
     public static List<File> FindFile(File file, String keyword) {
         List<File> list = new ArrayList<File>();
