@@ -1,7 +1,10 @@
 package com.uncle2000.androidcommonutils.uitls.file;
 
+import android.net.Uri;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -11,6 +14,37 @@ import java.io.OutputStream;
  */
 
 public class ConverFile {
+
+    /**
+     * uri->path
+     *
+     * @param uri
+     * @return
+     */
+    public static String uri2Path(Uri uri) {
+        if (uri == null) {
+            return null;
+        }
+        return uri.getPath();
+    }
+
+    /**
+     * path->uri
+     *
+     * @param path
+     * @return
+     */
+    public static Uri path2Uri(String path) {
+        if (path == null) {
+            return null;
+        }
+        File file = new File(path);
+        if (file.exists() && (file.isFile() || file.isDirectory())) {
+            return Uri.fromFile(file);
+        }
+        return null;
+    }
+
 
     /**
      * InputStream->byte[]

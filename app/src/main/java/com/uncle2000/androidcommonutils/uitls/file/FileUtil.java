@@ -56,27 +56,6 @@ public class FileUtil {
         return true;
     }
 
-
-//    // 把字加长，使其可以滚动，在音乐界面
-//    public String dealString(String st, int size) {
-//        if (st.length() >= size)
-//            return "  " + st + "  ";
-//        else {
-//            int t = (size - st.length()) / 2;
-//            for (int i = 0; i < t; i++) {
-//                st = " " + st + "  ";
-//            }
-//            return st;
-//        }
-//    }
-//
-//    // 取前面的名字　"."
-//    public String getNameByFlag(String source, String flag) {
-//        // String[] source_spli = source.split(flag);
-//        String s = source.toLowerCase().replace(flag, "");
-//        return s.trim();
-//    }
-
     /**
      * 取Asset文件夹下文件
      *
