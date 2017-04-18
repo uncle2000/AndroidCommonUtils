@@ -69,7 +69,7 @@ public class ConverFile {
     /**
      * OutputStream->byte[]
      *
-     * @param in OutputStream
+     * @param out OutputStream
      * @return byte[]
      * @throws IOException
      */

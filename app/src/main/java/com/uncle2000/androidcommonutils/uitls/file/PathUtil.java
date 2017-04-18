@@ -56,7 +56,7 @@ public class PathUtil {
 
         APP_ROOT = SYSTEM_SDCARD_DIR + appFolderName;
 
-        APP_LOG_DIR_PRIVATE = context.getDir("Log", Context.MODE_PRIVATE).getPath();
+        APP_LOG_DIR_PRIVATE = context.getDir("log", Context.MODE_PRIVATE).getPath();
         APP_CACHE_DIR_PRIVATE = context.getCacheDir().getPath();
         APP_FILES_DIR_PRIVATE = context.getFilesDir().getPath();
 
