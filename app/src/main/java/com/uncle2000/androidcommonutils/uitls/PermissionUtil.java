@@ -28,7 +28,6 @@ public class PermissionUtil {
             return true;
         }
 
-
         //申请WRITE_EXTERNAL_STORAGE权限
         ActivityCompat.requestPermissions(
                 activity,

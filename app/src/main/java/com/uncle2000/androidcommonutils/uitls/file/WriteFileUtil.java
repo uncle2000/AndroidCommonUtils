@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.util.Log;
 
 import com.uncle2000.androidcommonutils.uitls.output.Logger;
 
@@ -376,7 +375,7 @@ public class WriteFileUtil {
                 mode = 2;
             FileOutputStream outputStream;
             try {
-                if (PathManager.isSdCardExitOrCouldWrite())
+                if (PathUtil.isSdCardExitOrCouldWrite())
                     outputStream = new FileOutputStream(file);
                 else
                     outputStream = context.openFileOutput(file.getName(), mode);
