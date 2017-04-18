@@ -3,8 +3,6 @@ package com.uncle2000.androidcommonutils.uitls.file;
 import android.content.Context;
 import android.os.Environment;
 
-import com.uncle2000.androidcommonutils.uitls.PermissionUtil;
-
 import java.io.File;
 
 public class PathUtil {

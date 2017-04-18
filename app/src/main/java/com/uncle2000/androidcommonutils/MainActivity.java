@@ -3,11 +3,7 @@ package com.uncle2000.androidcommonutils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.uncle2000.androidcommonutils.uitls.PermissionUtil;
-import com.uncle2000.androidcommonutils.uitls.file.CheckFileUtil;
-import com.uncle2000.androidcommonutils.uitls.file.PathUtil;
-
-import java.io.File;
+import com.uncle2000.androidcommonutils.uitls.system.PermissionUtil;
 
 public class MainActivity extends AppCompatActivity {
 

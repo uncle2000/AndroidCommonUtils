@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.uitls;
+package com.uncle2000.androidcommonutils.uitls.system;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

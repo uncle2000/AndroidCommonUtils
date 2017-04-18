@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.uitls;
+package com.uncle2000.androidcommonutils.uitls.system;
 
 import android.content.Context;
 import android.telephony.TelephonyManager;

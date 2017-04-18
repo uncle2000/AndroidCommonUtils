@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.uitls;
+package com.uncle2000.androidcommonutils.uitls.regex;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
