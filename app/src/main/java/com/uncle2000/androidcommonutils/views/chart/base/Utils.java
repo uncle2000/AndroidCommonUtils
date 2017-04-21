@@ -23,7 +23,6 @@ public class Utils {
 //        }
 //        return DataE;
 //    }
-
     public static int[] getMaxMin(Point[] src) {
         int maxX = Integer.MIN_VALUE,
                 minX = Integer.MAX_VALUE,
@@ -56,6 +55,22 @@ public class Utils {
                     ChartData.chartData[i].y - a[2] + (int) tPadding);
             ChartData.chartDataCopy[i] = p;
         }
+    }
+
+    public static Point getPoint(Point startP, int angle, int r) {
+        angle %= 360;
+        angle -= 90;
+        int x = (int) (Math.cos(Math.PI * angle / 180) * r) + startP.x;
+        int y = (int) (Math.sin(Math.PI * angle / 180) * r) + startP.y;
+        return new Point(x, y);
+    }
+
+    public static Point getPoint(int x1, int y1, int angle, int r) {
+        angle %= 360;
+        angle -= 90;
+        int x = (int) (Math.cos(Math.PI * angle / 180) * r) + x1;
+        int y = (int) (Math.sin(Math.PI * angle / 180) * r) + y1;
+        return new Point(x, y);
     }
 }
 

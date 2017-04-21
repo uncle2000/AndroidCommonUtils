@@ -120,7 +120,7 @@ public class Pillar extends View {
         super.onDraw(canvas);
 //        drawTable(canvas);
         coorSystem.drawCoorSystem(canvas);
-        drawData(canvas);
+//        drawData(canvas);
     }
 
     private void drawData(Canvas canvas) {

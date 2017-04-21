@@ -3,7 +3,6 @@ package com.uncle2000.androidcommonutils.views.chart.base.coordinate;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
 
 /**
  * 构建二维坐标系
@@ -21,11 +20,14 @@ public class DescartesCoorSystem {
     private Paint coorPaint;
 
     public DescartesCoorSystem() {
-        anchor = new Anchor(50, 600);
-        xCoorAxis = new CoorAxis(anchor, 90);
+        anchor = new Anchor(100, 600);
+        xCoorAxis = new CoorAxis(anchor, 60);
         yCoorAxis = new CoorAxis(anchor, 0);
-        yCoorAxis.length = 200;
-        xCoorAxis.length = 600;
+        yCoorAxis.length = 500;
+        xCoorAxis.length = 800;
+
+        yCoorAxis.mkElement(1);
+        xCoorAxis.mkElement(0);
 
         xCoorAxis.showArraw = yCoorAxis.showArraw = true;
 

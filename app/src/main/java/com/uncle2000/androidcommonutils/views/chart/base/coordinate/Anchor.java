@@ -25,4 +25,12 @@ public class Anchor {
         this.y = y;
         this.origin = new Point(x, y);
     }
+
+    public Point getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(Point origin) {
+        this.origin = origin;
+    }
 }
