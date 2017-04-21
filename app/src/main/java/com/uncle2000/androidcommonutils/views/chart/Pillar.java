@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.uncle2000.androidcommonutils.views.chart.base.ChartData;
 import com.uncle2000.androidcommonutils.views.chart.base.ConvertData;
 import com.uncle2000.androidcommonutils.views.chart.base.Utils;
+import com.uncle2000.androidcommonutils.views.chart.base.coordinate.DescartesCoorSystem;
 
 import static com.uncle2000.androidcommonutils.views.chart.base.ChartData.chartDataCopy;
 
@@ -28,16 +29,15 @@ import static com.uncle2000.androidcommonutils.views.chart.base.ChartData.chartD
 
 public class Pillar extends View {
     private final TextPaint mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-    private Paint mTablepaint;
     private Paint mDatapaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private float minRangeX, maxRangeX, minRangeY, maxRangeY;
     private float minTableX = 50, maxTableX, minTableY = 50, maxTableY;
     private float tableSpanX, tableSpanY;
     private int rows, columns;
     private Point[] chartData;
-    private Point anchor = new Point();
     private float lPadding = 30, rPadding = 30, tPadding = 30, bPadding = 30;
     private float warpWidth, warpHeight;
+    DescartesCoorSystem coorSystem;
 
     public Pillar(Context context) {
         this(context, null);
@@ -58,11 +58,6 @@ public class Pillar extends View {
 
         mTextPaint.density = res.getDisplayMetrics().density;
         mTextPaint.setTextSize(38f);
-
-        mTablepaint = new Paint();
-        mTablepaint.setAntiAlias(true);
-        mTablepaint.setColor(Color.BLACK);
-        mTablepaint.setStrokeWidth(1.2f);
 
 //        mDatapaint = new Paint();
 
@@ -89,8 +84,9 @@ public class Pillar extends View {
         maxTableX = warpWidth;
         maxTableY = warpHeight - 50 - bPadding;
 
-        anchor.x = (int) minTableX;
-        anchor.y = (int) maxTableY;
+//        anchor.x = (int) minTableX;
+//        anchor.y = (int) maxTableY;
+        coorSystem = new DescartesCoorSystem();
     }
 
     @Override
@@ -122,7 +118,8 @@ public class Pillar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        drawTable(canvas);
+//        drawTable(canvas);
+        coorSystem.drawCoorSystem(canvas);
         drawData(canvas);
     }
 
@@ -282,15 +279,6 @@ public class Pillar extends View {
 
         phase += 1;
         invalidate();
-    }
-
-    private void drawTable(Canvas canvas) {
-        float[] pts = {minTableX, minTableY, minTableX, maxTableY,
-                minTableX, maxTableY, maxTableX, maxTableY};
-        canvas.drawLines(pts, mTablepaint);
-
-        mTablepaint.setTextSize(38f);
-        canvas.drawText("anchor", anchor.x - 38f, anchor.y + 38f, mTablepaint);
     }
 
     public Point[] getChartData() {
