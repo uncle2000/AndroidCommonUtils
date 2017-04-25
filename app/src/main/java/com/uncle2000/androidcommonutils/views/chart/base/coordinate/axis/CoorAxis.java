@@ -16,62 +16,17 @@ import com.uncle2000.androidcommonutils.views.chart.base.coordinate.element.Elem
  */
 
 public class CoorAxis {
-    /**
-     *
-     * [0°↑:y- ,90°→:x+ ,180°↓:y+ ,270°←:x-]
-     */
-    private int angle;
-    public int length = 200, offset;
-    public boolean showArraw;
-    private int arrawLessL = 8;
-    private int arrawLargerL = 50;
-    private int arrawAngle = 38;
-    public int textOffsetX;
-    public int textOffsetY;
+
+    private AxisModel axisModel;
     private CoorAxisElement coorAxisElement;
-    @ColorInt
-    private int color = 0x000000;
 
-    private final Anchor anchor;
-    private Paint axisPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-    CoorAxisElement cae;//= new CoorAxisElement(anchor, angle, i * 75);
-
-    SparseArray<Point> normalP;
-
-    public CoorAxis(Anchor anchor, int angle) {
-        this.anchor = anchor;
-        this.angle = angle;
-        axisPaint.setStrokeWidth(2f);
-    }
-
-    public void mkElement(int normalDirection) {
-        normalP = new SparseArray<>();
-        normalP.put(0, Utils.getPoint(anchor.x, anchor.y, this.angle, 75));
-        for (int i = 1; i < 12; i++) {
-            if (i % 2 == 0) {
-                normalP.put(i, Utils.getPoint(normalP.get(i - 2).x, normalP.get(i - 2).y, this.angle, 75));
-            } else {
-                normalP.put(i, Utils.getPoint(normalP.get(i - 1).x, normalP.get(i - 1).y, this.angle - 90 + normalDirection * 180, 500));
-            }
+    public CoorAxis(AxisModel axisModel) {
+        this.axisModel = axisModel;
+        if (null != axisModel.geteModels()) {
+            coorAxisElement = new CoorAxisElement(axisModel.geteModels());
+        } else if (null != axisModel.geteModel()) {
+            coorAxisElement = new CoorAxisElement(axisModel.geteModel());
         }
-
-        SparseArray texts = new SparseArray();
-        for (int i = 0; i < 4; i++) {
-            texts.put(i, "" + i * 5);
-        }
-
-        if (normalDirection == 0) {
-            textOffsetY = 30;
-        } else {
-            textOffsetX = -30;
-        }
-        ElementModel e = new ElementModel();
-        e.setPoints(normalP);
-        e.setTexts(texts);
-        e.setTextOffsetX(textOffsetX);
-        e.setTextOffsetY(textOffsetY);
-        cae = new CoorAxisElement(e);
     }
 
     /**
@@ -83,74 +38,74 @@ public class CoorAxis {
      *
      * @param canvas
      */
-    public void drawAxis(Canvas canvas) {
+    public void draw(Canvas canvas) {
         float[] pts;
-        if (showArraw) {
+        if (axisModel.isShowArraw()) {
             pts = new float[12];
         } else {
             pts = new float[4];
         }
         /*起点永远都是锚点*/
-        pts[0] = anchor.x;
-        pts[1] = anchor.y;
-        if (angle % 90 == 0) {
-            switch (angle % 360) {
+        pts[0] = axisModel.getAnchor().x;
+        pts[1] = axisModel.getAnchor().y;
+        if (axisModel.getAngle() % 90 == 0) {
+            switch (axisModel.getAngle() % 360) {
                 case 0:
-                    pts[2] = anchor.x;
-                    pts[3] = anchor.y - length;
-                    if (showArraw) {
-                        pts[6] = pts[2] - arrawLessL;
-                        pts[7] = pts[3] + arrawLargerL;
-                        pts[10] = pts[2] + arrawLessL;
-                        pts[11] = pts[3] + arrawLargerL;
+                    pts[2] = axisModel.getAnchor().x;
+                    pts[3] = axisModel.getAnchor().y - axisModel.getLength();
+                    if (axisModel.isShowArraw()) {
+                        pts[6] = pts[2] - axisModel.getArrawLessL();
+                        pts[7] = pts[3] + axisModel.getArrawLargerL();
+                        pts[10] = pts[2] + axisModel.getArrawLessL();
+                        pts[11] = pts[3] + axisModel.getArrawLargerL();
                     }
                     break;
                 case 90:
-                    pts[2] = anchor.x + length;
-                    pts[3] = anchor.y;
-                    if (showArraw) {
-                        pts[6] = pts[2] - arrawLargerL;
-                        pts[7] = pts[3] - arrawLessL;
-                        pts[10] = pts[2] - arrawLargerL;
-                        pts[11] = pts[3] + arrawLessL;
+                    pts[2] = axisModel.getAnchor().x + axisModel.getLength();
+                    pts[3] = axisModel.getAnchor().y;
+                    if (axisModel.isShowArraw()) {
+                        pts[6] = pts[2] - axisModel.getArrawLargerL();
+                        pts[7] = pts[3] - axisModel.getArrawLessL();
+                        pts[10] = pts[2] - axisModel.getArrawLargerL();
+                        pts[11] = pts[3] + axisModel.getArrawLessL();
                     }
                     break;
                 case 180:
-                    pts[2] = anchor.x;
-                    pts[3] = anchor.y + length;
-                    if (showArraw) {
-                        pts[6] = pts[2] - arrawLessL;
-                        pts[7] = pts[3] - arrawLargerL;
-                        pts[10] = pts[2] + arrawLessL;
-                        pts[11] = pts[3] - arrawLargerL;
+                    pts[2] = axisModel.getAnchor().x;
+                    pts[3] = axisModel.getAnchor().y + axisModel.getLength();
+                    if (axisModel.isShowArraw()) {
+                        pts[6] = pts[2] - axisModel.getArrawLessL();
+                        pts[7] = pts[3] - axisModel.getArrawLargerL();
+                        pts[10] = pts[2] + axisModel.getArrawLessL();
+                        pts[11] = pts[3] - axisModel.getArrawLargerL();
                     }
                     break;
                 case 270:
-                    pts[2] = anchor.x - length;
-                    pts[3] = anchor.y;
-                    if (showArraw) {
-                        pts[6] = pts[2] + arrawLargerL;
-                        pts[7] = pts[3] - arrawLessL;
-                        pts[10] = pts[2] + arrawLargerL;
-                        pts[11] = pts[3] + arrawLessL;
+                    pts[2] = axisModel.getAnchor().x - axisModel.getLength();
+                    pts[3] = axisModel.getAnchor().y;
+                    if (axisModel.isShowArraw()) {
+                        pts[6] = pts[2] + axisModel.getArrawLargerL();
+                        pts[7] = pts[3] - axisModel.getArrawLessL();
+                        pts[10] = pts[2] + axisModel.getArrawLargerL();
+                        pts[11] = pts[3] + axisModel.getArrawLessL();
                     }
                     break;
             }
-            if (showArraw) {
+            if (axisModel.isShowArraw()) {
                 pts[4] = pts[2];
                 pts[5] = pts[3];
                 pts[8] = pts[2];
                 pts[9] = pts[3];
             }
         } else {
-            Point endP = Utils.getPoint(anchor.getOrigin(), angle, length);
+            Point endP = Utils.getPoint(axisModel.getAnchor().getOrigin(), axisModel.getAngle(), axisModel.getLength());
             pts[2] = endP.x;
             pts[3] = endP.y;
-            if (showArraw) {
+            if (axisModel.isShowArraw()) {
                 pts[4] = pts[8] = endP.x;
                 pts[5] = pts[9] = endP.y;
-                Point arrawP1 = Utils.getPoint(endP, angle - arrawAngle + 180, arrawLargerL);
-                Point arrawP2 = Utils.getPoint(endP, angle + arrawAngle + 180, arrawLargerL);
+                Point arrawP1 = Utils.getPoint(endP, axisModel.getAngle() - axisModel.getArrawAngle() + 180, axisModel.getArrawLargerL());
+                Point arrawP2 = Utils.getPoint(endP, axisModel.getAngle() + axisModel.getArrawAngle() + 180, axisModel.getArrawLargerL());
                 pts[6] = arrawP1.x;
                 pts[7] = arrawP1.y;
                 pts[10] = arrawP2.x;
@@ -158,17 +113,10 @@ public class CoorAxis {
             }
         }
 
-        if (null != cae) {
-            cae.draw(canvas);
+        if (null != coorAxisElement) {
+            coorAxisElement.draw(canvas);
         }
-        canvas.drawLines(pts, axisPaint);
+        canvas.drawLines(pts, axisModel.getAxisPaint());
     }
 
-    public CoorAxisElement getCoorAxisElement() {
-        return coorAxisElement;
-    }
-
-    public void setCoorAxisElement(CoorAxisElement coorAxisElement) {
-        this.coorAxisElement = coorAxisElement;
-    }
 }

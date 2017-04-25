@@ -13,7 +13,6 @@ import android.graphics.RectF;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.TextView;
 
 import com.uncle2000.androidcommonutils.views.chart.base.ChartData;
 import com.uncle2000.androidcommonutils.views.chart.base.ConvertData;
@@ -119,7 +118,7 @@ public class Pillar extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 //        drawTable(canvas);
-        coorSystem.drawCoorSystem(canvas);
+        coorSystem.draw(canvas);
 //        drawData(canvas);
     }
 

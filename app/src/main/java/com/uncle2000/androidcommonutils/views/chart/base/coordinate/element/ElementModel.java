@@ -11,6 +11,9 @@ import android.util.SparseArray;
  */
 
 public class ElementModel {
+    /**
+     * form->to
+     */
     private Point pointF, pointT;
     private SparseArray<Point> points;
 
@@ -35,7 +38,7 @@ public class ElementModel {
     public int nSpanL = 75;
     private int nL = 20;
     private int nSpanOffset;
-    private float thickness = 2f;
+    private float thickness = 1.2f;
     @ColorInt
     private int normalColor = 0xff000000;
 
