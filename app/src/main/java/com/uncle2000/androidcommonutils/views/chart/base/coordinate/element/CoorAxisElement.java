@@ -1,7 +1,6 @@
-package com.uncle2000.androidcommonutils.views.chart.base.coordinate;
+package com.uncle2000.androidcommonutils.views.chart.base.coordinate.element;
 
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
 

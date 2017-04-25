@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.base.coordinate;
+package com.uncle2000.androidcommonutils.views.chart.base.coordinate.axis;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -7,6 +7,9 @@ import android.support.annotation.ColorInt;
 import android.util.SparseArray;
 
 import com.uncle2000.androidcommonutils.views.chart.base.Utils;
+import com.uncle2000.androidcommonutils.views.chart.base.coordinate.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.base.coordinate.element.CoorAxisElement;
+import com.uncle2000.androidcommonutils.views.chart.base.coordinate.element.ElementModel;
 
 /**
  * Created by 2000 on 2017/4/20.
@@ -14,7 +17,7 @@ import com.uncle2000.androidcommonutils.views.chart.base.Utils;
 
 public class CoorAxis {
     /**
-     * form anchor to dirrction
+     *
      * [0°↑:y- ,90°→:x+ ,180°↓:y+ ,270°←:x-]
      */
     private int angle;

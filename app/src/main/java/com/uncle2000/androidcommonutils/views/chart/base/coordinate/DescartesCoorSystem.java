@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import com.uncle2000.androidcommonutils.views.chart.base.coordinate.axis.CoorAxis;
+
 /**
  * 构建二维坐标系
  * x轴和y轴的位置由锚点(原点)确定
