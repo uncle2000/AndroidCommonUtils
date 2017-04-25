@@ -23,6 +23,8 @@ public class CoorAxis {
     private int arrawLessL = 8;
     private int arrawLargerL = 50;
     private int arrawAngle = 38;
+    public int textOffsetX;
+    public int textOffsetY;
     private CoorAxisElement coorAxisElement;
     @ColorInt
     private int color = 0x000000;
@@ -55,9 +57,17 @@ public class CoorAxis {
         for (int i = 0; i < 4; i++) {
             texts.put(i, "" + i * 5);
         }
+
+        if (normalDirection == 0) {
+            textOffsetY = 30;
+        } else {
+            textOffsetX = -30;
+        }
         ElementModel e = new ElementModel();
         e.setPoints(normalP);
         e.setTexts(texts);
+        e.setTextOffsetX(textOffsetX);
+        e.setTextOffsetY(textOffsetY);
         cae = new CoorAxisElement(e);
     }
 

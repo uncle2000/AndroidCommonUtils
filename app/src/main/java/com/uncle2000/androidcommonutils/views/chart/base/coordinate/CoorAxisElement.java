@@ -6,6 +6,9 @@ import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
 /**
+ * 画轴上的元素，而不是轴。
+ * 比如轴上的文字、法线。
+ * 与这个类交互用到的是 ElementModel
  * Created by 2000 on 2017/4/20.
  */
 
@@ -16,6 +19,11 @@ public class CoorAxisElement {
     private float[] pts;
     private SparseArray<String> tests;
 
+    /**
+     * 针对轴上的所有元素都用一种样式
+     *
+     * @param eModel
+     */
     public CoorAxisElement(@NonNull ElementModel eModel) {
         bardian = false;
         this.eModel = eModel;
@@ -27,6 +35,11 @@ public class CoorAxisElement {
         }
     }
 
+    /**
+     * 针对轴上每个元素都有自己的样式
+     *
+     * @param eModels
+     */
     public CoorAxisElement(@NonNull SparseArray<ElementModel> eModels) {
         bardian = true;
         this.eModels = eModels;
@@ -46,6 +59,11 @@ public class CoorAxisElement {
         drawKey(canvas);
     }
 
+    /**
+     * 画法线/刻度
+     *
+     * @param canvas
+     */
     private void drawNormal(Canvas canvas) {
         if (bardian) {
             for (int i = 0; i < eModels.size(); i++) {
@@ -59,6 +77,11 @@ public class CoorAxisElement {
         }
     }
 
+    /**
+     * 画刻度下的文字
+     *
+     * @param canvas
+     */
     private void drawKey(Canvas canvas) {
         if (tests == null)
             return;
@@ -67,17 +90,15 @@ public class CoorAxisElement {
                 ElementModel e = eModels.get(i);
                 canvas.drawTextOnPath(tests.get(i),
                         null,
-                        e.getPointF().x,
-                        e.getPointF().y,
+                        e.getPointF().x + eModels.get(i).getTextOffsetX(),
+                        e.getPointF().y + eModels.get(i).getTextOffsetY(),
                         e.getTextPaint());
             } else {
                 canvas.drawText(tests.get(i),
-                        pts[i * 4 + 0],
-                        pts[i * 4 + 1],
+                        pts[i * 4 + 0] + eModel.getTextOffsetX(),
+                        pts[i * 4 + 1] + eModel.getTextOffsetY(),
                         eModel.getTextPaint());
-
             }
-
         }
     }
 }

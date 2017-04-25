@@ -12,4 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#90aaaaaa" />
+    <WebView
+        android:visibility="gone"
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></WebView>
+
 </FrameLayout>

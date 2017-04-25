@@ -21,13 +21,14 @@ public class DescartesCoorSystem {
 
     public DescartesCoorSystem() {
         anchor = new Anchor(100, 600);
-        xCoorAxis = new CoorAxis(anchor, 60);
+        xCoorAxis = new CoorAxis(anchor, 90);
         yCoorAxis = new CoorAxis(anchor, 0);
         yCoorAxis.length = 500;
         xCoorAxis.length = 800;
 
         yCoorAxis.mkElement(1);
         xCoorAxis.mkElement(0);
+
 
         xCoorAxis.showArraw = yCoorAxis.showArraw = true;
 

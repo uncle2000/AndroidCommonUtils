@@ -3,6 +3,7 @@ package com.uncle2000.androidcommonutils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.uncle2000.androidcommonutils.uitls.arith.unit.DensityUtils;
 import com.uncle2000.androidcommonutils.uitls.system.PermissionUtil;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         /*测试文件时需要的动态授权*/
         PermissionUtil.requestPermissions(this, 0, android
                 .Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//        ((WebView)findViewById(R.id.webview)).loadUrl("file:///android_asset/loa.html");
 
         /**/
 //        SimpleWaveView simpleWaveView = new SimpleWaveView(this);

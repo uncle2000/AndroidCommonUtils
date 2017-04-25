@@ -24,6 +24,8 @@ public class ElementModel {
     private Paint textPaint;
     @ColorInt
     private int textColor;
+    private int textOffsetX;
+    private int textOffsetY;
 
     /**
      * normal(法线)
@@ -216,5 +218,21 @@ public class ElementModel {
             return temp;
         } else
             return null;
+    }
+
+    public int getTextOffsetX() {
+        return textOffsetX;
+    }
+
+    public void setTextOffsetX(int textOffsetX) {
+        this.textOffsetX = textOffsetX;
+    }
+
+    public int getTextOffsetY() {
+        return textOffsetY;
+    }
+
+    public void setTextOffsetY(int textOffsetY) {
+        this.textOffsetY = textOffsetY;
     }
 }
