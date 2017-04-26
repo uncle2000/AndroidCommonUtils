@@ -15,28 +15,37 @@ import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
  */
 
 public class RadarCoorStstem {
-    private final int offset;
-    private CoorAxis[] coorAxis;
-    private int coorAxisNum = 0;
     private Anchor anchor;
     private int angle;
+    private int offset;
+    private int coorAxisNum;
+    private CoorAxis[] coorAxis;
 
-    public RadarCoorStstem(int angle) {
-        this(angle, 0);
+    public int span = 90;
+    public int pointNum = 5;
+    public Paint radarPaint;
+
+    public RadarCoorStstem(Anchor anchor, int angle) {
+        this(anchor, angle, 0);
     }
 
-    public RadarCoorStstem(int angle, int offset) {
+    public RadarCoorStstem(Anchor anchor, int angle, int offset) {
         this.angle = angle;
+        this.anchor = anchor;
         this.offset = offset;
-        anchor = new Anchor(500, 600);
+
         if (360 % angle != 0 || angle <= 0 || angle >= 360) {
             throw new NumberFormatException("angle must be divisible by 360°");
         }
+
         coorAxisNum = 360 / angle;
         coorAxis = new CoorAxis[coorAxisNum];
         for (int i = 0; i < coorAxisNum; i++) {
             coorAxis[i] = new CoorAxis(mkElement(i * angle + offset));
         }
+        radarPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        radarPaint.setStyle(Paint.Style.STROKE);
+        radarPaint.setStrokeWidth(3f);
     }
 
     public void draw(Canvas canvas) {
@@ -44,7 +53,7 @@ public class RadarCoorStstem {
         for (CoorAxis ca : coorAxis) {
             ca.draw(canvas);
         }
-//        drawRing(canvas);
+        drawRing(canvas);
         drawRail(canvas);
     }
 
@@ -56,39 +65,34 @@ public class RadarCoorStstem {
     }
 
     private void drawRing(Canvas canvas) {
-        anchor.getAnchorPaint().setStyle(Paint.Style.STROKE);
-        anchor.getAnchorPaint().setStrokeWidth(3f);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < pointNum; i++) {
             canvas.drawCircle(
                     anchor.x,
                     anchor.y,
-                    90 * (i + 1),
-                    anchor.getAnchorPaint());
+                    span * (i + 1),
+                    radarPaint);
         }
     }
 
     private void drawRail(Canvas canvas) {
-        anchor.getAnchorPaint().setStyle(Paint.Style.STROKE);
-        anchor.getAnchorPaint().setStrokeWidth(3f);
         Path path = new Path();
-        for (int j = 0; j < 5+1; j++) {
-            Point point = Utils.getPoint(anchor.x, anchor.y, offset, 90 * j);
+        for (int j = 0; j < pointNum + 1; j++) {
+            Point point = Utils.getPoint(anchor.x, anchor.y, offset, span * j);
             path.moveTo(point.x, point.y);
-            for (int i = 0; i < coorAxisNum+1; i++) {
-                Point pointTo = Utils.getPoint(anchor.x, anchor.y, offset + i * angle, 90 * j);
+            for (int i = 0; i < coorAxisNum + 1; i++) {
+                Point pointTo = Utils.getPoint(anchor.x, anchor.y, offset + i * angle, span * j);
                 path.lineTo(pointTo.x, pointTo.y);
             }
-            canvas.drawPath(path, anchor.getAnchorPaint());
+            canvas.drawPath(path, radarPaint);
         }
     }
 
     private AxisModel mkElement(int angle) {
-
         AxisModel axisModel = new AxisModel();
         axisModel.setAnchor(this.anchor);
         axisModel.setShowArraw(false);
-        axisModel.setLength(450);
         axisModel.setAngle(angle);
+        axisModel.setLength(450);
         return axisModel;
     }
 }

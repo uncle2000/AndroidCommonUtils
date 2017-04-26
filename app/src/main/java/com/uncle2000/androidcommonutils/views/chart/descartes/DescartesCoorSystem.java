@@ -30,27 +30,27 @@ public class DescartesCoorSystem {
     private Anchor anchor;
     private Points points;
 
-    public DescartesCoorSystem() {
-        anchor = new Anchor(100, 600);
+    public DescartesCoorSystem(Anchor anchor) {
+        this.anchor = anchor;
         xCoorAxis = new CoorAxis(mkElement(0, 90));
         yCoorAxis = new CoorAxis(mkElement(1, 0));
 
-        float[] ptsL = new float[(chartDataCopy.length - 1) * 4];
-
-        for (int i = 0; i < chartDataCopy.length - 1; i++) {
-            ptsL[i * 4] = chartDataCopy[i].x;
-            ptsL[i * 4 + 1] = chartDataCopy[i].y;
-            ptsL[i * 4 + 2] = chartDataCopy[i + 1].x;
-            ptsL[i * 4 + 3] = chartDataCopy[i + 1].y;
-        }
-        points = new Curve(ptsL);
+//        float[] ptsL = new float[(chartDataCopy.length - 1) * 4];
+//
+//        for (int i = 0; i < chartDataCopy.length - 1; i++) {
+//            ptsL[i * 4] = chartDataCopy[i].x;
+//            ptsL[i * 4 + 1] = chartDataCopy[i].y;
+//            ptsL[i * 4 + 2] = chartDataCopy[i + 1].x;
+//            ptsL[i * 4 + 3] = chartDataCopy[i + 1].y;
+//        }
+//        points = new Curve(ptsL);
     }
 
     public void draw(Canvas canvas) {
         drawAnchor(canvas);
         xCoorAxis.draw(canvas);
         yCoorAxis.draw(canvas);
-        points.draw(canvas);
+//        points.draw(canvas);
     }
 
     private void drawAnchor(Canvas canvas) {

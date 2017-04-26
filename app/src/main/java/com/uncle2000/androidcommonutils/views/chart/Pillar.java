@@ -15,6 +15,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.uncle2000.androidcommonutils.views.chart.descartes.RadarCoorStstem;
+import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.Anchor;
 import com.uncle2000.androidcommonutils.views.chart.utils.ChartData;
 import com.uncle2000.androidcommonutils.views.chart.utils.ConvertData;
 import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
@@ -84,10 +85,10 @@ public class Pillar extends View {
         maxTableX = warpWidth;
         maxTableY = warpHeight - 50 - bPadding;
 
-//        anchor.x = (int) minTableX;
-//        anchor.y = (int) maxTableY;
-//        coorSystem = new DescartesCoorSystem();
-        coorSystem = new RadarCoorStstem(60);
+
+        Anchor anchor = new Anchor(500, 600);
+//        coorSystem = new DescartesCoorSystem(anchor);
+        coorSystem = new RadarCoorStstem(anchor,60);
     }
 
     @Override
