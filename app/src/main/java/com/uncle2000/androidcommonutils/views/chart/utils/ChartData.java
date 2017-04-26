@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.base;
+package com.uncle2000.androidcommonutils.views.chart.utils;
 
 import android.graphics.Point;
 
@@ -21,10 +21,5 @@ public class ChartData {
             new Point(800, 250),
             new Point(900, 300)};
     public static Point[] chartDataCopy;
-    List<DataElement> DataE;
-
-//    public ChartData() {
-//        DataE = Utils.mkDataE(chartData);
-//    }
 
 }

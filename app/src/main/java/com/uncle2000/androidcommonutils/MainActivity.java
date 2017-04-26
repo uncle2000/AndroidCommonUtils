@@ -2,15 +2,8 @@ package com.uncle2000.androidcommonutils;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ViewGroup;
-import android.webkit.WebView;
 
-import com.uncle2000.androidcommonutils.uitls.arith.unit.DensityUtils;
 import com.uncle2000.androidcommonutils.uitls.system.PermissionUtil;
-import com.uncle2000.androidcommonutils.views.chart.SimplePillarsView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 

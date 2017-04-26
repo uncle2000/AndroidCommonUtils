@@ -1,17 +1,21 @@
-package com.uncle2000.androidcommonutils.views.chart.base.coordinate;
+package com.uncle2000.androidcommonutils.views.chart.descartes;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.SparseArray;
 
-import com.uncle2000.androidcommonutils.views.chart.base.Utils;
-import com.uncle2000.androidcommonutils.views.chart.base.coordinate.axis.AxisModel;
-import com.uncle2000.androidcommonutils.views.chart.base.coordinate.axis.CoorAxis;
-import com.uncle2000.androidcommonutils.views.chart.base.coordinate.element.ElementModel;
+import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
+import com.uncle2000.androidcommonutils.views.chart.descartes.content.Curve;
+import com.uncle2000.androidcommonutils.views.chart.descartes.content.Points;
+import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.axis.AxisModel;
+import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.axis.CoorAxis;
+import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.element.ElementModel;
+
+import static com.uncle2000.androidcommonutils.views.chart.utils.ChartData.chartDataCopy;
 
 /**
+ * 笛卡尔坐标系
  * 构建二维坐标系
  * x轴和y轴的位置由锚点(原点)确定
  * <p>
@@ -24,17 +28,29 @@ public class DescartesCoorSystem {
     private int lMargin, tMargin, rMargin, bMargin;
     private CoorAxis xCoorAxis, yCoorAxis;
     private Anchor anchor;
+    private Points points;
 
     public DescartesCoorSystem() {
         anchor = new Anchor(100, 600);
         xCoorAxis = new CoorAxis(mkElement(0, 90));
         yCoorAxis = new CoorAxis(mkElement(1, 0));
+
+        float[] ptsL = new float[(chartDataCopy.length - 1) * 4];
+
+        for (int i = 0; i < chartDataCopy.length - 1; i++) {
+            ptsL[i * 4] = chartDataCopy[i].x;
+            ptsL[i * 4 + 1] = chartDataCopy[i].y;
+            ptsL[i * 4 + 2] = chartDataCopy[i + 1].x;
+            ptsL[i * 4 + 3] = chartDataCopy[i + 1].y;
+        }
+        points = new Curve(ptsL);
     }
 
     public void draw(Canvas canvas) {
         drawAnchor(canvas);
         xCoorAxis.draw(canvas);
         yCoorAxis.draw(canvas);
+        points.draw(canvas);
     }
 
     private void drawAnchor(Canvas canvas) {

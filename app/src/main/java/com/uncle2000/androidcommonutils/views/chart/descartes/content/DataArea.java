@@ -1,15 +1,43 @@
-package com.uncle2000.androidcommonutils.views.chart.base.content;
+package com.uncle2000.androidcommonutils.views.chart.descartes.content;
 
 import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.util.SparseArray;
 
 /**
  * Created by 2000 on 2017/4/25.
  */
 
-public class DataArea {
+public class DataArea extends Points {
+    SparseArray<Rect> saR;
 
+    public DataArea(@NonNull float[] pts) {
+        super(pts);
+        init();
+    }
+
+    public DataArea(@NonNull float[] pts, Paint paint) {
+        super(pts, paint);
+        init();
+    }
+
+    private void init() {
+        paint.setStyle(Paint.Style.STROKE);
+//        saR = adjustData2Sa(pts);
+    }
+
+    @Override
     public void draw(Canvas canvas) {
 
+    }
+
+
+    public SparseArray<Rect> adjustData2Sa(SparseArray<Point> sa) {
+
+        return saR;
     }
 
 
@@ -34,7 +62,6 @@ public class DataArea {
 //        };
 //        canvas.drawLines(pts, mDatapaint);
 //    }
-
 
 
 }

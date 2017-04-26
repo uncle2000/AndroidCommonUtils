@@ -1,15 +1,10 @@
-package com.uncle2000.androidcommonutils.views.chart.base.coordinate.axis;
+package com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.axis;
 
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Point;
-import android.support.annotation.ColorInt;
-import android.util.SparseArray;
 
-import com.uncle2000.androidcommonutils.views.chart.base.Utils;
-import com.uncle2000.androidcommonutils.views.chart.base.coordinate.Anchor;
-import com.uncle2000.androidcommonutils.views.chart.base.coordinate.element.CoorAxisElement;
-import com.uncle2000.androidcommonutils.views.chart.base.coordinate.element.ElementModel;
+import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
+import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.element.CoorAxisElement;
 
 /**
  * Created by 2000 on 2017/4/20.

@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.base;
+package com.uncle2000.androidcommonutils.views.chart.utils;
 
 import android.graphics.Point;
 import android.graphics.Rect;

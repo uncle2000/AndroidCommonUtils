@@ -1,6 +1,5 @@
-package com.uncle2000.androidcommonutils.views.chart.base.coordinate;
+package com.uncle2000.androidcommonutils.views.chart.descartes.coordinate;
 
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.support.annotation.ColorInt;

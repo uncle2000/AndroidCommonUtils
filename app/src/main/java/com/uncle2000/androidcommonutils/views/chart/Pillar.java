@@ -14,12 +14,12 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.uncle2000.androidcommonutils.views.chart.base.ChartData;
-import com.uncle2000.androidcommonutils.views.chart.base.ConvertData;
-import com.uncle2000.androidcommonutils.views.chart.base.Utils;
-import com.uncle2000.androidcommonutils.views.chart.base.coordinate.DescartesCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.utils.ChartData;
+import com.uncle2000.androidcommonutils.views.chart.utils.ConvertData;
+import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
+import com.uncle2000.androidcommonutils.views.chart.descartes.DescartesCoorSystem;
 
-import static com.uncle2000.androidcommonutils.views.chart.base.ChartData.chartDataCopy;
+import static com.uncle2000.androidcommonutils.views.chart.utils.ChartData.chartDataCopy;
 
 /**
  * http://www.05935.com/bc/1374564/
