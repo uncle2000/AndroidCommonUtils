@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Point;
 import android.util.SparseArray;
 
+import com.uncle2000.androidcommonutils.views.chart.blank.BlankCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.Anchor;
 import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
 import com.uncle2000.androidcommonutils.views.chart.descartes.content.Curve;
@@ -22,7 +23,7 @@ import static com.uncle2000.androidcommonutils.views.chart.utils.ChartData.chart
  * Created by 2000 on 2017/4/20.
  */
 
-public class DescartesCoorSystem {
+public class DescartesCoorSystem extends BlankCoorSystem {
     private float minRangeX, maxRangeX, minRangeY, maxRangeY;
     private int lPadding, tPadding, rPadding, bPadding;
     private int lMargin, tMargin, rMargin, bMargin;

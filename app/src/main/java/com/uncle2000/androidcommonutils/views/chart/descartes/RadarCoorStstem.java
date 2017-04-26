@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 
+import com.uncle2000.androidcommonutils.views.chart.blank.BlankCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.Anchor;
 import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.axis.AxisModel;
 import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.axis.CoorAxis;
@@ -14,7 +15,7 @@ import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
  * Created by 2000 on 2017/4/25.
  */
 
-public class RadarCoorStstem {
+public class RadarCoorStstem extends BlankCoorSystem {
     private Anchor anchor;
     private int angle;
     private int offset;
