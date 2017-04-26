@@ -5,9 +5,9 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.uncle2000.androidcommonutils.views.chart.blank.BlankCoorSystem;
-import com.uncle2000.androidcommonutils.views.chart.data.ChartData;
-import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.BlankCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
 
 /**
  * 图表的View类 负责将图表画到canvas上
@@ -42,7 +42,9 @@ public class ChartCanvas extends View {
     }
 
     private void init() {
-
+        if (null != anchor && null != coorSystem) {
+            coorSystem.setAnchor(anchor);
+        }
     }
 
 //    @Override
@@ -88,10 +90,28 @@ public class ChartCanvas extends View {
     }
 
     private void drawAnchor(Canvas canvas) {
-        canvas.drawText(anchor.getText(),
-                anchor.x + anchor.getTextOffsetX(),
-                anchor.y + anchor.getTextOffsetY(),
-                anchor.getAnchorPaint());
+        if (null != anchor) {
+            canvas.drawText(anchor.getText(),
+                    anchor.x + anchor.getTextOffsetX(),
+                    anchor.y + anchor.getTextOffsetY(),
+                    anchor.getAnchorPaint());
+        }
+    }
+
+    public ChartData[] getChartData() {
+        return chartData;
+    }
+
+    public void setChartData(ChartData[] chartData) {
+        this.chartData = chartData;
+    }
+
+    public Anchor getAnchor() {
+        return anchor;
+    }
+
+    public void setAnchor(Anchor anchor) {
+        this.anchor = anchor;
     }
 
     public BlankCoorSystem getCoorSystem() {

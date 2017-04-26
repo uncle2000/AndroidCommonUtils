@@ -1,15 +1,14 @@
-package com.uncle2000.androidcommonutils.views.chart.descartes;
+package com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 
-import com.uncle2000.androidcommonutils.views.chart.blank.BlankCoorSystem;
-import com.uncle2000.androidcommonutils.views.chart.data.ChartData;
-import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.Anchor;
-import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.axis.AxisModel;
-import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.axis.CoorAxis;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.BlankCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.coordinate.axis.AxisModel;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.coordinate.axis.CoorAxis;
 import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
 
 /**

@@ -1,10 +1,9 @@
-package com.uncle2000.androidcommonutils.views.chart.blank;
+package com.uncle2000.androidcommonutils.views.chart.coorsystem;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-import com.uncle2000.androidcommonutils.views.chart.data.ChartData;
-import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
 
 /**
  * 不一定所有的数据表格都需要坐标轴的称托，所以才需要一个什么都不画的类
@@ -21,12 +20,9 @@ public class BlankCoorSystem {
     protected Anchor anchor;
 
     public BlankCoorSystem(ChartData chartData) {
-        this.chartData = chartData;
-        this.anchor = chartData.getAnchor();
     }
 
     public void draw(Canvas canvas) {
-        chartData.draw(canvas);
     }
 
 
@@ -41,5 +37,9 @@ public class BlankCoorSystem {
         Rect rect = new Rect();
 
         return rect;
+    }
+
+    public void setAnchor(Anchor anchor) {
+        this.anchor = anchor;
     }
 }

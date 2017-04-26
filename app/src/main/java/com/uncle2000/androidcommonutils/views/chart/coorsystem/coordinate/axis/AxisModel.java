@@ -1,12 +1,12 @@
-package com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.axis;
+package com.uncle2000.androidcommonutils.views.chart.coorsystem.coordinate.axis;
 
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.support.annotation.ColorInt;
 import android.util.SparseArray;
 
-import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.Anchor;
-import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.element.ElementModel;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.coordinate.element.ElementModel;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
 
 /**
  * Created by 2000 on 2017/4/25.

@@ -5,12 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.SparseArray;
 
-import com.uncle2000.androidcommonutils.views.chart.data.Points;
-import com.uncle2000.androidcommonutils.views.chart.utils.ConvertData;
 import com.uncle2000.androidcommonutils.uitls.system.PermissionUtil;
 import com.uncle2000.androidcommonutils.views.chart.ChartCanvas;
-import com.uncle2000.androidcommonutils.views.chart.data.Curve;
-import com.uncle2000.androidcommonutils.views.chart.descartes.DescartesCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.datalooks.Curve;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.DescartesCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.utils.DefaultData;
 
 public class MainActivity extends AppCompatActivity {

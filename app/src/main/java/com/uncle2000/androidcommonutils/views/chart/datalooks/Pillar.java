@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.data;
+package com.uncle2000.androidcommonutils.views.chart.datalooks;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

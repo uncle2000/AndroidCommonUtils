@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.data;
+package com.uncle2000.androidcommonutils.views.chart.datalooks;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -7,18 +7,17 @@ import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
 /**
- * 横线段
+ * 曲线
  * Created by 2000 on 2017/4/25.
  */
 
-public class HorizontalLines extends Points {
+public class Curve extends Points {
 
-
-    public HorizontalLines(@NonNull float[] pts) {
+    public Curve(@NonNull float[] pts) {
         super(pts);
     }
 
-    public HorizontalLines(@NonNull float[] pts, Paint paint) {
+    public Curve(@NonNull float[] pts, Paint paint) {
         super(pts, paint);
     }
 
@@ -33,7 +32,7 @@ public class HorizontalLines extends Points {
             pts[i * 4] = sa.get(i).x;
             pts[i * 4 + 1] = sa.get(i).y;
             pts[i * 4 + 2] = sa.get(i + 1).x;
-            pts[i * 4 + 3] = sa.get(i).y;
+            pts[i * 4 + 3] = sa.get(i + 1).y;
         }
         return pts;
     }
