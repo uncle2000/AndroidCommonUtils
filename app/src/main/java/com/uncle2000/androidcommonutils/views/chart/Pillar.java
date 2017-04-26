@@ -14,10 +14,10 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.uncle2000.androidcommonutils.views.chart.descartes.RadarCoorStstem;
 import com.uncle2000.androidcommonutils.views.chart.utils.ChartData;
 import com.uncle2000.androidcommonutils.views.chart.utils.ConvertData;
 import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
-import com.uncle2000.androidcommonutils.views.chart.descartes.DescartesCoorSystem;
 
 import static com.uncle2000.androidcommonutils.views.chart.utils.ChartData.chartDataCopy;
 
@@ -36,7 +36,8 @@ public class Pillar extends View {
     private Point[] chartData;
     private float lPadding = 30, rPadding = 30, tPadding = 30, bPadding = 30;
     private float warpWidth, warpHeight;
-    DescartesCoorSystem coorSystem;
+    //    DescartesCoorSystem coorSystem;
+    RadarCoorStstem coorSystem;
 
     public Pillar(Context context) {
         this(context, null);
@@ -85,7 +86,8 @@ public class Pillar extends View {
 
 //        anchor.x = (int) minTableX;
 //        anchor.y = (int) maxTableY;
-        coorSystem = new DescartesCoorSystem();
+//        coorSystem = new DescartesCoorSystem();
+        coorSystem = new RadarCoorStstem(60);
     }
 
     @Override
