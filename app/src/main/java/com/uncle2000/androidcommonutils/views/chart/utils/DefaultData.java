@@ -8,7 +8,7 @@ import java.util.List;
  * Created by 2000 on 2017/4/18.
  */
 
-public class ChartData {
+public class DefaultData {
     boolean upperLimit = false;
     public static final Point[] chartData = {
             new Point(100, 280),
@@ -21,5 +21,6 @@ public class ChartData {
             new Point(800, 250),
             new Point(900, 300)};
     public static Point[] chartDataCopy;
+    //
 
 }

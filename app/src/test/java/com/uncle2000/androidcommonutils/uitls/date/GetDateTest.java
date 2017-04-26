@@ -62,12 +62,12 @@ public class GetDateTest {
 
     @Test
     public void firstDayOfMonth() throws Exception {
-        System.out.println("当月第一天的日期" + ConverDate.date2Str(GetDate.firstDayOfMonth()));
+        System.out.println("当月第一天的日期" + ConvertDate.date2Str(GetDate.firstDayOfMonth()));
     }
 
     @Test
     public void lastDayOfMonth() throws Exception {
-        System.out.println("当月最后一天的日期" + ConverDate.date2Str(GetDate.lastDayOfMonth()));
+        System.out.println("当月最后一天的日期" + ConvertDate.date2Str(GetDate.lastDayOfMonth()));
     }
 
     @Test
@@ -75,17 +75,17 @@ public class GetDateTest {
 //        Calendar cal = Calendar.getInstance();
 //        cal.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
 
-        System.out.println("本周五的日期" + ConverDate.date2Str(GetDate.friday()));
+        System.out.println("本周五的日期" + ConvertDate.date2Str(GetDate.friday()));
     }
 
     @Test
     public void saturday() throws Exception {
-        System.out.println("本周六的日期" + ConverDate.date2Str(GetDate.saturday()));
+        System.out.println("本周六的日期" + ConvertDate.date2Str(GetDate.saturday()));
     }
 
     @Test
     public void sunday() throws Exception {
-        System.out.println("本周天的日期" + ConverDate.date2Str(GetDate.sunday()));
+        System.out.println("本周天的日期" + ConvertDate.date2Str(GetDate.sunday()));
     }
 
 }

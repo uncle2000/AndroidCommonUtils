@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.uncle2000.androidcommonutils.views.chart.blank.BlankCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.data.ChartData;
+import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.Anchor;
 
 /**
  * 图表的View类 负责将图表画到canvas上
@@ -15,7 +17,10 @@ import com.uncle2000.androidcommonutils.views.chart.blank.BlankCoorSystem;
 public class ChartCanvas extends View {
     /**
      * 坐标系的基类，除非你不准备画坐标轴，否则请用多态的形式去用它
+     * 要画的数据也已经包含进去了
      */
+    ChartData[] chartData;
+    Anchor anchor;
     BlankCoorSystem coorSystem;
 
     public ChartCanvas(Context context) {
@@ -28,15 +33,72 @@ public class ChartCanvas extends View {
 
     public ChartCanvas(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
     }
 
     public ChartCanvas(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        init();
     }
+
+    private void init() {
+
+    }
+
+//    @Override
+//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+//        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+//        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+//        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+//
+//        int width;
+//        int height;
+//
+//        if (heightMode == MeasureSpec.EXACTLY) {
+//            height = heightSize;
+//        } else {
+//            height = Math.max(getSuggestedMinimumHeight(), (int) warpHeight);
+//        }
+//
+//        if (widthMode == MeasureSpec.EXACTLY) {
+//            width = widthSize;
+//        } else {
+//            width = Math.max(getSuggestedMinimumWidth(), (int) warpWidth);
+//        }
+//
+//        setMeasuredDimension(width, height);
+//    }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        coorSystem.draw(canvas);
+
+        if (null != chartData) {
+            for (ChartData cd : chartData) {
+                cd.draw(canvas);
+            }
+        }
+
+        drawAnchor(canvas);
+
+        if (coorSystem != null)
+            coorSystem.draw(canvas);
+    }
+
+    private void drawAnchor(Canvas canvas) {
+        canvas.drawText(anchor.getText(),
+                anchor.x + anchor.getTextOffsetX(),
+                anchor.y + anchor.getTextOffsetY(),
+                anchor.getAnchorPaint());
+    }
+
+    public BlankCoorSystem getCoorSystem() {
+        return coorSystem;
+    }
+
+    public void setCoorSystem(BlankCoorSystem coorSystem) {
+        this.coorSystem = coorSystem;
     }
 }

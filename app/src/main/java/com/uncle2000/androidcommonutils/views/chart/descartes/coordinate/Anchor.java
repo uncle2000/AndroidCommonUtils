@@ -13,7 +13,7 @@ public class Anchor {
     /**
      * 锚点的（x,y）表现形式
      */
-    public int x, y;
+    public int x = 200, y = 600;
 
     /**
      * 锚点的point表现形式
@@ -25,10 +25,14 @@ public class Anchor {
      */
     private int textOffsetX = -10, textOffsetY = 30;
     private float textSize = 38f;
-    private String text = "(0,0)";
+    private String text = "(" + x + "," + y + ")";
     @ColorInt
     private int textColor = 0xff000000;
     private Paint anchorPaint;
+
+    public Anchor() {
+        this.origin = new Point(x, y);
+    }
 
     public Anchor(Point origin) {
         this.x = origin.x;

@@ -17,7 +17,7 @@ import static com.uncle2000.androidcommonutils.uitls.date._DateConstant.oneWeek_
  * Created by 2000 on 2017/4/13.
  */
 
-public class ConverDate {
+public class ConvertDate {
 
     /**
      * 任意字符串转换成任意格式

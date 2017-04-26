@@ -46,12 +46,12 @@ public class Utils {
     }
 
     public static void adjustData(float lPadding, float tPadding) {
-        ChartData.chartDataCopy = new Point[ChartData.chartData.length];
-        int[] a = Utils.getMaxMin(ChartData.chartData);
-        for (int i = 0; i < ChartData.chartData.length; i++) {
-            Point p = new Point(ChartData.chartData[i].x - a[0] + (int) lPadding,
-                    ChartData.chartData[i].y - a[2] + (int) tPadding);
-            ChartData.chartDataCopy[i] = p;
+        DefaultData.chartDataCopy = new Point[DefaultData.chartData.length];
+        int[] a = Utils.getMaxMin(DefaultData.chartData);
+        for (int i = 0; i < DefaultData.chartData.length; i++) {
+            Point p = new Point(DefaultData.chartData[i].x - a[0] + (int) lPadding,
+                    DefaultData.chartData[i].y - a[2] + (int) tPadding);
+            DefaultData.chartDataCopy[i] = p;
         }
     }
 

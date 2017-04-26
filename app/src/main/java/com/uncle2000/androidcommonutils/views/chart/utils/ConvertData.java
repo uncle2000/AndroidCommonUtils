@@ -14,6 +14,7 @@ import java.util.List;
 
 public class ConvertData {
 
+
     /**********************************************************************************************
      * a[] -> b[]
      **********************************************************************************************/
@@ -44,6 +45,15 @@ public class ConvertData {
             pointA[i] = new Point(intA[i * 2], intA[i * 2 + 1]);
         }
         return pointA;
+    }
+
+    public static float[] pointA2FloatA(@NonNull @Size(min = 1) Point[] pointA) {
+        float[] floatA = new float[pointA.length * 2];
+        for (int i = 0; i < pointA.length; i++) {
+            floatA[i * 2 + 0] = pointA[i].x;
+            floatA[i * 2 + 1] = pointA[i].y;
+        }
+        return floatA;
     }
 
     /**

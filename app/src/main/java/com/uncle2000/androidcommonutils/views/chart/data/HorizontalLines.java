@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.descartes.content;
+package com.uncle2000.androidcommonutils.views.chart.data;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -27,7 +27,7 @@ public class HorizontalLines extends Points {
         canvas.drawLines(pts, paint);
     }
 
-    public float[] adjustData2Pts(SparseArray<Point> sa) {
+    public static float[] adjustData2Pts(SparseArray<Point> sa) {
         float[] pts = new float[(sa.size() - 1) * 4];
         for (int i = 0; i < sa.size() - 1; i++) {
             pts[i * 4] = sa.get(i).x;

@@ -7,15 +7,10 @@
     android:layout_height="match_parent"
     tools:context="com.uncle2000.androidcommonutils.MainActivity">
 
-    <com.uncle2000.androidcommonutils.views.chart.Pillar
+    <com.uncle2000.androidcommonutils.views.chart.ChartCanvas
         android:id="@+id/fl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#90aaaaaa" />
-    <WebView
-        android:visibility="gone"
-        android:id="@+id/webview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></WebView>
 
 </FrameLayout>

@@ -19,7 +19,7 @@ public class DateUtilTest {
 
     @Test
     public void now() throws Exception {
-        System.out.println("当前时间戳date->long" + ConverDate.date2Long(DateUtil.now()));
+        System.out.println("当前时间戳date->long" + ConvertDate.date2Long(DateUtil.now()));
     }
 
     @Test

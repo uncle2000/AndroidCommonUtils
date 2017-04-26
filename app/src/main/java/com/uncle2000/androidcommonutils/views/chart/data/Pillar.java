@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.descartes.content;
+package com.uncle2000.androidcommonutils.views.chart.data;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

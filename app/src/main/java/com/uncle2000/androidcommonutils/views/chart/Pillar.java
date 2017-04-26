@@ -3,24 +3,18 @@ package com.uncle2000.androidcommonutils.views.chart;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.DashPathEffect;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.Point;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.uncle2000.androidcommonutils.views.chart.descartes.RadarCoorStstem;
 import com.uncle2000.androidcommonutils.views.chart.descartes.coordinate.Anchor;
-import com.uncle2000.androidcommonutils.views.chart.utils.ChartData;
-import com.uncle2000.androidcommonutils.views.chart.utils.ConvertData;
+import com.uncle2000.androidcommonutils.views.chart.utils.DefaultData;
 import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
 
-import static com.uncle2000.androidcommonutils.views.chart.utils.ChartData.chartDataCopy;
+import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.chartDataCopy;
 
 /**
  * http://www.05935.com/bc/1374564/
@@ -88,7 +82,7 @@ public class Pillar extends View {
 
         Anchor anchor = new Anchor(500, 600);
 //        coorSystem = new DescartesCoorSystem(anchor);
-        coorSystem = new RadarCoorStstem(anchor,60);
+//        coorSystem = new RadarCoorStstem(anchor,60);
     }
 
     @Override
@@ -125,166 +119,166 @@ public class Pillar extends View {
 //        drawData(canvas);
     }
 
-    private void drawData(Canvas canvas) {
-//        drawDataArea(canvas);
-        drawDataPadding(canvas);
-        drawPoints(canvas);
-//        drawCrossLine(canvas);
-//        drawLines(canvas);
-//        drawHorizontalLines(canvas);
-//        drawPillars(canvas);
-        drawScrollLine(canvas);
-//        drawDashLine(canvas);
-        drawWaterfall(canvas);
-    }
-
-    private void drawDataPadding(Canvas canvas) {
-        mDatapaint.setStrokeWidth(1f);
-        float[] pts = new float[]{
-                minRangeX - lPadding, minRangeY - tPadding, maxRangeX + rPadding, minRangeY - tPadding,
-                maxRangeX + rPadding, minRangeY - tPadding, maxRangeX + rPadding, maxRangeY + bPadding,
-                maxRangeX + rPadding, maxRangeY + bPadding, minRangeX - lPadding, maxRangeY + bPadding,
-                minRangeX - lPadding, maxRangeY + bPadding, minRangeX - lPadding, minRangeY - tPadding,
-        };
-        canvas.drawLines(pts, mDatapaint);
-    }
-
-    private void drawDataArea(Canvas canvas) {
-        mDatapaint.setStrokeWidth(1f);
-        float[] pts = new float[]{
-                minRangeX, minRangeY, maxRangeX, minRangeY,
-                maxRangeX, minRangeY, maxRangeX, maxRangeY,
-                maxRangeX, maxRangeY, minRangeX, maxRangeY,
-                minRangeX, maxRangeY, minRangeX, minRangeY,
-        };
-        canvas.drawLines(pts, mDatapaint);
-    }
-
-    private void drawPoints(Canvas canvas) {
-        mDatapaint.setStrokeWidth(10f);
-        float[] pts = new float[chartDataCopy.length * 2];
-        for (int i = 0; i < chartDataCopy.length; i++) {
-            pts[i * 2] = chartDataCopy[i].x;
-            pts[i * 2 + 1] = chartDataCopy[i].y;
-        }
-        canvas.drawPoints(pts, mDatapaint);
-    }
-
-    private void drawCrossLine(Canvas canvas) {
-        mDatapaint.setStrokeWidth(1.2f);
-        float[] pts = new float[(chartDataCopy.length) * 8];
-        int crossLineW = 25;
-        for (int i = 0; i < chartDataCopy.length; i++) {
-            pts[i * 8 + 0] = chartDataCopy[i].x - crossLineW;
-            pts[i * 8 + 1] = chartDataCopy[i].y;
-            pts[i * 8 + 2] = chartDataCopy[i].x + crossLineW;
-            pts[i * 8 + 3] = chartDataCopy[i].y;
-            pts[i * 8 + 4] = chartDataCopy[i].x;
-            pts[i * 8 + 5] = chartDataCopy[i].y - crossLineW;
-            pts[i * 8 + 6] = chartDataCopy[i].x;
-            pts[i * 8 + 7] = chartDataCopy[i].y + crossLineW;
-        }
-        canvas.drawLines(pts, mDatapaint);
-    }
-
-    private void drawLines(Canvas canvas) {
-        mDatapaint.setStrokeWidth(1.2f);
-        float[] ptsL = new float[(chartDataCopy.length - 1) * 4];
-
-        for (int i = 0; i < chartDataCopy.length - 1; i++) {
-            ptsL[i * 4] = chartDataCopy[i].x;
-            ptsL[i * 4 + 1] = chartDataCopy[i].y;
-            ptsL[i * 4 + 2] = chartDataCopy[i + 1].x;
-            ptsL[i * 4 + 3] = chartDataCopy[i + 1].y;
-        }
-        canvas.drawLines(ptsL, mDatapaint);
-    }
-
-    private void drawHorizontalLines(Canvas canvas) {
-        mDatapaint.setStrokeWidth(1.2f);
-        float[] ptsL = new float[(chartDataCopy.length - 1) * 4];
-
-        for (int i = 0; i < chartDataCopy.length - 1; i++) {
-            ptsL[i * 4] = chartDataCopy[i].x;
-            ptsL[i * 4 + 1] = chartDataCopy[i].y;
-            ptsL[i * 4 + 2] = chartDataCopy[i + 1].x;
-            ptsL[i * 4 + 3] = chartDataCopy[i].y;
-        }
-        canvas.drawLines(ptsL, mDatapaint);
-    }
-
-    private void drawPillars(Canvas canvas) {
-        int pillarW = 25;
-        for (int i = 0; i < chartDataCopy.length; i++) {
-            canvas.drawRect(new RectF(
-                    chartDataCopy[i].x - pillarW,
-                    chartDataCopy[i].y,
-                    chartDataCopy[i].x + pillarW,
-                    maxTableY
-            ), mDatapaint);
-        }
-
-    }
-
-    private void drawWaterfall(Canvas canvas) {
-        int pillarW = 25;
-        Rect[] r = ConvertData.pointA2RectA(chartDataCopy, pillarW);
-        for (int i = 0; i < r.length; i++) {
-            canvas.drawRect(r[i], mDatapaint);
-        }
-    }
-
-    private void drawScrollLine(Canvas canvas) {
-        mDatapaint.setStrokeWidth(2.5f);
-        mDatapaint.setStyle(Paint.Style.STROKE);
-        Point startp = new Point();
-        Point endp = new Point();
-        for (int i = 0; i < chartDataCopy.length - 1; i++) {
-            startp = chartDataCopy[i];
-            endp = chartDataCopy[i + 1];
-            int wt = (startp.x + endp.x) / 2;
-            Point p3 = new Point();
-            Point p4 = new Point();
-            p3.y = startp.y;
-            p3.x = wt;
-            p4.y = endp.y;
-            p4.x = wt;
-
-            Path path = new Path();
-            path.moveTo(startp.x, startp.y);
-            path.cubicTo(p3.x, p3.y, p4.x, p4.y, endp.x, endp.y);
-            canvas.drawPath(path, mDatapaint);
-        }
-    }
-
-    int phase = 0;
-
-    private void drawDashLine(Canvas canvas) {
-        Paint paint = new Paint();
-        paint.setColor(Color.BLACK);
-        //设置画直线格式
-        paint.setStyle(Paint.Style.STROKE);
-        //设置虚线效果
-        paint.setPathEffect(new DashPathEffect(new float[]{25, 25}, phase));
-
-        paint.setStrokeWidth(1.2f);
-        Path path = new Path();
-        float[] pts = new float[(chartDataCopy.length) * 8];
-        for (int i = 0; i < chartDataCopy.length; i++) {
-            path.moveTo(chartDataCopy[i].x, chartDataCopy[i].y);
-            path.lineTo(minTableX, chartDataCopy[i].y);
-            canvas.drawPath(path, paint);
-            path.moveTo(chartDataCopy[i].x, chartDataCopy[i].y);
-            path.lineTo(chartDataCopy[i].x, maxTableY);
-            canvas.drawPath(path, paint);
-        }
-
-        phase += 1;
-        invalidate();
-    }
+//    private void drawData(Canvas canvas) {
+////        drawDataArea(canvas);
+//        drawDataPadding(canvas);
+//        drawPoints(canvas);
+////        drawCrossLine(canvas);
+////        drawLines(canvas);
+////        drawHorizontalLines(canvas);
+////        drawPillars(canvas);
+//        drawScrollLine(canvas);
+////        drawDashLine(canvas);
+//        drawWaterfall(canvas);
+//    }
+//
+//    private void drawDataPadding(Canvas canvas) {
+//        mDatapaint.setStrokeWidth(1f);
+//        float[] pts = new float[]{
+//                minRangeX - lPadding, minRangeY - tPadding, maxRangeX + rPadding, minRangeY - tPadding,
+//                maxRangeX + rPadding, minRangeY - tPadding, maxRangeX + rPadding, maxRangeY + bPadding,
+//                maxRangeX + rPadding, maxRangeY + bPadding, minRangeX - lPadding, maxRangeY + bPadding,
+//                minRangeX - lPadding, maxRangeY + bPadding, minRangeX - lPadding, minRangeY - tPadding,
+//        };
+//        canvas.drawLines(pts, mDatapaint);
+//    }
+//
+//    private void drawDataArea(Canvas canvas) {
+//        mDatapaint.setStrokeWidth(1f);
+//        float[] pts = new float[]{
+//                minRangeX, minRangeY, maxRangeX, minRangeY,
+//                maxRangeX, minRangeY, maxRangeX, maxRangeY,
+//                maxRangeX, maxRangeY, minRangeX, maxRangeY,
+//                minRangeX, maxRangeY, minRangeX, minRangeY,
+//        };
+//        canvas.drawLines(pts, mDatapaint);
+//    }
+//
+//    private void drawPoints(Canvas canvas) {
+//        mDatapaint.setStrokeWidth(10f);
+//        float[] pts = new float[chartDataCopy.length * 2];
+//        for (int i = 0; i < chartDataCopy.length; i++) {
+//            pts[i * 2] = chartDataCopy[i].x;
+//            pts[i * 2 + 1] = chartDataCopy[i].y;
+//        }
+//        canvas.drawPoints(pts, mDatapaint);
+//    }
+//
+//    private void drawCrossLine(Canvas canvas) {
+//        mDatapaint.setStrokeWidth(1.2f);
+//        float[] pts = new float[(chartDataCopy.length) * 8];
+//        int crossLineW = 25;
+//        for (int i = 0; i < chartDataCopy.length; i++) {
+//            pts[i * 8 + 0] = chartDataCopy[i].x - crossLineW;
+//            pts[i * 8 + 1] = chartDataCopy[i].y;
+//            pts[i * 8 + 2] = chartDataCopy[i].x + crossLineW;
+//            pts[i * 8 + 3] = chartDataCopy[i].y;
+//            pts[i * 8 + 4] = chartDataCopy[i].x;
+//            pts[i * 8 + 5] = chartDataCopy[i].y - crossLineW;
+//            pts[i * 8 + 6] = chartDataCopy[i].x;
+//            pts[i * 8 + 7] = chartDataCopy[i].y + crossLineW;
+//        }
+//        canvas.drawLines(pts, mDatapaint);
+//    }
+//
+//    private void drawLines(Canvas canvas) {
+//        mDatapaint.setStrokeWidth(1.2f);
+//        float[] ptsL = new float[(chartDataCopy.length - 1) * 4];
+//
+//        for (int i = 0; i < chartDataCopy.length - 1; i++) {
+//            ptsL[i * 4] = chartDataCopy[i].x;
+//            ptsL[i * 4 + 1] = chartDataCopy[i].y;
+//            ptsL[i * 4 + 2] = chartDataCopy[i + 1].x;
+//            ptsL[i * 4 + 3] = chartDataCopy[i + 1].y;
+//        }
+//        canvas.drawLines(ptsL, mDatapaint);
+//    }
+//
+//    private void drawHorizontalLines(Canvas canvas) {
+//        mDatapaint.setStrokeWidth(1.2f);
+//        float[] ptsL = new float[(chartDataCopy.length - 1) * 4];
+//
+//        for (int i = 0; i < chartDataCopy.length - 1; i++) {
+//            ptsL[i * 4] = chartDataCopy[i].x;
+//            ptsL[i * 4 + 1] = chartDataCopy[i].y;
+//            ptsL[i * 4 + 2] = chartDataCopy[i + 1].x;
+//            ptsL[i * 4 + 3] = chartDataCopy[i].y;
+//        }
+//        canvas.drawLines(ptsL, mDatapaint);
+//    }
+//
+//    private void drawPillars(Canvas canvas) {
+//        int pillarW = 25;
+//        for (int i = 0; i < chartDataCopy.length; i++) {
+//            canvas.drawRect(new RectF(
+//                    chartDataCopy[i].x - pillarW,
+//                    chartDataCopy[i].y,
+//                    chartDataCopy[i].x + pillarW,
+//                    maxTableY
+//            ), mDatapaint);
+//        }
+//
+//    }
+//
+//    private void drawWaterfall(Canvas canvas) {
+//        int pillarW = 25;
+//        Rect[] r = ConvertData.pointA2RectA(chartDataCopy, pillarW);
+//        for (int i = 0; i < r.length; i++) {
+//            canvas.drawRect(r[i], mDatapaint);
+//        }
+//    }
+//
+//    private void drawScrollLine(Canvas canvas) {
+//        mDatapaint.setStrokeWidth(2.5f);
+//        mDatapaint.setStyle(Paint.Style.STROKE);
+//        Point startp = new Point();
+//        Point endp = new Point();
+//        for (int i = 0; i < chartDataCopy.length - 1; i++) {
+//            startp = chartDataCopy[i];
+//            endp = chartDataCopy[i + 1];
+//            int wt = (startp.x + endp.x) / 2;
+//            Point p3 = new Point();
+//            Point p4 = new Point();
+//            p3.y = startp.y;
+//            p3.x = wt;
+//            p4.y = endp.y;
+//            p4.x = wt;
+//
+//            Path path = new Path();
+//            path.moveTo(startp.x, startp.y);
+//            path.cubicTo(p3.x, p3.y, p4.x, p4.y, endp.x, endp.y);
+//            canvas.drawPath(path, mDatapaint);
+//        }
+//    }
+//
+//    int phase = 0;
+//
+//    private void drawDashLine(Canvas canvas) {
+//        Paint paint = new Paint();
+//        paint.setColor(Color.BLACK);
+//        //设置画直线格式
+//        paint.setStyle(Paint.Style.STROKE);
+//        //设置虚线效果
+//        paint.setPathEffect(new DashPathEffect(new float[]{25, 25}, phase));
+//
+//        paint.setStrokeWidth(1.2f);
+//        Path path = new Path();
+//        float[] pts = new float[(chartDataCopy.length) * 8];
+//        for (int i = 0; i < chartDataCopy.length; i++) {
+//            path.moveTo(chartDataCopy[i].x, chartDataCopy[i].y);
+//            path.lineTo(minTableX, chartDataCopy[i].y);
+//            canvas.drawPath(path, paint);
+//            path.moveTo(chartDataCopy[i].x, chartDataCopy[i].y);
+//            path.lineTo(chartDataCopy[i].x, maxTableY);
+//            canvas.drawPath(path, paint);
+//        }
+//
+//        phase += 1;
+//        invalidate();
+//    }
 
     public Point[] getChartData() {
-        return chartData = ChartData.chartData;
+        return chartData = DefaultData.chartData;
     }
 
     public void setChartData(Point[] chartData) {

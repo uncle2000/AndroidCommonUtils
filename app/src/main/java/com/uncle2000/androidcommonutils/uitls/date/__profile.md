@@ -8,7 +8,7 @@
 类名|类简介
 ---|---
 _DateConstant|包内的常量类
-ConverDate|日期转换相关的类
+ConvertDate|日期转换相关的类
 DateUtil|Date工具类
 GetDate|Date的简易get类
 
@@ -16,7 +16,7 @@ _DateConstant.class
 --
 >无方法
 
-ConverDate.class
+ConvertDate.class
 --
 >
 1. **任意字符串转换成任意格式**

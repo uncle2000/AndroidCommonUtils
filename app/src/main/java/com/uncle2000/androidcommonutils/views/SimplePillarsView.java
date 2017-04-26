@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart;
+package com.uncle2000.androidcommonutils.views;
 
 import java.util.List;
 import java.util.regex.Pattern;

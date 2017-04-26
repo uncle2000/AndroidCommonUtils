@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.descartes.content;
+package com.uncle2000.androidcommonutils.views.chart.data;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -12,7 +12,7 @@ import android.util.SparseArray;
  */
 
 public class CrossLine extends Points {
-    private int crossLineW = 20;
+    private static int crossLineW = 20;
 
     public CrossLine(@NonNull float[] pts) {
         super(pts);
@@ -27,7 +27,7 @@ public class CrossLine extends Points {
         canvas.drawLines(pts, paint);
     }
 
-    public float[] adjustData2Pts(SparseArray<Point> sa) {
+    public static float[] adjustData2Pts(SparseArray<Point> sa) {
         float[] pts = new float[sa.size() * 8];
         for (int i = 0; i < sa.size(); i++) {
             pts[i * 8 + 0] = sa.get(i).x - crossLineW;

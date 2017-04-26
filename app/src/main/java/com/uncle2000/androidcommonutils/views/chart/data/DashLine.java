@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.descartes.content;
+package com.uncle2000.androidcommonutils.views.chart.data;
 
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
@@ -8,7 +8,7 @@ import android.graphics.Point;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
-import static com.uncle2000.androidcommonutils.views.chart.utils.ChartData.chartDataCopy;
+import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.chartDataCopy;
 
 /**
  * Created by 2000 on 2017/4/25.
