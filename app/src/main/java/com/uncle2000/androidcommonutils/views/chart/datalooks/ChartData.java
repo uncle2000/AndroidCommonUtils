@@ -22,7 +22,6 @@ public class ChartData<T> {
         if (null == paint)
             paint = new Paint();
         this.paint = paint;
-        paint.setStrokeWidth(1.2f);
     }
 
     public void draw(Canvas canvas) {

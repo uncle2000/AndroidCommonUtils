@@ -21,7 +21,7 @@ public class Curve extends Points<float[]> {
         super(pts, paint);
     }
 
-    @Override
+
     public void draw(Canvas canvas) {
         canvas.drawLines((float[]) t, paint);
     }

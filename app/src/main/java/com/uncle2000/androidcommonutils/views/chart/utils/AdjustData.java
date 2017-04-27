@@ -5,6 +5,9 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.SparseArray;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.chartDataCopy;
 
 /**
@@ -47,7 +50,7 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public static float[] toPoints(SparseArray<Point> sa) {
+    public static float[] toPoints(List<Point> sa) {
         float[] pts = new float[sa.size() * 2];
         for (int i = 0; i < sa.size(); i++) {
             pts[i * 2] = sa.get(i).x;
@@ -163,9 +166,8 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public SparseArray<Path> toRolyline
-    (SparseArray<Point> sa) {
-        SparseArray<Path> saP = new SparseArray<>();
+    public static List<Path> toRolyline(List<Point> sa) {
+        List<Path> saP = new ArrayList<>();
         Point startp;
         Point endp;
         for (int i = 0; i < sa.size() - 1; i++) {
@@ -181,7 +183,7 @@ public class AdjustData {
             Path path = new Path();
             path.moveTo(startp.x, startp.y);
             path.cubicTo(p3.x, p3.y, p4.x, p4.y, endp.x, endp.y);
-            saP.put(i, path);
+            saP.add(i, path);
         }
         return saP;
     }

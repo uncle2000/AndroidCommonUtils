@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 public class Polyline extends Points<List<Path>> {
-    List<Path> listP = new ArrayList<>();
+//    List<Path> listP ;
 
     public Polyline(@NonNull List<Path> listP) {
         this(listP, null);
@@ -33,7 +33,7 @@ public class Polyline extends Points<List<Path>> {
 
     @Override
     public void draw(Canvas canvas) {
-        for (Path p : listP) {
+        for (Path p : (List<Path>)t) {
             canvas.drawPath(p, paint);
         }
     }
