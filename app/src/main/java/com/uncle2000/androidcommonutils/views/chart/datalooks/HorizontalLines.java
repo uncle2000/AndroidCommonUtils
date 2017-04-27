@@ -13,7 +13,6 @@ import android.util.SparseArray;
 
 public class HorizontalLines extends Points<float[]> {
 
-
     public HorizontalLines(@NonNull float[] pts) {
         super(pts);
     }

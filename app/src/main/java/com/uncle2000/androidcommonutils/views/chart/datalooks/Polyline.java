@@ -16,7 +16,6 @@ import java.util.List;
  */
 
 public class Polyline extends Points<List<Path>> {
-//    List<Path> listP ;
 
     public Polyline(@NonNull List<Path> listP) {
         this(listP, null);

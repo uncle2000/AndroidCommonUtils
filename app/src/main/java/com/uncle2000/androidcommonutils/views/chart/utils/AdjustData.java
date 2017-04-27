@@ -3,7 +3,6 @@ package com.uncle2000.androidcommonutils.views.chart.utils;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.util.SparseArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.cha
 public class AdjustData {
 
 
-//    public SparseArray<Rect> adjustData2Sa(SparseArray<Point> sa) {
+//    public List<Rect> adjustData2Sa(List<Point> sa) {
 //
 //        return saR;
 //    }
@@ -66,7 +65,7 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public static float[] toCurve(SparseArray<Point> sa) {
+    public static float[] toCurve(List<Point> sa) {
         float[] pts = new float[(sa.size() - 1) * 4];
         for (int i = 0; i < sa.size() - 1; i++) {
             pts[i * 4] = sa.get(i).x;
@@ -83,7 +82,7 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public static float[] toCrossLine(SparseArray<Point> sa, float crossLineW) {
+    public static float[] toCrossLine(List<Point> sa, float crossLineW) {
         float[] pts = new float[sa.size() * 8];
         for (int i = 0; i < sa.size(); i++) {
             pts[i * 8 + 0] = sa.get(i).x - crossLineW;
@@ -100,12 +99,13 @@ public class AdjustData {
 
     /**
      * 画虚线
+     * 这里的虚线并不是指多个点相链接，而是指每个点和X轴Y轴的法线
      *
      * @param sa
      * @return
      */
-    public SparseArray<Path> toDash(SparseArray<Point> sa) {
-        SparseArray<Path> saP = new SparseArray<>();
+    public List<Path> toDash(List<Point> sa) {
+        List<Path> saP = new ArrayList<>();
         Path path = new Path();
         for (int i = 0; i < sa.size() * 2; i++) {
             path.moveTo(chartDataCopy[i].x, chartDataCopy[i].y);
@@ -114,7 +114,7 @@ public class AdjustData {
             } else {
 //                path.lineTo(chartDataCopy[i].x, maxTableY);
             }
-            saP.put(i, path);
+            saP.add(path);
         }
         return saP;
     }
@@ -126,7 +126,7 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public static float[] toHorizontal(SparseArray<Point> sa) {
+    public static float[] toHorizontal(List<Point> sa) {
         float[] pts = new float[(sa.size() - 1) * 4];
         for (int i = 0; i < sa.size() - 1; i++) {
             pts[i * 4] = sa.get(i).x;
@@ -144,8 +144,8 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public SparseArray<Rect> toPillar(SparseArray<Point> sa) {
-        SparseArray<Rect> saR = new SparseArray<>();
+    public List<Rect> toPillar(List<Point> sa) {
+        List<Rect> saR = new ArrayList<>();
         Rect rect;
         for (int i = 0; i < sa.size(); i++) {
 //            rect = new Rect(
@@ -154,7 +154,7 @@ public class AdjustData {
 //                    chartDataCopy[i].x + pillarW,
 //                    maxTableY
 //            );
-//            saR.put(i, rect);
+//            saR.put( rect);
         }
         return saR;
     }
@@ -183,7 +183,7 @@ public class AdjustData {
             Path path = new Path();
             path.moveTo(startp.x, startp.y);
             path.cubicTo(p3.x, p3.y, p4.x, p4.y, endp.x, endp.y);
-            saP.add(i, path);
+            saP.add(path);
         }
         return saP;
     }
@@ -193,8 +193,8 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public SparseArray<Rect> adjustData2Sa(SparseArray<Point> sa) {
-        SparseArray<Rect> saR = new SparseArray<>();
+    public List<Rect> adjustData2Sa(List<Point> sa) {
+        List<Rect> saR = new ArrayList<>();
         Rect rect;
 //        ConvertData.pointA2RectA(chartDataCopy, pillarW);
         return saR;

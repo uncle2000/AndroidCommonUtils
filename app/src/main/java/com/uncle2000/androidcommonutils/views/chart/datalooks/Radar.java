@@ -13,7 +13,6 @@ import java.util.List;
  */
 
 public class Radar extends Points<List<Path>> {
-    List<Path> listP = new ArrayList<>();
 
     public Radar(@NonNull List<Path> listP) {
         this(listP, null);
@@ -29,7 +28,7 @@ public class Radar extends Points<List<Path>> {
 
     @Override
     public void draw(Canvas canvas) {
-        for (Path p : listP) {
+        for (Path p : (List<Path>) t) {
             canvas.drawPath(p, paint);
         }
     }

@@ -18,7 +18,6 @@ import java.util.List;
 
 public class Pillar extends Points<List<Rect>> {
     int pillarW = 5;
-    List<Rect> listR = new ArrayList<>();
 
     public Pillar(@NonNull List<Rect> listR) {
         this(listR, null);
@@ -35,7 +34,7 @@ public class Pillar extends Points<List<Rect>> {
 
     @Override
     public void draw(Canvas canvas) {
-        for (Rect r : listR) {
+        for (Rect r : (List<Rect>)t) {
             canvas.drawRect(r, paint);
         }
     }

@@ -14,7 +14,6 @@ import java.util.List;
  */
 
 public class Waterfall extends Points<List<Rect>> {
-    List<Rect> listR = new ArrayList<>();
 
     public Waterfall(@NonNull List<Rect> listR) {
         this(listR, null);
@@ -32,7 +31,7 @@ public class Waterfall extends Points<List<Rect>> {
 
     @Override
     public void draw(Canvas canvas) {
-        for (Rect r : listR) {
+        for (Rect r : (List<Rect>) t) {
             canvas.drawRect(r, paint);
         }
     }

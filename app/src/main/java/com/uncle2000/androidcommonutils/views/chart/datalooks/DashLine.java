@@ -19,7 +19,6 @@ import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.cha
 
 public class DashLine extends Points<List<Path>> {
     int phase = 0;
-    List<Path> listP = new ArrayList<>();
 
     public DashLine(@NonNull List<Path> listP) {
         this(listP, null);
@@ -41,7 +40,7 @@ public class DashLine extends Points<List<Path>> {
 
     @Override
     public void draw(Canvas canvas) {
-        for (Path p : listP) {
+        for (Path p : (List<Path>) t) {
             canvas.drawPath(p, paint);
         }
     }
