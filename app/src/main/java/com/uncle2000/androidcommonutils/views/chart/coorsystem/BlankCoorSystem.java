@@ -7,7 +7,7 @@ import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
 
 /**
  * 不一定所有的数据表格都需要坐标轴的称托，所以才需要一个什么都不画的类
- * 当然关键还是View绘制子类的时候方便用多态来拓展程序
+ * 当然关键还是View绘制子类的时候方便拓展程序
  * Created by 2000 on 2017/4/25.
  */
 

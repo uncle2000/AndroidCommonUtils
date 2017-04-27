@@ -93,7 +93,7 @@ public class CoorAxis {
                 pts[9] = pts[3];
             }
         } else {
-            Point endP = Utils.getPoint(axisModel.getAnchor().getOrigin(), axisModel.getAngle(), axisModel.getLength());
+            Point endP = Utils.getPoint(axisModel.getAnchor().screenCoor, axisModel.getAngle(), axisModel.getLength());
             pts[2] = endP.x;
             pts[3] = endP.y;
             if (axisModel.isShowArraw()) {

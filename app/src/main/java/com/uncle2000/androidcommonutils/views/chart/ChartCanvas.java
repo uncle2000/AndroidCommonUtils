@@ -2,12 +2,18 @@ package com.uncle2000.androidcommonutils.views.chart;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.BlankCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.DescartesCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.RadarCoorStstem;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 
 /**
@@ -16,18 +22,34 @@ import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
  */
 
 public class ChartCanvas extends View {
+    public static final int BLANK_COORDINATE_SYSTEM = 0;
+    public static final int DESCARTES_COORDINATE_SYSTEM = 1;
+    public static final int TABLE_COORDINATE_SYSTEM = 2;
+    public static final int RADAR_COORDINATE_SYSTEM = 3;
+
+    @IntDef({BLANK_COORDINATE_SYSTEM,
+            DESCARTES_COORDINATE_SYSTEM,
+            TABLE_COORDINATE_SYSTEM,
+            RADAR_COORDINATE_SYSTEM})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface CoordinateSystem {
+    }
+
     /**
-     * 坐标系的基类，除非你不准备画坐标轴，否则请用多态的形式去用它
-     * 要画的数据也已经包含进去了
+     * 坐标系的基类，除非你不准备画坐标轴
      */
-    ChartData[] chartData;
-    BlankCoorSystem coorSystem;
+    private BlankCoorSystem coorSystem;
+    private ChartData[] chartData;
+    /**
+     * 如果不设置则为默认
+     */
+    private Anchor anchor=new Anchor();
 
     /**
      * 比例
      * 1px=1dataScale单位
      */
-    protected float dataScale = 100;
+    private float dataScale = 1;
 
     public ChartCanvas(Context context) {
         this(context, null);
@@ -48,6 +70,31 @@ public class ChartCanvas extends View {
     }
 
     private void init() {
+    }
+
+    public void reload() {
+
+    }
+
+    private void mkData() {
+
+    }
+
+    public void showCoorSystem(@CoordinateSystem int system) {
+        switch (system) {
+            case BLANK_COORDINATE_SYSTEM:
+                coorSystem = new BlankCoorSystem(anchor);
+                break;
+            case DESCARTES_COORDINATE_SYSTEM:
+                coorSystem = new DescartesCoorSystem(anchor);
+                break;
+            case TABLE_COORDINATE_SYSTEM:
+//                coorSystem = new BlankCoorSystem(anchor);
+                break;
+            case RADAR_COORDINATE_SYSTEM:
+                coorSystem = new RadarCoorStstem(anchor, 45);
+                break;
+        }
     }
 
 //    @Override
@@ -103,7 +150,19 @@ public class ChartCanvas extends View {
         return coorSystem;
     }
 
-    public void setCoorSystem(BlankCoorSystem coorSystem) {
-        this.coorSystem = coorSystem;
+    public float getDataScale() {
+        return dataScale;
+    }
+
+    public void setDataScale(float dataScale) {
+        this.dataScale = dataScale;
+    }
+
+    public Anchor getAnchor() {
+        return anchor;
+    }
+
+    public void setAnchor(Anchor anchor) {
+        this.anchor = anchor;
     }
 }

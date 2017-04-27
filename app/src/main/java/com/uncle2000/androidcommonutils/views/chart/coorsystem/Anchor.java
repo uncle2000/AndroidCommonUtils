@@ -12,13 +12,19 @@ import android.support.annotation.ColorInt;
 public class Anchor {
     /**
      * 锚点的（x,y）表现形式
+     * 这是屏幕上的点，并不是数学坐标系的原点
      */
     public int x = 200, y = 600;
 
     /**
-     * 锚点的point表现形式
+     * 锚点在屏幕上的坐标
      */
-    private Point origin;
+    public Point screenCoor;
+    /**
+     * 数学坐标轴的原点
+     * 显示文本和计算用
+     */
+    public Point mathCoor;
 
     /**
      * 锚点的文字偏移，如果不偏移文字会画到原点上
@@ -31,43 +37,19 @@ public class Anchor {
     private Paint anchorPaint;
 
     public Anchor() {
-        this.origin = new Point(x, y);
+        this.screenCoor = new Point(x, y);
     }
 
-    public Anchor(Point origin) {
-        this.x = origin.x;
-        this.y = origin.y;
-        this.origin = origin;
+    public Anchor(Point screenCoor) {
+        this.x = screenCoor.x;
+        this.y = screenCoor.y;
+        this.screenCoor = screenCoor;
     }
 
     public Anchor(int x, int y) {
         this.x = x;
         this.y = y;
-        this.origin = new Point(x, y);
-    }
-
-    public Point getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(Point origin) {
-        this.origin = origin;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+        this.screenCoor = new Point(x, y);
     }
 
     public int getTextOffsetX() {

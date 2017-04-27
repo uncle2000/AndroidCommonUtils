@@ -20,6 +20,8 @@ import com.uncle2000.androidcommonutils.views.chart.utils.DefaultData;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.uncle2000.androidcommonutils.views.chart.ChartCanvas.DESCARTES_COORDINATE_SYSTEM;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -46,10 +48,13 @@ public class MainActivity extends AppCompatActivity {
         Polyline p = new Polyline(AdjustData.toRolyline(sa), paint);
         Points points = new Points(AdjustData.toPoints(sa), paint2);
 
-        Anchor anchor = new Anchor(200, 600);
-        DescartesCoorSystem descartesCoorSystem = new DescartesCoorSystem(anchor);
-        RadarCoorStstem radarCoorStstem = new RadarCoorStstem(anchor, 30);
-        chartCanvas.setCoorSystem(descartesCoorSystem);
+//        Anchor anchor = new Anchor(200, 600);
+//        anchor.mathCoor = new Point(0, 0);
+//        chartCanvas.setAnchor(anchor);
+
         chartCanvas.setChartData(p, points);
+        chartCanvas.showCoorSystem(DESCARTES_COORDINATE_SYSTEM);
+//        chartCanvas.setDataScale(100);
+//        chartCanvas.reload();
     }
 }
