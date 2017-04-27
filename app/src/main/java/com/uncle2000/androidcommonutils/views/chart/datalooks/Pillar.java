@@ -2,10 +2,14 @@ package com.uncle2000.androidcommonutils.views.chart.datalooks;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 柱状
@@ -14,7 +18,7 @@ import android.util.SparseArray;
 
 public class Pillar extends Points {
     int pillarW = 5;
-    SparseArray<Rect> saR;
+    List<Rect> listR = new ArrayList<>();
 
     public Pillar(@NonNull float[] pts) {
         super(pts);
@@ -31,9 +35,8 @@ public class Pillar extends Points {
 
     @Override
     public void draw(Canvas canvas) {
-
-        for (int i = 0; i < saR.size() - 1; i++) {
-            canvas.drawRect(saR.get(i), paint);
+        for (Rect r : listR) {
+            canvas.drawRect(r, paint);
         }
     }
 

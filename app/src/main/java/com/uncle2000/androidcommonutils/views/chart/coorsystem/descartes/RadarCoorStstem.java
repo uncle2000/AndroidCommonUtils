@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.BlankCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.coordinate.axis.AxisModel;
@@ -26,12 +27,12 @@ public class RadarCoorStstem extends BlankCoorSystem {
     public Paint radarPaint;
 
 
-    public RadarCoorStstem(ChartData chartData, int angle) {
-        this(chartData, angle, 0);
+    public RadarCoorStstem(Anchor anchor, int angle) {
+        this(anchor, angle, 0);
     }
 
-    public RadarCoorStstem(ChartData chartData, int angle, int offset) {
-        super(chartData);
+    public RadarCoorStstem(Anchor anchor, int angle, int offset) {
+        super(anchor);
         this.angle = angle;
         this.offset = offset;
 

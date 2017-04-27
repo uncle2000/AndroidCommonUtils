@@ -21,7 +21,6 @@ public class ChartCanvas extends View {
      * 要画的数据也已经包含进去了
      */
     ChartData[] chartData;
-    Anchor anchor;
     BlankCoorSystem coorSystem;
 
     /**
@@ -49,13 +48,6 @@ public class ChartCanvas extends View {
     }
 
     private void init() {
-    }
-
-
-    private void setA() {
-        if (null != anchor && null != coorSystem) {
-            coorSystem.setAnchor(anchor);
-        }
     }
 
 //    @Override
@@ -94,36 +86,17 @@ public class ChartCanvas extends View {
             }
         }
 
-        drawAnchor(canvas);
-
         if (coorSystem != null)
             coorSystem.draw(canvas);
     }
 
-    private void drawAnchor(Canvas canvas) {
-        if (null != anchor) {
-            canvas.drawText(anchor.getText(),
-                    anchor.x + anchor.getTextOffsetX(),
-                    anchor.y + anchor.getTextOffsetY(),
-                    anchor.getAnchorPaint());
-        }
-    }
 
     public ChartData[] getChartData() {
         return chartData;
     }
 
-    public void setChartData(ChartData[] chartData) {
+    public void setChartData(ChartData... chartData) {
         this.chartData = chartData;
-    }
-
-    public Anchor getAnchor() {
-        return anchor;
-    }
-
-    public void setAnchor(Anchor anchor) {
-        this.anchor = anchor;
-        setA();
     }
 
     public BlankCoorSystem getCoorSystem() {
@@ -132,6 +105,5 @@ public class ChartCanvas extends View {
 
     public void setCoorSystem(BlankCoorSystem coorSystem) {
         this.coorSystem = coorSystem;
-        setA();
     }
 }

@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Point;
 import android.util.SparseArray;
 
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.BlankCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.Points;
@@ -22,8 +23,8 @@ import com.uncle2000.androidcommonutils.views.chart.coorsystem.coordinate.elemen
 public class DescartesCoorSystem extends BlankCoorSystem {
     private CoorAxis xCoorAxis, yCoorAxis;
 
-    public DescartesCoorSystem(Points data) {
-        super(data);
+    public DescartesCoorSystem(Anchor anchor) {
+        super(anchor);
 
         xCoorAxis = new CoorAxis(mkElement(0, 90));
         yCoorAxis = new CoorAxis(mkElement(1, 0));
@@ -34,7 +35,6 @@ public class DescartesCoorSystem extends BlankCoorSystem {
         xCoorAxis.draw(canvas);
         yCoorAxis.draw(canvas);
     }
-
 
 
     private AxisModel mkElement(int normalDirection, int angle) {

@@ -12,7 +12,6 @@ import android.util.SparseArray;
  */
 
 public class CrossLine extends Points {
-    private static int crossLineW = 20;
 
     public CrossLine(@NonNull float[] pts) {
         super(pts);

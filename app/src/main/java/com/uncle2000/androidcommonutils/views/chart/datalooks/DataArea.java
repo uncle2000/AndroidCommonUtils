@@ -12,7 +12,7 @@ import android.util.SparseArray;
  */
 
 public class DataArea extends Points {
-    SparseArray<Rect> saR;
+    Rect area, pArea;
 
     public DataArea(@NonNull float[] pts) {
         super(pts);
@@ -26,42 +26,12 @@ public class DataArea extends Points {
 
     private void init() {
         paint.setStyle(Paint.Style.STROKE);
-//        saR = adjustData2Sa(pts);
     }
 
     @Override
     public void draw(Canvas canvas) {
-
+        canvas.drawRect(area, paint);
+        canvas.drawRect(pArea, paint);
     }
-
-
-    public SparseArray<Rect> adjustData2Sa(SparseArray<Point> sa) {
-
-        return saR;
-    }
-
-
-//    private void drawDataPadding(Canvas canvas) {
-//        mDatapaint.setStrokeWidth(1f);
-//        float[] pts = new float[]{
-//                minRangeX - lPadding, minRangeY - tPadding, maxRangeX + rPadding, minRangeY - tPadding,
-//                maxRangeX + rPadding, minRangeY - tPadding, maxRangeX + rPadding, maxRangeY + bPadding,
-//                maxRangeX + rPadding, maxRangeY + bPadding, minRangeX - lPadding, maxRangeY + bPadding,
-//                minRangeX - lPadding, maxRangeY + bPadding, minRangeX - lPadding, minRangeY - tPadding,
-//        };
-//        canvas.drawLines(pts, mDatapaint);
-//    }
-//
-//    private void drawDataArea(Canvas canvas) {
-//        mDatapaint.setStrokeWidth(1f);
-//        float[] pts = new float[]{
-//                minRangeX, minRangeY, maxRangeX, minRangeY,
-//                maxRangeX, minRangeY, maxRangeX, maxRangeY,
-//                maxRangeX, maxRangeY, minRangeX, maxRangeY,
-//                minRangeX, maxRangeY, minRangeX, minRangeY,
-//        };
-//        canvas.drawLines(pts, mDatapaint);
-//    }
-
 
 }

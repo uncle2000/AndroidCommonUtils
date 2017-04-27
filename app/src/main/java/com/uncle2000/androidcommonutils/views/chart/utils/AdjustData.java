@@ -8,10 +8,54 @@ import android.util.SparseArray;
 import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.chartDataCopy;
 
 /**
+ * 把数据调整成适合图表自身的样子
  * Created by 2000 on 2017/4/26.
  */
 
 public class AdjustData {
+
+
+//    public SparseArray<Rect> adjustData2Sa(SparseArray<Point> sa) {
+//
+//        return saR;
+//    }
+//    private void drawDataPadding(Canvas canvas) {
+//        mDatapaint.setStrokeWidth(1f);
+//        float[] pts = new float[]{
+//                minRangeX - lPadding, minRangeY - tPadding, maxRangeX + rPadding, minRangeY - tPadding,
+//                maxRangeX + rPadding, minRangeY - tPadding, maxRangeX + rPadding, maxRangeY + bPadding,
+//                maxRangeX + rPadding, maxRangeY + bPadding, minRangeX - lPadding, maxRangeY + bPadding,
+//                minRangeX - lPadding, maxRangeY + bPadding, minRangeX - lPadding, minRangeY - tPadding,
+//        };
+//        canvas.drawLines(pts, mDatapaint);
+//    }
+//
+//    private void drawDataArea(Canvas canvas) {
+//        mDatapaint.setStrokeWidth(1f);
+//        float[] pts = new float[]{
+//                minRangeX, minRangeY, maxRangeX, minRangeY,
+//                maxRangeX, minRangeY, maxRangeX, maxRangeY,
+//                maxRangeX, maxRangeY, minRangeX, maxRangeY,
+//                minRangeX, maxRangeY, minRangeX, minRangeY,
+//        };
+//        canvas.drawLines(pts, mDatapaint);
+//    }
+
+    /**
+     * 画散点
+     *
+     * @param sa
+     * @return
+     */
+    public static float[] toPoints(SparseArray<Point> sa) {
+        float[] pts = new float[sa.size() * 2];
+        for (int i = 0; i < sa.size(); i++) {
+            pts[i * 2] = sa.get(i).x;
+            pts[i * 2 + 1] = sa.get(i).y;
+        }
+        return pts;
+    }
+
 
     /**
      * 画折线

@@ -16,15 +16,24 @@ public class BlankCoorSystem {
     private int lPadding, tPadding, rPadding, bPadding;
     private int lMargin, tMargin, rMargin, bMargin;
     protected int screenW, screenH;
-    protected ChartData chartData;
     protected Anchor anchor;
 
-    public BlankCoorSystem(ChartData chartData) {
+    public BlankCoorSystem(Anchor anchor) {
+        this.anchor = anchor;
     }
 
     public void draw(Canvas canvas) {
+        drawAnchor(canvas);
     }
 
+    private void drawAnchor(Canvas canvas) {
+        if (null != anchor) {
+            canvas.drawText(anchor.getText(),
+                    anchor.x + anchor.getTextOffsetX(),
+                    anchor.y + anchor.getTextOffsetY(),
+                    anchor.getAnchorPaint());
+        }
+    }
 
     /**
      * 获得图表坐标轴的绘制范围，这样方便View去计算warp_content的时候应该占多大的位置。

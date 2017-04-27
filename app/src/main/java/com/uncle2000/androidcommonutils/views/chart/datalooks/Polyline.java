@@ -7,13 +7,16 @@ import android.graphics.Point;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 折线
  * Created by 2000 on 2017/4/25.
  */
 
 public class Polyline extends Points {
-    SparseArray<Path> saP;
+    List<Path> listP = new ArrayList<>();
 
     public Polyline(@NonNull float[] pts) {
         super(pts);
@@ -27,15 +30,12 @@ public class Polyline extends Points {
 
     private void init() {
         paint.setStyle(Paint.Style.STROKE);
-//        saP = adjustData2Sa(pts);
     }
 
     @Override
     public void draw(Canvas canvas) {
-        for (int i = 0; i < saP.size() - 1; i++) {
-            canvas.drawPath(saP.get(i), paint);
+        for (Path p : listP) {
+            canvas.drawPath(p, paint);
         }
     }
-
-
 }

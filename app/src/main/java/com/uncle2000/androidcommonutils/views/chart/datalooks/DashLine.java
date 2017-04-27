@@ -8,6 +8,9 @@ import android.graphics.Point;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.chartDataCopy;
 
 /**
@@ -17,6 +20,7 @@ import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.cha
 public class DashLine extends Points {
     int phase = 0;
     SparseArray<Path> saP;
+    List<Path> listP = new ArrayList<>();
 
     public DashLine(@NonNull float[] pts) {
         super(pts);
@@ -39,8 +43,8 @@ public class DashLine extends Points {
 
     @Override
     public void draw(Canvas canvas) {
-        for (int i = 0; i < saP.size() - 1; i++) {
-            canvas.drawPath(saP.get(i), paint);
+        for (Path p : listP) {
+            canvas.drawPath(p, paint);
         }
     }
 

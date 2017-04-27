@@ -7,8 +7,11 @@ import android.util.SparseArray;
 
 import com.uncle2000.androidcommonutils.uitls.system.PermissionUtil;
 import com.uncle2000.androidcommonutils.views.chart.ChartCanvas;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.RadarCoorStstem;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.Curve;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.DescartesCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.utils.AdjustData;
 import com.uncle2000.androidcommonutils.views.chart.utils.DefaultData;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
             sa.put(i, DefaultData.chartData[i]);
         }
 
-        Curve curve = new Curve();
-        chartCanvas.setCoorSystem(new DescartesCoorSystem(new Curve(Curve.adjustData2Pts(sa))));
+        Curve curve = new Curve(AdjustData.toPoints(sa));
+        Anchor anchor = new Anchor(200, 600);
+        DescartesCoorSystem descartesCoorSystem = new DescartesCoorSystem(anchor);
+        RadarCoorStstem radarCoorStstem = new RadarCoorStstem(anchor, 30);
+        chartCanvas.setCoorSystem(radarCoorStstem);
+        chartCanvas.setChartData(curve);
     }
 }

@@ -7,14 +7,16 @@ import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 瀑布图
  * Created by 2000 on 2017/4/25.
  */
 
 public class Waterfall extends Points {
-    int pillarW = 5;
-    SparseArray<Rect> saR;
+    List<Rect> listR = new ArrayList<>();
 
     public Waterfall(@NonNull float[] pts) {
         super(pts);
@@ -28,13 +30,12 @@ public class Waterfall extends Points {
 
     private void init() {
         paint.setStyle(Paint.Style.STROKE);
-//        saR = adjustData2Sa(pts);
     }
 
     @Override
     public void draw(Canvas canvas) {
-        for (int i = 0; i < saR.size() - 1; i++) {
-            canvas.drawRect(saR.get(i), paint);
+        for (Rect r : listR) {
+            canvas.drawRect(r, paint);
         }
     }
 
