@@ -38,11 +38,4 @@ public class Waterfall extends Points {
         }
     }
 
-    public SparseArray<Rect> adjustData2Sa(SparseArray<Point> sa) {
-        SparseArray<Rect> saR = new SparseArray<>();
-        Rect rect;
-//        ConvertData.pointA2RectA(chartDataCopy, pillarW);
-        return saR;
-    }
-
 }

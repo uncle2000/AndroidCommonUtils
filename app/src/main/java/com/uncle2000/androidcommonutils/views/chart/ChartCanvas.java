@@ -9,6 +9,7 @@ import com.uncle2000.androidcommonutils.views.chart.coorsystem.BlankCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
 
+
 /**
  * 图表的View类 负责将图表画到canvas上
  * Created by 2000 on 2017/4/26.
@@ -22,6 +23,12 @@ public class ChartCanvas extends View {
     ChartData[] chartData;
     Anchor anchor;
     BlankCoorSystem coorSystem;
+
+    /**
+     * 比例
+     * 1px=1dataScale单位
+     */
+    protected float dataScale = 100;
 
     public ChartCanvas(Context context) {
         this(context, null);
@@ -42,6 +49,10 @@ public class ChartCanvas extends View {
     }
 
     private void init() {
+    }
+
+
+    private void setA() {
         if (null != anchor && null != coorSystem) {
             coorSystem.setAnchor(anchor);
         }
@@ -112,6 +123,7 @@ public class ChartCanvas extends View {
 
     public void setAnchor(Anchor anchor) {
         this.anchor = anchor;
+        setA();
     }
 
     public BlankCoorSystem getCoorSystem() {
@@ -120,5 +132,6 @@ public class ChartCanvas extends View {
 
     public void setCoorSystem(BlankCoorSystem coorSystem) {
         this.coorSystem = coorSystem;
+        setA();
     }
 }

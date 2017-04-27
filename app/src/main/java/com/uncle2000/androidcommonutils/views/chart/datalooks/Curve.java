@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
 /**
- * 曲线
+ * 折线
  * Created by 2000 on 2017/4/25.
  */
 
@@ -26,14 +26,4 @@ public class Curve extends Points {
         canvas.drawLines(pts, paint);
     }
 
-    public static float[] adjustData2Pts(SparseArray<Point> sa) {
-        float[] pts = new float[(sa.size() - 1) * 4];
-        for (int i = 0; i < sa.size() - 1; i++) {
-            pts[i * 4] = sa.get(i).x;
-            pts[i * 4 + 1] = sa.get(i).y;
-            pts[i * 4 + 2] = sa.get(i + 1).x;
-            pts[i * 4 + 3] = sa.get(i + 1).y;
-        }
-        return pts;
-    }
 }

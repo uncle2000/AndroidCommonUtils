@@ -44,18 +44,4 @@ public class DashLine extends Points {
         }
     }
 
-    public SparseArray<Path> adjustData2Sa(SparseArray<Point> sa) {
-        SparseArray<Path> saP = new SparseArray<>();
-        Path path = new Path();
-        for (int i = 0; i < sa.size() * 2; i++) {
-            path.moveTo(chartDataCopy[i].x, chartDataCopy[i].y);
-            if (i % 2 == 0) {
-//                path.lineTo(minTableX, chartDataCopy[i].y);
-            } else {
-//                path.lineTo(chartDataCopy[i].x, maxTableY);
-            }
-            saP.put(i, path);
-        }
-        return saP;
-    }
 }

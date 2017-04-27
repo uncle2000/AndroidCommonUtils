@@ -9,17 +9,16 @@ import java.util.List;
  */
 
 public class DefaultData {
-    boolean upperLimit = false;
     public static final Point[] chartData = {
-            new Point(100, 280),
-            new Point(200, 320),
-            new Point(300, 200),
-            new Point(400, 400),
-            new Point(500, 100),
-            new Point(600, 100),
-            new Point(700, 220),
-            new Point(800, 250),
-            new Point(900, 300)};
+            new Point(10000, 28000),
+            new Point(20000, 32000),
+            new Point(30000, 20000),
+            new Point(40000, 40000),
+            new Point(50000, 10000),
+            new Point(60000, 10000),
+            new Point(70000, 22000),
+            new Point(80000, 25000),
+            new Point(90000, 30000)};
     public static Point[] chartDataCopy;
     //
 

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             sa.put(i, DefaultData.chartData[i]);
         }
 
+        Curve curve = new Curve();
         chartCanvas.setCoorSystem(new DescartesCoorSystem(new Curve(Curve.adjustData2Pts(sa))));
     }
 }

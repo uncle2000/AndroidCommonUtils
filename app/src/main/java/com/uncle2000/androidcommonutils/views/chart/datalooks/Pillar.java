@@ -37,18 +37,4 @@ public class Pillar extends Points {
         }
     }
 
-    public SparseArray<Rect> adjustData2Sa(SparseArray<Point> sa) {
-        SparseArray<Rect> saR = new SparseArray<>();
-        Rect rect;
-        for (int i = 0; i < sa.size(); i++) {
-//            rect = new Rect(
-//                    chartDataCopy[i].x - pillarW,
-//                    chartDataCopy[i].y,
-//                    chartDataCopy[i].x + pillarW,
-//                    maxTableY
-//            );
-//            saR.put(i, rect);
-        }
-        return saR;
-    }
 }
