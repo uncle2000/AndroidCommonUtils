@@ -17,18 +17,16 @@ import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.cha
  * Created by 2000 on 2017/4/25.
  */
 
-public class DashLine extends Points {
+public class DashLine extends Points<List<Path>> {
     int phase = 0;
-    SparseArray<Path> saP;
     List<Path> listP = new ArrayList<>();
 
-    public DashLine(@NonNull float[] pts) {
-        super(pts);
-        init();
+    public DashLine(@NonNull List<Path> listP) {
+        this(listP, null);
     }
 
-    public DashLine(@NonNull float[] pts, Paint paint) {
-        super(pts, paint);
+    public DashLine(@NonNull List<Path> listP, Paint paint) {
+        super(listP, paint);
         init();
     }
 

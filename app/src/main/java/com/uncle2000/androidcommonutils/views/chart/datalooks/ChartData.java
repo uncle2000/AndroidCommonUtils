@@ -8,21 +8,20 @@ import android.support.annotation.NonNull;
  * Created by 2000 on 2017/4/26.
  */
 
-public class ChartData {
+public class ChartData<T> {
     protected Paint paint;
-    protected float[] pts;
+    protected T t;
 
-    public ChartData(@NonNull float[] pts) {
-        this(pts, null);
+    public ChartData(@NonNull T t) {
+        this(t, null);
     }
 
-    public ChartData(float[] pts, Paint paint) {
+    public ChartData(@NonNull T t, Paint paint) {
         this.paint = paint;
-        this.pts = pts;
-        if (null != paint)
-            this.paint = paint;
-        else
+        this.t = t;
+        if (null == paint)
             paint = new Paint();
+        this.paint = paint;
         paint.setStrokeWidth(1.2f);
     }
 
@@ -38,11 +37,11 @@ public class ChartData {
         this.paint = paint;
     }
 
-    public float[] getPts() {
-        return pts;
+    public T getPts() {
+        return t;
     }
 
-    public void setPts(float[] pts) {
-        this.pts = pts;
+    public void setPts(T t) {
+        this.t = t;
     }
 }

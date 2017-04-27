@@ -16,16 +16,16 @@ import java.util.List;
  * Created by 2000 on 2017/4/25.
  */
 
-public class Pillar extends Points {
+public class Pillar extends Points<List<Rect>> {
     int pillarW = 5;
     List<Rect> listR = new ArrayList<>();
 
-    public Pillar(@NonNull float[] pts) {
-        super(pts);
+    public Pillar(@NonNull List<Rect> listR) {
+        this(listR, null);
     }
 
-    public Pillar(@NonNull float[] pts, Paint paint) {
-        super(pts, paint);
+    public Pillar(@NonNull List<Rect> listR, Paint paint) {
+        super(listR, paint);
     }
 
     private void init() {

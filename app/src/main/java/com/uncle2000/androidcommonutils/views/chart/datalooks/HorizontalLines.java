@@ -11,7 +11,7 @@ import android.util.SparseArray;
  * Created by 2000 on 2017/4/25.
  */
 
-public class HorizontalLines extends Points {
+public class HorizontalLines extends Points<float[]> {
 
 
     public HorizontalLines(@NonNull float[] pts) {
@@ -24,7 +24,7 @@ public class HorizontalLines extends Points {
 
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawLines(pts, paint);
+        canvas.drawLines((float[]) t, paint);
     }
 
 }

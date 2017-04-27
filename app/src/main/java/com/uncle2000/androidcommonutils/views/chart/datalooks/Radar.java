@@ -12,15 +12,15 @@ import java.util.List;
  * Created by 2000 on 2017/4/26.
  */
 
-public class Radar extends Points {
+public class Radar extends Points<List<Path>> {
     List<Path> listP = new ArrayList<>();
 
-    public Radar(@NonNull float[] pts) {
-        super(pts);
+    public Radar(@NonNull List<Path> listP) {
+        this(listP, null);
     }
 
-    public Radar(@NonNull float[] pts, Paint paint) {
-        super(pts, paint);
+    public Radar(@NonNull List<Path> listP, Paint paint) {
+        super(listP, paint);
     }
 
     private void init() {

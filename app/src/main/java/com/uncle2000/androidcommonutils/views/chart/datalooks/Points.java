@@ -1,5 +1,6 @@
 package com.uncle2000.androidcommonutils.views.chart.datalooks;
 
+import android.annotation.SuppressLint;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -11,17 +12,18 @@ import android.util.SparseArray;
  * Created by 2000 on 2017/4/25.
  */
 
-public class Points extends ChartData {
+@SuppressWarnings("unchecked")
+public class Points<T> extends ChartData {
 
-    public Points(@NonNull float[] pts) {
-        this(pts, null);
+    public Points(@NonNull T t) {
+        this(t, null);
     }
 
-    public Points(@NonNull float[] pts, Paint paint) {
-        super(pts);
+    public Points(@NonNull T t, Paint paint) {
+        super(t, paint);
     }
 
     public void draw(Canvas canvas) {
-        canvas.drawPoints(pts, paint);
+        canvas.drawPoints((float[]) t, paint);
     }
 }

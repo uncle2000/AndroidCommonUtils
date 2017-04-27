@@ -11,7 +11,7 @@ import android.util.SparseArray;
  * Created by 2000 on 2017/4/25.
  */
 
-public class Curve extends Points {
+public class Curve extends Points<float[]> {
 
     public Curve(@NonNull float[] pts) {
         super(pts);
@@ -23,7 +23,7 @@ public class Curve extends Points {
 
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawLines(pts, paint);
+        canvas.drawLines((float[]) t, paint);
     }
 
 }

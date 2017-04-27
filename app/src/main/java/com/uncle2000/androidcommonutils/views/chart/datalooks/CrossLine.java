@@ -11,10 +11,10 @@ import android.util.SparseArray;
  * Created by 2000 on 2017/4/25.
  */
 
-public class CrossLine extends Points {
+public class CrossLine extends Points<float[]> {
 
     public CrossLine(@NonNull float[] pts) {
-        super(pts);
+        this(pts, null);
     }
 
     public CrossLine(@NonNull float[] pts, Paint paint) {
@@ -23,7 +23,7 @@ public class CrossLine extends Points {
 
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawLines(pts, paint);
+        canvas.drawLines((float[]) t, paint);
     }
 
 }

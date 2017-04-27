@@ -15,16 +15,15 @@ import java.util.List;
  * Created by 2000 on 2017/4/25.
  */
 
-public class Polyline extends Points {
+public class Polyline extends Points<List<Path>> {
     List<Path> listP = new ArrayList<>();
 
-    public Polyline(@NonNull float[] pts) {
-        super(pts);
-        init();
+    public Polyline(@NonNull List<Path> listP) {
+        this(listP, null);
     }
 
-    public Polyline(@NonNull float[] pts, Paint paint) {
-        super(pts, paint);
+    public Polyline(@NonNull List<Path> listP, Paint paint) {
+        super(listP, paint);
         init();
     }
 
