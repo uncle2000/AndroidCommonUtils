@@ -45,15 +45,15 @@ public class Utils {
         return box;
     }
 
-    public static void adjustData(float lPadding, float tPadding) {
-        DefaultData.chartDataCopy = new Point[DefaultData.chartData.length];
-        int[] a = Utils.getMaxMin(DefaultData.chartData);
-        for (int i = 0; i < DefaultData.chartData.length; i++) {
-            Point p = new Point(DefaultData.chartData[i].x - a[0] + (int) lPadding,
-                    DefaultData.chartData[i].y - a[2] + (int) tPadding);
-            DefaultData.chartDataCopy[i] = p;
-        }
-    }
+//    public static void adjustData(float lPadding, float tPadding) {
+//        DefaultData.chartDataCopy = new Point[DefaultData.chartData.length];
+//        int[] a = Utils.getMaxMin(DefaultData.chartData);
+//        for (int i = 0; i < DefaultData.chartData.length; i++) {
+//            Point p = new Point(DefaultData.chartData[i].x - a[0] + (int) lPadding,
+//                    DefaultData.chartData[i].y - a[2] + (int) tPadding);
+//            DefaultData.chartDataCopy[i] = p;
+//        }
+//    }
 
     public static Point getPoint(Point startP, int angle, int r) {
         angle %= 360;

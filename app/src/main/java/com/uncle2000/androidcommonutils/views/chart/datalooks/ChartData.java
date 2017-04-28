@@ -14,6 +14,8 @@ import java.util.List;
  */
 
 public class ChartData<T> {
+    protected float offsetX, offsetY;
+    protected float scale;
     protected Paint paint;
     protected T t;
 

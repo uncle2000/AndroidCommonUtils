@@ -4,6 +4,8 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,19 @@ import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.cha
 
 public class AdjustData {
 
+    public static List<Point> adjustData2Px(List<Point> orign, Anchor anchor, float scale) {
+        float oX, oY;
+        oX = anchor.x;
+        oY = anchor.y;
+        List<Point> temp = new ArrayList<>();
+        for (Point p : orign) {
+            temp.add(new Point(
+                    (int) (p.x / scale + oX),
+                    (int) (oY - p.y / scale)
+            ));
+        }
+        return temp;
+    }
 
 //    public List<Rect> adjustData2Sa(List<Point> sa) {
 //

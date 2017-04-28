@@ -36,24 +36,28 @@ public class MainActivity extends AppCompatActivity {
         /*****************************************************************************************/
         ChartCanvas chartCanvas = (ChartCanvas) findViewById(R.id.fl);
 
-        List<Point> sa = new ArrayList<>();
-        for (int i = 0; i < DefaultData.chartData.length; i++) {
-            sa.add(i, DefaultData.chartData[i]);
-        }
+//        List<Point> sa = new ArrayList<>();
+//        for (int i = 0; i < DefaultData.chartData.length; i++) {
+//            sa.add(i, DefaultData.chartData[i]);
+//        }
+
+
+        Anchor anchor = new Anchor(50, 650);
+        anchor.mathCoor = new Point(0, 0);
+        chartCanvas.setAnchor(anchor);
 
         Paint paint = new Paint();
         Paint paint2 = new Paint();
         paint.setStrokeWidth(3f);
         paint2.setStrokeWidth(20f);
-        Polyline p = new Polyline(AdjustData.toRolyline(sa), paint);
-        Points points = new Points(AdjustData.toPoints(sa), paint2);
+//        Polyline p = new Polyline(AdjustData.toRolyline(sa), paint);
+        List<Point> po=AdjustData.adjustData2Px(DefaultData.chartData, anchor, 100);
+        Points points = new Points(AdjustData.toPoints(po), paint2);
 
-//        Anchor anchor = new Anchor(200, 600);
-//        anchor.mathCoor = new Point(0, 0);
-//        chartCanvas.setAnchor(anchor);
 
-        chartCanvas.setChartData(p, points);
+        chartCanvas.setChartData( points);
         chartCanvas.showCoorSystem(DESCARTES_COORDINATE_SYSTEM);
+        ((DescartesCoorSystem) chartCanvas.getCoorSystem()).yCoorAxis.getAxisModel().setShowArraw(false);
 //        chartCanvas.setDataScale(100);
 //        chartCanvas.reload();
     }

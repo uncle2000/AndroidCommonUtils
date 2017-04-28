@@ -114,4 +114,7 @@ public class CoorAxis {
         canvas.drawLines(pts, axisModel.getAxisPaint());
     }
 
+    public AxisModel getAxisModel() {
+        return axisModel;
+    }
 }

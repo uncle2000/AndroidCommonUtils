@@ -24,33 +24,37 @@ public class Anchor {
      * 数学坐标轴的原点
      * 显示文本和计算用
      */
-    public Point mathCoor;
+    public Point mathCoor = new Point();
 
     /**
      * 锚点的文字偏移，如果不偏移文字会画到原点上
      */
     private int textOffsetX = -10, textOffsetY = 30;
     private float textSize = 38f;
-    private String text = "(" + x + "," + y + ")";
+    private String text;
     @ColorInt
     private int textColor = 0xff000000;
     private Paint anchorPaint;
 
     public Anchor() {
-        this.screenCoor = new Point(x, y);
-    }
-
-    public Anchor(Point screenCoor) {
-        this.x = screenCoor.x;
-        this.y = screenCoor.y;
-        this.screenCoor = screenCoor;
+        this(null);
     }
 
     public Anchor(int x, int y) {
-        this.x = x;
-        this.y = y;
-        this.screenCoor = new Point(x, y);
+        this(new Point(x, y));
     }
+
+    public Anchor(Point screenCoor) {
+        if (null == screenCoor) {
+            this.screenCoor = new Point(x, y);
+        } else {
+            this.x = screenCoor.x;
+            this.y = screenCoor.y;
+            this.screenCoor = screenCoor;
+        }
+        text = "(" + mathCoor.x + "," + mathCoor.y + ")";
+    }
+
 
     public int getTextOffsetX() {
         return textOffsetX;

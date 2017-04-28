@@ -21,7 +21,7 @@ import com.uncle2000.androidcommonutils.views.chart.coorsystem.coordinate.elemen
  */
 
 public class DescartesCoorSystem extends BlankCoorSystem {
-    private CoorAxis xCoorAxis, yCoorAxis;
+    public CoorAxis xCoorAxis, yCoorAxis;
 
     public DescartesCoorSystem(Anchor anchor) {
         super(anchor);
