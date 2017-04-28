@@ -35,6 +35,31 @@ public class ChartCanvas extends View {
     public @interface CoordinateSystem {
     }
 
+    public static final int CHART_DATA = 0;
+    public static final int DATAAREA = 1;
+    public static final int POINTS = 2;
+    public static final int CURVE = 3;
+    public static final int POLILINE = 4;
+    public static final int DASHLINE = 5;
+    public static final int CROSSLINE = 6;
+    public static final int HORIZONTAL = 7;
+    public static final int PILLAR = 8;
+    public static final int WATERFALL = 9;
+
+    @IntDef({CHART_DATA,
+            DATAAREA,
+            POINTS,
+            CURVE,
+            POLILINE,
+            DASHLINE,
+            CROSSLINE,
+            HORIZONTAL,
+            PILLAR,
+            WATERFALL,})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface DataLooks {
+    }
+
     /**
      * 坐标系的基类，除非你不准备画坐标轴
      */
@@ -43,7 +68,7 @@ public class ChartCanvas extends View {
     /**
      * 如果不设置则为默认
      */
-    private Anchor anchor=new Anchor();
+    private Anchor anchor = new Anchor();
 
     /**
      * 比例
@@ -80,7 +105,7 @@ public class ChartCanvas extends View {
 
     }
 
-    public void showCoorSystem(@CoordinateSystem int system) {
+    public void drawCoorSystem(@CoordinateSystem int system) {
         switch (system) {
             case BLANK_COORDINATE_SYSTEM:
                 coorSystem = new BlankCoorSystem(anchor);
@@ -95,6 +120,10 @@ public class ChartCanvas extends View {
                 coorSystem = new RadarCoorStstem(anchor, 45);
                 break;
         }
+    }
+
+    public void dreawChartData(){
+
     }
 
 //    @Override

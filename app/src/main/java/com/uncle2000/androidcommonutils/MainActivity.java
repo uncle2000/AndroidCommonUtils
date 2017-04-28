@@ -4,13 +4,10 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.SparseArray;
 
 import com.uncle2000.androidcommonutils.uitls.system.PermissionUtil;
 import com.uncle2000.androidcommonutils.views.chart.ChartCanvas;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
-import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.RadarCoorStstem;
-import com.uncle2000.androidcommonutils.views.chart.datalooks.Curve;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.DescartesCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.DashLine;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.Points;
@@ -18,7 +15,6 @@ import com.uncle2000.androidcommonutils.views.chart.datalooks.Polyline;
 import com.uncle2000.androidcommonutils.views.chart.utils.AdjustData;
 import com.uncle2000.androidcommonutils.views.chart.utils.DefaultData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.uncle2000.androidcommonutils.views.chart.ChartCanvas.DESCARTES_COORDINATE_SYSTEM;
@@ -58,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         chartCanvas.setChartData(d,p, points);
-        chartCanvas.showCoorSystem(DESCARTES_COORDINATE_SYSTEM);
+        chartCanvas.drawCoorSystem(DESCARTES_COORDINATE_SYSTEM);
         ((DescartesCoorSystem) chartCanvas.getCoorSystem()).yCoorAxis.getAxisModel().setShowArraw(false);
 //        chartCanvas.setDataScale(100);
 //        chartCanvas.reload();
