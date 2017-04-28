@@ -6,10 +6,9 @@ import android.graphics.Rect;
 
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.chartDataCopy;
 
 /**
  * 把数据调整成适合图表自身的样子
@@ -19,14 +18,19 @@ import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.cha
 public class AdjustData {
 
     public static List<Point> adjustData2Px(List<Point> orign, Anchor anchor, float scale) {
+        return adjustData2Px(orign, anchor, scale, scale);
+    }
+
+    public static List<Point> adjustData2Px(List<Point> orign, Anchor anchor, float scaleX, float scaleY) {
         float oX, oY;
         oX = anchor.x;
         oY = anchor.y;
+
         List<Point> temp = new ArrayList<>();
         for (Point p : orign) {
             temp.add(new Point(
-                    (int) (p.x / scale + oX),
-                    (int) (oY - p.y / scale)
+                    (int) (oX + p.x / scaleX),
+                    (int) (oY - p.y / scaleY)
             ));
         }
         return temp;
@@ -119,16 +123,17 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public List<Path> toDash(List<Point> sa) {
+    public static List<Path> toDash(List<Point> sa, int minTableX, int maxTableY) {
         List<Path> saP = new ArrayList<>();
         Path path = new Path();
         for (int i = 0; i < sa.size() * 2; i++) {
-            path.moveTo(chartDataCopy[i].x, chartDataCopy[i].y);
+            int loc = new BigDecimal(i / 2).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
             if (i % 2 == 0) {
-//                path.lineTo(minTableX, chartDataCopy[i].y);
+                path.moveTo(minTableX, sa.get(loc).y);
             } else {
-//                path.lineTo(chartDataCopy[i].x, maxTableY);
+                path.moveTo(sa.get(loc).x, maxTableY);
             }
+            path.lineTo(sa.get(loc).x, sa.get(loc).y);
             saP.add(path);
         }
         return saP;
@@ -159,7 +164,7 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public List<Rect> toPillar(List<Point> sa) {
+    public static List<Rect> toPillar(List<Point> sa) {
         List<Rect> saR = new ArrayList<>();
         Rect rect;
         for (int i = 0; i < sa.size(); i++) {
@@ -208,7 +213,7 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public List<Rect> adjustData2Sa(List<Point> sa) {
+    public static List<Rect> adjustData2Sa(List<Point> sa) {
         List<Rect> saR = new ArrayList<>();
         Rect rect;
 //        ConvertData.pointA2RectA(chartDataCopy, pillarW);

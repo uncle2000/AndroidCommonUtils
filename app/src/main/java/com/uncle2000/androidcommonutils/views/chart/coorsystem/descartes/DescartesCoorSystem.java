@@ -43,9 +43,9 @@ public class DescartesCoorSystem extends BlankCoorSystem {
         normalP.put(0, Utils.getPoint(anchor.x, anchor.y, angle, 75));
         for (int i = 1; i < 12; i++) {
             if (i % 2 == 0) {
-                normalP.put(i, Utils.getPoint(normalP.get(i - 2).x, normalP.get(i - 2).y, angle, 75));
+                normalP.put(i, Utils.getPoint(normalP.get(i - 2).x, normalP.get(i - 2).y, angle, 100));
             } else {
-                normalP.put(i, Utils.getPoint(normalP.get(i - 1).x, normalP.get(i - 1).y, angle - 90 + normalDirection * 180, 500));
+                normalP.put(i, Utils.getPoint(normalP.get(i - 1).x, normalP.get(i - 1).y, angle - 90 + normalDirection * 180, 16));
             }
         }
 

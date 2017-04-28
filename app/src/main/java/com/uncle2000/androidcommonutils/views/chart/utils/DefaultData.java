@@ -20,7 +20,5 @@ public class DefaultData {
             new Point(70000, 22000),
             new Point(80000, 25000),
             new Point(90000, 30000));
-    public static Point[] chartDataCopy;
-    //
 
 }

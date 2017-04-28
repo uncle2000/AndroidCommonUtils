@@ -24,8 +24,7 @@ public class Points<T> extends ChartData {
     }
 
     public void draw(Canvas canvas) {
+        this.paint.setStrokeWidth(10f);
         canvas.drawPoints((float[]) t, paint);
     }
-
-
 }

@@ -26,8 +26,10 @@ public class ChartData<T> {
     public ChartData(@NonNull T t, Paint paint) {
         this.paint = paint;
         this.t = t;
-        if (null == paint)
+        if (null == paint) {
             paint = new Paint();
+            paint.setStrokeWidth(5f);
+        }
         this.paint = paint;
     }
 

@@ -4,14 +4,9 @@ import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Point;
 import android.support.annotation.NonNull;
-import android.util.SparseArray;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static com.uncle2000.androidcommonutils.views.chart.utils.DefaultData.chartDataCopy;
 
 /**
  * Created by 2000 on 2017/4/25.
@@ -33,8 +28,8 @@ public class DashLine extends Points<List<Path>> {
         //设置画直线格式
         paint.setStyle(Paint.Style.STROKE);
         //设置虚线效果
-        paint.setPathEffect(new DashPathEffect(new float[]{25, 25}, phase));
-
+        paint.setPathEffect(new DashPathEffect(new float[]{25,5}, phase));
+        paint.setStrokeWidth(3f);
 //        saP = adjustData2Sa(pts);
     }
 

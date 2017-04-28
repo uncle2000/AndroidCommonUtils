@@ -38,7 +38,7 @@ public class AxisModel {
     /**
      * 轴的长度
      */
-    private int length = 600;
+    private int length = 1000;
     /**
      * 轴的偏移量 会朝轴的反方向画一点
      */
