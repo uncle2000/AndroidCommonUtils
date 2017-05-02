@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.annotation.Size;
 
+import com.uncle2000.androidcommonutils.views.chart.RangeModel;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
 
 import java.util.List;
@@ -14,8 +15,7 @@ import java.util.List;
  */
 
 public class ChartData<T> {
-    protected float offsetX, offsetY;
-    protected float scale;
+    protected RangeModel rangeModel;
     protected Paint paint;
     protected T t;
 
@@ -37,13 +37,6 @@ public class ChartData<T> {
 
     }
 
-    public Anchor mkAnchor(@NonNull @Size(min = 1) List<Points> list) {
-        Anchor anchor = new Anchor();
-
-
-        return anchor;
-    }
-
     public Paint getPaint() {
         return paint;
     }
@@ -57,6 +50,22 @@ public class ChartData<T> {
     }
 
     public void setPts(T t) {
+        this.t = t;
+    }
+
+    public RangeModel getRangeModel() {
+        return rangeModel;
+    }
+
+    public void setRangeModel(RangeModel rangeModel) {
+        this.rangeModel = rangeModel;
+    }
+
+    public T getT() {
+        return t;
+    }
+
+    public void setT(T t) {
         this.t = t;
     }
 }

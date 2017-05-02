@@ -3,7 +3,7 @@ package com.uncle2000.androidcommonutils.views.chart.coorsystem;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
+import com.uncle2000.androidcommonutils.views.chart.RangeModel;
 
 /**
  * 不一定所有的数据表格都需要坐标轴的称托，所以才需要一个什么都不画的类
@@ -12,14 +12,12 @@ import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
  */
 
 public class BlankCoorSystem {
-    private float minRangeX, maxRangeX, minRangeY, maxRangeY;
-    private int lPadding, tPadding, rPadding, bPadding;
-    private int lMargin, tMargin, rMargin, bMargin;
-    protected int screenW, screenH;
+    protected RangeModel rangeModel;
     protected Anchor anchor;
 
-    public BlankCoorSystem(Anchor anchor) {
-        this.anchor = anchor;
+    public BlankCoorSystem(RangeModel rangeModel) {
+        this.rangeModel = rangeModel;
+        anchor = rangeModel.anchor;
     }
 
     public void draw(Canvas canvas) {

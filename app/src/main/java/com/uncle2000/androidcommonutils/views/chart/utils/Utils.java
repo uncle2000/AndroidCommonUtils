@@ -9,6 +9,13 @@ import android.graphics.Point;
 public class Utils {
 
     /**
+     * 通过锚点和图表的大小决定二维坐标系的x、y轴方向
+     */
+    public static void getDescartesDirection() {
+
+    }
+
+    /**
      * 折线，波浪，饼，雷达，面积，瀑布，圆环，表格 的数据都是有一个范围
      *
      * @return

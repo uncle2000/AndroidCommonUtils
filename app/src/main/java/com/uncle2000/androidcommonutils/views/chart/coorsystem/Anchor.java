@@ -10,6 +10,12 @@ import android.support.annotation.ColorInt;
  */
 
 public class Anchor {
+    /*分别代表左下角、左上角、右下角、右上角*/
+    public static final int DIRECTION_LB = 0;
+    public static final int DIRECTION_LT = 1;
+    public static final int DIRECTION_RB = 2;
+    public static final int DIRECTION_RT = 3;
+    int direction = DIRECTION_LB;
     /**
      * 锚点的（x,y）表现形式
      * 这是屏幕上的点，并不是数学坐标系的原点
@@ -53,6 +59,10 @@ public class Anchor {
             this.screenCoor = screenCoor;
         }
         text = "(" + mathCoor.x + "," + mathCoor.y + ")";
+    }
+
+    public Anchor(float x, float y, float xMath, float yMath) {
+        this(null);
     }
 
 

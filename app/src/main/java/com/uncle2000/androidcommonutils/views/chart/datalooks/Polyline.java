@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 折线
+ * 区线
  * Created by 2000 on 2017/4/25.
  */
 
@@ -32,7 +32,7 @@ public class Polyline extends Points<List<Path>> {
 
     @Override
     public void draw(Canvas canvas) {
-        for (Path p : (List<Path>)t) {
+        for (Path p : (List<Path>) t) {
             canvas.drawPath(p, paint);
         }
     }

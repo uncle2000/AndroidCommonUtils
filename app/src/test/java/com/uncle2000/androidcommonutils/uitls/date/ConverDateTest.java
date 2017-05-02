@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 /**
  * Created by 2000 on 2017/4/13.
  */
-public class ConvertDateTest {
+class ConvertDateTest {
     @Test
     public void converTime() throws Exception {
         long curTime = DateUtil.getmillis();

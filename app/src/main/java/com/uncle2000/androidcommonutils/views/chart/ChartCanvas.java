@@ -8,12 +8,18 @@ import android.view.View;
 
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.BlankCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.DescartesCoorSystem;
-import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.RadarCoorStstem;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
-import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.datalooks.Curve;
+import com.uncle2000.androidcommonutils.views.chart.datalooks.DashLine;
+import com.uncle2000.androidcommonutils.views.chart.datalooks.Points;
+import com.uncle2000.androidcommonutils.views.chart.datalooks.Polyline;
+import com.uncle2000.androidcommonutils.views.chart.utils.AdjustData;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -55,26 +61,18 @@ public class ChartCanvas extends View {
             CROSSLINE,
             HORIZONTAL,
             PILLAR,
-            WATERFALL,})
+            WATERFALL})
     @Retention(RetentionPolicy.SOURCE)
     public @interface DataLooks {
     }
+
 
     /**
      * 坐标系的基类，除非你不准备画坐标轴
      */
     private BlankCoorSystem coorSystem;
-    private ChartData[] chartData;
-    /**
-     * 如果不设置则为默认
-     */
-    private Anchor anchor = new Anchor();
-
-    /**
-     * 比例
-     * 1px=1dataScale单位
-     */
-    private float dataScale = 1;
+    private List<ChartData> chartData;
+    private RangeModel rangeModel;
 
     public ChartCanvas(Context context) {
         this(context, null);
@@ -86,71 +84,97 @@ public class ChartCanvas extends View {
 
     public ChartCanvas(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(context);
     }
 
     public ChartCanvas(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init();
+        init(context);
     }
 
-    private void init() {
-    }
-
-    public void reload() {
+    private void init(Context context) {
 
     }
 
-    private void mkData() {
-
+    private void initChartData() {
+        if (this.chartData == null) {
+            this.chartData = new ArrayList<>();
+        } else {
+            this.chartData.clear();
+        }
     }
 
-    public void drawCoorSystem(@CoordinateSystem int system) {
+    public void irrigation() {
+        for (ChartData cd : chartData) {
+            cd.setRangeModel(rangeModel);
+        }
+    }
+
+    public void chooseCoorSystem(@CoordinateSystem int system) {
         switch (system) {
             case BLANK_COORDINATE_SYSTEM:
-                coorSystem = new BlankCoorSystem(anchor);
+                coorSystem = new BlankCoorSystem(rangeModel);
                 break;
             case DESCARTES_COORDINATE_SYSTEM:
-                coorSystem = new DescartesCoorSystem(anchor);
+                coorSystem = new DescartesCoorSystem(rangeModel);
                 break;
             case TABLE_COORDINATE_SYSTEM:
-//                coorSystem = new BlankCoorSystem(anchor);
+                coorSystem = new BlankCoorSystem(rangeModel);
                 break;
             case RADAR_COORDINATE_SYSTEM:
-                coorSystem = new RadarCoorStstem(anchor, 45);
+//                coorSystem = new RadarCoorStstem(rangeModel, 45);
                 break;
         }
     }
 
-    public void dreawChartData(){
+    public void addChartData(@DataLooks int looks) {
+        initChartData();
+        switch (looks) {
+            case DATAAREA:
+//                chartData.add(new DataArea(AdjustData.rangeModel.list));
+                break;
+            case POINTS:
+                chartData.add(new Points(AdjustData.toPoints(rangeModel.list)));
+                break;
+            case CURVE:
+                chartData.add(new Curve(AdjustData.toPoints(rangeModel.list)));
+                break;
+            case POLILINE:
+                chartData.add(new Polyline(AdjustData.toPolyline(rangeModel.list)));
+                break;
+            case DASHLINE:
+                chartData.add(new DashLine(AdjustData.toDash(rangeModel.list, 50, 650)));
+                break;
+            default:
+                break;
+        }
 
     }
 
-//    @Override
-//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-//        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-//        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-//        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-//        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-//
-//        int width;
-//        int height;
-//
-//        if (heightMode == MeasureSpec.EXACTLY) {
-//            height = heightSize;
-//        } else {
-//            height = Math.max(getSuggestedMinimumHeight(), (int) warpHeight);
-//        }
-//
-//        if (widthMode == MeasureSpec.EXACTLY) {
-//            width = widthSize;
-//        } else {
-//            width = Math.max(getSuggestedMinimumWidth(), (int) warpWidth);
-//        }
-//
-//        setMeasuredDimension(width, height);
-//    }
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+
+        int width;
+        int height;
+
+        if (heightMode == MeasureSpec.EXACTLY) {
+            height = heightSize;
+        } else {
+            height = rangeModel.getWarpHeight();
+        }
+
+        if (widthMode == MeasureSpec.EXACTLY) {
+            width = widthSize;
+        } else {
+            width = rangeModel.getWarpWidth();
+        }
+        setMeasuredDimension(width, height);
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -167,31 +191,23 @@ public class ChartCanvas extends View {
     }
 
 
-    public ChartData[] getChartData() {
+    /*********************************************************************************************/
+    public List<ChartData> getChartData() {
         return chartData;
     }
 
     public void setChartData(ChartData... chartData) {
-        this.chartData = chartData;
+        initChartData();
+        this.chartData = Arrays.asList(chartData);
     }
 
-    public BlankCoorSystem getCoorSystem() {
-        return coorSystem;
+    public void setChartData(@DataLooks int... looks) {
+        for (int l : looks) {
+            addChartData(l);
+        }
     }
 
-    public float getDataScale() {
-        return dataScale;
-    }
-
-    public void setDataScale(float dataScale) {
-        this.dataScale = dataScale;
-    }
-
-    public Anchor getAnchor() {
-        return anchor;
-    }
-
-    public void setAnchor(Anchor anchor) {
-        this.anchor = anchor;
+    public void setRangeModel(RangeModel rangeModel) {
+        this.rangeModel = rangeModel;
     }
 }

@@ -186,7 +186,7 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public static List<Path> toRolyline(List<Point> sa) {
+    public static List<Path> toPolyline(List<Point> sa) {
         List<Path> saP = new ArrayList<>();
         Point startp;
         Point endp;
