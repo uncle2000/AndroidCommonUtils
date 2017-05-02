@@ -14,18 +14,15 @@ import java.util.List;
  * Created by 2000 on 2017/4/26.
  */
 
-public class ChartData<T> {
+public class ChartData {
     protected RangeModel rangeModel;
     protected Paint paint;
-    protected T t;
 
-    public ChartData(@NonNull T t) {
-        this(t, null);
+    public ChartData(RangeModel rangeModel) {
+        this(rangeModel, null);
     }
 
-    public ChartData(@NonNull T t, Paint paint) {
-        this.paint = paint;
-        this.t = t;
+    public ChartData(RangeModel rangeModel, Paint paint) {
         if (null == paint) {
             paint = new Paint();
             paint.setStrokeWidth(5f);
@@ -45,27 +42,7 @@ public class ChartData<T> {
         this.paint = paint;
     }
 
-    public T getPts() {
-        return t;
-    }
-
-    public void setPts(T t) {
-        this.t = t;
-    }
-
-    public RangeModel getRangeModel() {
-        return rangeModel;
-    }
-
     public void setRangeModel(RangeModel rangeModel) {
         this.rangeModel = rangeModel;
-    }
-
-    public T getT() {
-        return t;
-    }
-
-    public void setT(T t) {
-        this.t = t;
     }
 }

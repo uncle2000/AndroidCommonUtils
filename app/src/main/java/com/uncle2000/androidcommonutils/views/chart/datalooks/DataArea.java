@@ -7,6 +7,8 @@ import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
+import com.uncle2000.androidcommonutils.views.chart.RangeModel;
+
 /**
  * Created by 2000 on 2017/4/25.
  */
@@ -14,14 +16,12 @@ import android.util.SparseArray;
 public class DataArea extends Points {
     Rect area, pArea;
 
-    public DataArea(@NonNull float[] pts) {
-        super(pts);
-        init();
+    public DataArea(RangeModel rangeModel) {
+        super(rangeModel);
     }
 
-    public DataArea(@NonNull float[] pts, Paint paint) {
-        super(pts, paint);
-        init();
+    public DataArea(RangeModel rangeModel, Paint paint) {
+        super(rangeModel, paint);
     }
 
     private void init() {

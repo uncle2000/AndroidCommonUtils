@@ -9,11 +9,9 @@ import android.view.View;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.BlankCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.DescartesCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
-import com.uncle2000.androidcommonutils.views.chart.datalooks.Curve;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.DashLine;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.Points;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.Polyline;
-import com.uncle2000.androidcommonutils.views.chart.utils.AdjustData;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -134,16 +132,16 @@ public class ChartCanvas extends View {
 //                chartData.add(new DataArea(AdjustData.rangeModel.list));
                 break;
             case POINTS:
-                chartData.add(new Points(AdjustData.toPoints(rangeModel.list)));
+                chartData.add(new Points(rangeModel));
                 break;
             case CURVE:
-                chartData.add(new Curve(AdjustData.toPoints(rangeModel.list)));
+//                chartData.add(new Curve(AdjustData.toPoints(rangeModel.list)));
                 break;
             case POLILINE:
-                chartData.add(new Polyline(AdjustData.toPolyline(rangeModel.list)));
+                chartData.add(new Polyline(rangeModel));
                 break;
             case DASHLINE:
-                chartData.add(new DashLine(AdjustData.toDash(rangeModel.list, 50, 650)));
+                chartData.add(new DashLine(rangeModel));
                 break;
             default:
                 break;

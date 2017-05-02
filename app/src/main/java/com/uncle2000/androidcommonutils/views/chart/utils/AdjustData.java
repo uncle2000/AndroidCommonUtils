@@ -62,20 +62,6 @@ public class AdjustData {
 //        canvas.drawLines(pts, mDatapaint);
 //    }
 
-    /**
-     * 画散点
-     *
-     * @param sa
-     * @return
-     */
-    public static float[] toPoints(List<Point> sa) {
-        float[] pts = new float[sa.size() * 2];
-        for (int i = 0; i < sa.size(); i++) {
-            pts[i * 2] = sa.get(i).x;
-            pts[i * 2 + 1] = sa.get(i).y;
-        }
-        return pts;
-    }
 
 
     /**
@@ -116,28 +102,6 @@ public class AdjustData {
         return pts;
     }
 
-    /**
-     * 画虚线
-     * 这里的虚线并不是指多个点相链接，而是指每个点和X轴Y轴的法线
-     *
-     * @param sa
-     * @return
-     */
-    public static List<Path> toDash(List<Point> sa, int minTableX, int maxTableY) {
-        List<Path> saP = new ArrayList<>();
-        Path path = new Path();
-        for (int i = 0; i < sa.size() * 2; i++) {
-            int loc = new BigDecimal(i / 2).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
-            if (i % 2 == 0) {
-                path.moveTo(minTableX, sa.get(loc).y);
-            } else {
-                path.moveTo(sa.get(loc).x, maxTableY);
-            }
-            path.lineTo(sa.get(loc).x, sa.get(loc).y);
-            saP.add(path);
-        }
-        return saP;
-    }
 
 
     /**
@@ -178,36 +142,6 @@ public class AdjustData {
         }
         return saR;
     }
-
-
-    /**
-     * 画曲线
-     *
-     * @param sa
-     * @return
-     */
-    public static List<Path> toPolyline(List<Point> sa) {
-        List<Path> saP = new ArrayList<>();
-        Point startp;
-        Point endp;
-        for (int i = 0; i < sa.size() - 1; i++) {
-            startp = sa.get(i);
-            endp = sa.get(i + 1);
-            int wt = (startp.x + endp.x) / 2;
-            Point p3 = new Point();
-            Point p4 = new Point();
-            p3.y = startp.y;
-            p3.x = wt;
-            p4.y = endp.y;
-            p4.x = wt;
-            Path path = new Path();
-            path.moveTo(startp.x, startp.y);
-            path.cubicTo(p3.x, p3.y, p4.x, p4.y, endp.x, endp.y);
-            saP.add(path);
-        }
-        return saP;
-    }
-
 
     /**
      * @param sa
