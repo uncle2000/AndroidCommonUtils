@@ -1,13 +1,11 @@
-package com.uncle2000.androidcommonutils.views.chart.datalooks;
+package com.uncle2000.androidcommonutils.views.chart.chart;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
 
-import com.uncle2000.androidcommonutils.views.chart.RangeModel;
+import com.uncle2000.androidcommonutils.views.chart.model.CanvasModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +17,12 @@ import java.util.List;
 
 public class Polyline extends Points {
 
-    public Polyline(RangeModel rangeModel) {
-        this(rangeModel, null);
+    public Polyline(CanvasModel canvasModel) {
+        this(canvasModel, null);
     }
 
-    public Polyline(RangeModel rangeModel, Paint paint) {
-        super(rangeModel, paint);
+    public Polyline(CanvasModel canvasModel, Paint paint) {
+        super(canvasModel, paint);
         init();
     }
 
@@ -34,7 +32,7 @@ public class Polyline extends Points {
 
     @Override
     public void draw(Canvas canvas) {
-        for (Path p : toPolyline(rangeModel.list)) {
+        for (Path p : toPolyline(canvasModel.list)) {
             canvas.drawPath(p, paint);
         }
     }

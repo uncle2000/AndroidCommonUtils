@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.coorsystem;
+package com.uncle2000.androidcommonutils.views.chart.model;
 
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -10,22 +10,16 @@ import android.support.annotation.ColorInt;
  */
 
 public class Anchor {
-    /*分别代表左下角、左上角、右下角、右上角*/
-    public static final int DIRECTION_LB = 0;
-    public static final int DIRECTION_LT = 1;
-    public static final int DIRECTION_RB = 2;
-    public static final int DIRECTION_RT = 3;
-    int direction = DIRECTION_LB;
     /**
      * 锚点的（x,y）表现形式
      * 这是屏幕上的点，并不是数学坐标系的原点
      */
     public int x = 200, y = 600;
 
-    /**
-     * 锚点在屏幕上的坐标
-     */
-    public Point screenCoor;
+//    /**
+//     * 锚点在屏幕上的坐标
+//     */
+//    public Point screenCoor;
     /**
      * 数学坐标轴的原点
      * 显示文本和计算用

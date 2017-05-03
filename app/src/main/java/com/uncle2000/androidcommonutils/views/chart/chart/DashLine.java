@@ -1,13 +1,12 @@
-package com.uncle2000.androidcommonutils.views.chart.datalooks;
+package com.uncle2000.androidcommonutils.views.chart.chart;
 
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
-import android.support.annotation.NonNull;
 
-import com.uncle2000.androidcommonutils.views.chart.RangeModel;
+import com.uncle2000.androidcommonutils.views.chart.model.CanvasModel;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -20,12 +19,12 @@ import java.util.List;
 public class DashLine extends Points {
 //    int phase = 0;
 
-    public DashLine(RangeModel rangeModel) {
-        this(rangeModel, null);
+    public DashLine(CanvasModel canvasModel) {
+        this(canvasModel, null);
     }
 
-    public DashLine(RangeModel rangeModel, Paint paint) {
-        super(rangeModel, paint);
+    public DashLine(CanvasModel canvasModel, Paint paint) {
+        super(canvasModel, paint);
         init();
     }
 
@@ -40,7 +39,7 @@ public class DashLine extends Points {
 
     @Override
     public void draw(Canvas canvas) {
-        for (Path p : toDash(rangeModel.list, 50, 650)) {
+        for (Path p : toDash(canvasModel.list, 50, 650)) {
             canvas.drawPath(p, paint);
         }
     }

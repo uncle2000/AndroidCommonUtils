@@ -1,9 +1,11 @@
-package com.uncle2000.androidcommonutils.views.chart.coorsystem;
+package com.uncle2000.androidcommonutils.views.chart.coorsys;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-import com.uncle2000.androidcommonutils.views.chart.RangeModel;
+import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.model.CanvasModel;
+import com.uncle2000.androidcommonutils.views.chart.model.CoorSysModel;
 
 /**
  * 不一定所有的数据表格都需要坐标轴的称托，所以才需要一个什么都不画的类
@@ -12,12 +14,12 @@ import com.uncle2000.androidcommonutils.views.chart.RangeModel;
  */
 
 public class BlankCoorSystem {
-    protected RangeModel rangeModel;
     protected Anchor anchor;
+    protected CoorSysModel coorSysModel;
 
-    public BlankCoorSystem(RangeModel rangeModel) {
-        this.rangeModel = rangeModel;
-        anchor = rangeModel.anchor;
+    public BlankCoorSystem(CoorSysModel coorSysModel) {
+        this.coorSysModel = coorSysModel;
+        this.anchor = coorSysModel.getAnchor();
     }
 
     public void draw(Canvas canvas) {

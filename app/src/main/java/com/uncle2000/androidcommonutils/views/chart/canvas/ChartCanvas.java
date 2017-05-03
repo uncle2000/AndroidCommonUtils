@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart;
+package com.uncle2000.androidcommonutils.views.chart.canvas;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,12 +6,14 @@ import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.uncle2000.androidcommonutils.views.chart.coorsystem.BlankCoorSystem;
-import com.uncle2000.androidcommonutils.views.chart.coorsystem.DescartesCoorSystem;
-import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
-import com.uncle2000.androidcommonutils.views.chart.datalooks.DashLine;
-import com.uncle2000.androidcommonutils.views.chart.datalooks.Points;
-import com.uncle2000.androidcommonutils.views.chart.datalooks.Polyline;
+import com.uncle2000.androidcommonutils.views.chart.coorsys.BlankCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.coorsys.DescartesCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.chart.ChartData;
+import com.uncle2000.androidcommonutils.views.chart.chart.DashLine;
+import com.uncle2000.androidcommonutils.views.chart.chart.Points;
+import com.uncle2000.androidcommonutils.views.chart.chart.Polyline;
+import com.uncle2000.androidcommonutils.views.chart.model.CanvasModel;
+import com.uncle2000.androidcommonutils.views.chart.model.CoorSysModel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -70,7 +72,9 @@ public class ChartCanvas extends View {
      */
     private BlankCoorSystem coorSystem;
     private List<ChartData> chartData;
-    private RangeModel rangeModel;
+
+    private CanvasModel canvasModel;
+    private CoorSysModel coorSysModel;
 
     public ChartCanvas(Context context) {
         this(context, null);
@@ -90,8 +94,14 @@ public class ChartCanvas extends View {
         init(context);
     }
 
-    private void init(Context context) {
+    public void init(Context context) {
+    }
 
+    public void initData(CanvasModel canvasModel) {
+        this.canvasModel = canvasModel;
+        coorSysModel = new CoorSysModel(canvasModel.anchor);
+        coorSysModel.width = canvasModel.width;
+        coorSysModel.height = canvasModel.height;
     }
 
     private void initChartData() {
@@ -103,16 +113,16 @@ public class ChartCanvas extends View {
     public void chooseCoorSystem(@CoordinateSystem int system) {
         switch (system) {
             case BLANK_COORDINATE_SYSTEM:
-                coorSystem = new BlankCoorSystem(rangeModel);
+                coorSystem = new BlankCoorSystem(coorSysModel);
                 break;
             case DESCARTES_COORDINATE_SYSTEM:
-                coorSystem = new DescartesCoorSystem(rangeModel);
+                coorSystem = new DescartesCoorSystem(coorSysModel);
                 break;
             case TABLE_COORDINATE_SYSTEM:
-                coorSystem = new BlankCoorSystem(rangeModel);
+                coorSystem = new BlankCoorSystem(coorSysModel);
                 break;
             case RADAR_COORDINATE_SYSTEM:
-//                coorSystem = new RadarCoorStstem(rangeModel, 45);
+//                coorSystem = new RadarCoorStstem(canvasModel, 45);
                 break;
         }
     }
@@ -121,19 +131,19 @@ public class ChartCanvas extends View {
         initChartData();
         switch (looks) {
             case DATAAREA:
-//                chartData.add(new DataArea(AdjustData.rangeModel.list));
+//                chartData.add(new DataArea(AdjustData.canvasModel.list));
                 break;
             case POINTS:
-                chartData.add(new Points(rangeModel));
+                chartData.add(new Points(canvasModel));
                 break;
             case CURVE:
-//                chartData.add(new Curve(AdjustData.toPoints(rangeModel.list)));
+//                chartData.add(new Curve(AdjustData.toPoints(canvasModel.list)));
                 break;
             case POLILINE:
-                chartData.add(new Polyline(rangeModel));
+                chartData.add(new Polyline(canvasModel));
                 break;
             case DASHLINE:
-                chartData.add(new DashLine(rangeModel));
+                chartData.add(new DashLine(canvasModel));
                 break;
             default:
                 break;
@@ -155,13 +165,13 @@ public class ChartCanvas extends View {
         if (heightMode == MeasureSpec.EXACTLY) {
             height = heightSize;
         } else {
-            height = rangeModel.getWarpHeight();
+            height = canvasModel.getWarpHeight();
         }
 
         if (widthMode == MeasureSpec.EXACTLY) {
             width = widthSize;
         } else {
-            width = rangeModel.getWarpWidth();
+            width = canvasModel.getWarpWidth();
         }
         setMeasuredDimension(width, height);
     }
@@ -197,7 +207,10 @@ public class ChartCanvas extends View {
         }
     }
 
-    public void setRangeModel(RangeModel rangeModel) {
-        this.rangeModel = rangeModel;
+    public CoorSysModel getCoorSysModel() {
+        if (null == coorSysModel) {
+            throw new ExceptionInInitializerError("must after setCanvasModel()");
+        }
+        return coorSysModel;
     }
 }

@@ -1,13 +1,10 @@
-package com.uncle2000.androidcommonutils.views.chart.datalooks;
+package com.uncle2000.androidcommonutils.views.chart.chart;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.graphics.Rect;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
 
-import com.uncle2000.androidcommonutils.views.chart.RangeModel;
+import com.uncle2000.androidcommonutils.views.chart.model.CanvasModel;
 
 /**
  * Created by 2000 on 2017/4/25.
@@ -16,12 +13,12 @@ import com.uncle2000.androidcommonutils.views.chart.RangeModel;
 public class DataArea extends Points {
     Rect area, pArea;
 
-    public DataArea(RangeModel rangeModel) {
-        super(rangeModel);
+    public DataArea(CanvasModel canvasModel) {
+        super(canvasModel);
     }
 
-    public DataArea(RangeModel rangeModel, Paint paint) {
-        super(rangeModel, paint);
+    public DataArea(CanvasModel canvasModel, Paint paint) {
+        super(canvasModel, paint);
     }
 
     private void init() {

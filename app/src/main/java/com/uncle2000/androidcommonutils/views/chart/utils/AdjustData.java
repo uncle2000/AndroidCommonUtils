@@ -1,14 +1,12 @@
 package com.uncle2000.androidcommonutils.views.chart.utils;
 
-import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.annotation.Size;
 
-import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 

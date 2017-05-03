@@ -1,13 +1,10 @@
-package com.uncle2000.androidcommonutils.views.chart.datalooks;
+package com.uncle2000.androidcommonutils.views.chart.chart;
 
-import android.annotation.SuppressLint;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
 
-import com.uncle2000.androidcommonutils.views.chart.RangeModel;
+import com.uncle2000.androidcommonutils.views.chart.model.CanvasModel;
 
 import java.util.List;
 
@@ -20,17 +17,17 @@ import java.util.List;
 public class Points extends ChartData {
 
 
-    public Points(RangeModel rangeModel) {
-        super(rangeModel);
+    public Points(CanvasModel canvasModel) {
+        super(canvasModel);
     }
 
-    public Points(RangeModel rangeModel, Paint paint) {
-        super(rangeModel, paint);
+    public Points(CanvasModel canvasModel, Paint paint) {
+        super(canvasModel, paint);
     }
 
     public void draw(Canvas canvas) {
         this.paint.setStrokeWidth(10f);
-        canvas.drawPoints(toPoints(rangeModel.list), paint);
+        canvas.drawPoints(toPoints(canvasModel.list), paint);
     }
 
     /**
