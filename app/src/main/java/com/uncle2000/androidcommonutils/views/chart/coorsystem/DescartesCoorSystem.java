@@ -1,4 +1,4 @@
-package com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes;
+package com.uncle2000.androidcommonutils.views.chart.coorsystem;
 
 import android.graphics.Canvas;
 import android.graphics.Point;

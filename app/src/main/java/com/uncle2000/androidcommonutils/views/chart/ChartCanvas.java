@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.BlankCoorSystem;
-import com.uncle2000.androidcommonutils.views.chart.coorsystem.descartes.DescartesCoorSystem;
+import com.uncle2000.androidcommonutils.views.chart.coorsystem.DescartesCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.ChartData;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.DashLine;
 import com.uncle2000.androidcommonutils.views.chart.datalooks.Points;
