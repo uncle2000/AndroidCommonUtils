@@ -18,16 +18,17 @@ public class ChartData {
     protected RangeModel rangeModel;
     protected Paint paint;
 
-    public ChartData(RangeModel rangeModel) {
+    ChartData(RangeModel rangeModel) {
         this(rangeModel, null);
     }
 
-    public ChartData(RangeModel rangeModel, Paint paint) {
+    ChartData(RangeModel rangeModel, Paint paint) {
         if (null == paint) {
             paint = new Paint();
             paint.setStrokeWidth(5f);
         }
         this.paint = paint;
+        this.rangeModel = rangeModel;
     }
 
     public void draw(Canvas canvas) {
@@ -40,9 +41,5 @@ public class ChartData {
 
     public void setPaint(Paint paint) {
         this.paint = paint;
-    }
-
-    public void setRangeModel(RangeModel rangeModel) {
-        this.rangeModel = rangeModel;
     }
 }

@@ -53,14 +53,24 @@ public class RangeModel {
                       float xScale, float yScale,
                       float xAnchor, float yAnchor,
                       float xMathAnchor, float yMathAnchor) {
-        init(context, list, width, height, xScale, yScale, xAnchor, yAnchor, xMathAnchor, yMathAnchor);
+
+        if (xAnchor * yAnchor <= 0 || xAnchor > width || yAnchor > height) {
+            throw new ExceptionInInitializerError();
+        }
+        anchor = new Anchor(xAnchor, yAnchor, xMathAnchor, yMathAnchor);
+        init(context, list, width, height, xScale, yScale, anchor);
+    }
+
+    public RangeModel(Context context, List<Point> list,
+                      float width, float height,
+                      float xScale, float yScale,
+                      Anchor anchor) {
+        init(context, list, width, height, xScale, yScale,anchor);
     }
 
     private void init(@NonNull Context context, @NonNull @Size(min = 1) List<Point> list,
                       float width, float height,
-                      float xScale, float yScale,
-                      float xAnchor, float yAnchor,
-                      float xMathAnchor, float yMathAnchor) {
+                      float xScale, float yScale,Anchor anchor) {
         screenW = ScreenUtils.getScreenWidth(context);
         screenH = ScreenUtils.getScreenHeight(context);
         if (screenW * screenH <= 0) {
@@ -72,10 +82,6 @@ public class RangeModel {
         if (xScale * yScale <= 0) {
             throw new ExceptionInInitializerError();
         }
-        if (xAnchor * yAnchor <= 0 || xAnchor > width || yAnchor > height) {
-            throw new ExceptionInInitializerError();
-        }
-        anchor = new Anchor(xAnchor, yAnchor, xMathAnchor, yMathAnchor);
         this.list = AdjustData.adjustData2Px(list, anchor, xScale, yScale);
     }
 

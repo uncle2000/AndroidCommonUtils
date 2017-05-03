@@ -3,6 +3,8 @@ package com.uncle2000.androidcommonutils.views.chart.utils;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.support.annotation.Size;
 
 import com.uncle2000.androidcommonutils.views.chart.coorsystem.Anchor;
 
@@ -21,7 +23,7 @@ public class AdjustData {
         return adjustData2Px(orign, anchor, scale, scale);
     }
 
-    public static List<Point> adjustData2Px(List<Point> orign, Anchor anchor, float scaleX, float scaleY) {
+    public static List<Point> adjustData2Px(@NonNull @Size(min = 1) List<Point> orign, Anchor anchor, float scaleX, float scaleY) {
         float oX, oY;
         oX = anchor.x;
         oY = anchor.y;
@@ -63,7 +65,6 @@ public class AdjustData {
 //    }
 
 
-
     /**
      * 画折线
      *
@@ -101,7 +102,6 @@ public class AdjustData {
         }
         return pts;
     }
-
 
 
     /**

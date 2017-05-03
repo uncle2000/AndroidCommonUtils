@@ -25,16 +25,14 @@ public class MainActivity extends AppCompatActivity {
                 .Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         /*****************************************************************************************/
-        RangeModel rangeModel = new RangeModel(this, DefaultData.chartData);
-
-//        DashLine d = new DashLine(AdjustData.toDash(po, 50, 650));
-//        Polyline p = new Polyline(AdjustData.toPolyline(po));
-//        Points points = new Points(AdjustData.toPoints(po));
+        RangeModel rangeModel = new RangeModel(this, DefaultData.chartData,
+                800, 600, 100, 100, 100, 600, 0, 0);
 
         ChartCanvas chartCanvas = (ChartCanvas) findViewById(R.id.fl);
         chartCanvas.setRangeModel(rangeModel);
         chartCanvas.setChartData(POINTS, POLILINE, DASHLINE);
         chartCanvas.chooseCoorSystem(DESCARTES_COORDINATE_SYSTEM);
-        chartCanvas.irrigation();
+        /*****************************************************************************************/
+
     }
 }

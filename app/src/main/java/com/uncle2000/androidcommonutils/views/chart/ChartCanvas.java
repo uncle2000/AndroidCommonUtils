@@ -97,14 +97,6 @@ public class ChartCanvas extends View {
     private void initChartData() {
         if (this.chartData == null) {
             this.chartData = new ArrayList<>();
-        } else {
-            this.chartData.clear();
-        }
-    }
-
-    public void irrigation() {
-        for (ChartData cd : chartData) {
-            cd.setRangeModel(rangeModel);
         }
     }
 

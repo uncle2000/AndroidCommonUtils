@@ -21,11 +21,12 @@ public class DashLine extends Points {
 //    int phase = 0;
 
     public DashLine(RangeModel rangeModel) {
-        super(rangeModel);
+        this(rangeModel, null);
     }
 
     public DashLine(RangeModel rangeModel, Paint paint) {
         super(rangeModel, paint);
+        init();
     }
 
     private void init() {
@@ -51,7 +52,7 @@ public class DashLine extends Points {
      * @param sa
      * @return
      */
-    private   List<Path> toDash(List<Point> sa, int minTableX, int maxTableY) {
+    public List<Path> toDash(List<Point> sa, int minTableX, int maxTableY) {
         List<Path> saP = new ArrayList<>();
         Path path = new Path();
         for (int i = 0; i < sa.size() * 2; i++) {

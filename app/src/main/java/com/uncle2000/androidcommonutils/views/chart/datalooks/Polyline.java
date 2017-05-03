@@ -20,11 +20,12 @@ import java.util.List;
 public class Polyline extends Points {
 
     public Polyline(RangeModel rangeModel) {
-        super(rangeModel);
+        this(rangeModel, null);
     }
 
     public Polyline(RangeModel rangeModel, Paint paint) {
         super(rangeModel, paint);
+        init();
     }
 
     private void init() {
@@ -45,7 +46,7 @@ public class Polyline extends Points {
      * @param sa
      * @return
      */
-    private   List<Path> toPolyline(List<Point> sa) {
+    private List<Path> toPolyline(List<Point> sa) {
         List<Path> saP = new ArrayList<>();
         Point startp;
         Point endp;

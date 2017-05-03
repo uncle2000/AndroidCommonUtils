@@ -43,26 +43,20 @@ public class Anchor {
     private Paint anchorPaint;
 
     public Anchor() {
-        this(null);
+        this(0, 0, 0, 0);
     }
 
     public Anchor(int x, int y) {
-        this(new Point(x, y));
-    }
-
-    public Anchor(Point screenCoor) {
-        if (null == screenCoor) {
-            this.screenCoor = new Point(x, y);
-        } else {
-            this.x = screenCoor.x;
-            this.y = screenCoor.y;
-            this.screenCoor = screenCoor;
-        }
-        text = "(" + mathCoor.x + "," + mathCoor.y + ")";
+        this(x, y, 0, 0);
     }
 
     public Anchor(float x, float y, float xMath, float yMath) {
-        this(null);
+        this.x = (int) x;
+        this.y = (int) y;
+        mathCoor.x = (int) xMath;
+        mathCoor.y = (int) yMath;
+
+        text = "(" + mathCoor.x + "," + mathCoor.y + ")";
     }
 
 
