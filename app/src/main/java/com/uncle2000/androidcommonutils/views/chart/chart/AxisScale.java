@@ -5,11 +5,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 
 
-import com.uncle2000.androidcommonutils.views.chart.model.AxisModel;
-import com.uncle2000.androidcommonutils.views.chart.model.ElementModel;
-import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

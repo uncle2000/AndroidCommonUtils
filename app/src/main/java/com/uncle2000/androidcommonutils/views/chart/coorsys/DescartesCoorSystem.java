@@ -3,16 +3,10 @@ package com.uncle2000.androidcommonutils.views.chart.coorsys;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Point;
+import android.support.annotation.Size;
 
-import com.uncle2000.androidcommonutils.views.chart.model.ArrawModel;
-import com.uncle2000.androidcommonutils.views.chart.model.AxisModel;
 import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
-import com.uncle2000.androidcommonutils.views.chart.coorsys.coordinate.axis.Axis;
-import com.uncle2000.androidcommonutils.views.chart.model.ElementModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 笛卡尔坐标系
@@ -25,11 +19,13 @@ import java.util.List;
 public class DescartesCoorSystem extends BlankCoorSystem {
     private int xDir = 1, yDir = 1;
     private int xAngle, yAngle;
+
     public int xLength = 800, yLength = 500;
     public boolean showArraw = true;
     public int xOffset = 15, yOffset = 15;
     /*arraw*/
     public int arrawL = 30;
+    @Size(max = 360, min = 0)
     public int arrawAngle = 30;
 
     public DescartesCoorSystem(Context context) {

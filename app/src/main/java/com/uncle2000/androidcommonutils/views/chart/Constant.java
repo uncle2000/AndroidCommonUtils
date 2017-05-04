@@ -10,18 +10,18 @@ import java.lang.annotation.RetentionPolicy;
  */
 
 public class Constant {
-    public static final int BLANK_COORDINATE_SYSTEM = 0;
-    public static final int DESCARTES_COORDINATE_SYSTEM = 1;
-    public static final int TABLE_COORDINATE_SYSTEM = 2;
-    public static final int RADAR_COORDINATE_SYSTEM = 3;
-
-    @IntDef({BLANK_COORDINATE_SYSTEM,
-            DESCARTES_COORDINATE_SYSTEM,
-            TABLE_COORDINATE_SYSTEM,
-            RADAR_COORDINATE_SYSTEM})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface CoordinateSystem {
-    }
+//    public static final int BLANK_COORDINATE_SYSTEM = 0;
+//    public static final int DESCARTES_COORDINATE_SYSTEM = 1;
+//    public static final int TABLE_COORDINATE_SYSTEM = 2;
+//    public static final int RADAR_COORDINATE_SYSTEM = 3;
+//
+//    @IntDef({BLANK_COORDINATE_SYSTEM,
+//            DESCARTES_COORDINATE_SYSTEM,
+//            TABLE_COORDINATE_SYSTEM,
+//            RADAR_COORDINATE_SYSTEM})
+//    @Retention(RetentionPolicy.SOURCE)
+//    public @interface CoordinateSystem {
+//    }
 
     public static final int CHART_DATA = 0;
     public static final int DATAAREA = 1;

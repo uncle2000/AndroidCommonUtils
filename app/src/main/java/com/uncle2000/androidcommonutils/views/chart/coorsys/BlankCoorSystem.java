@@ -11,6 +11,7 @@ import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
 import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * 不一定所有的数据表格都需要坐标轴的称托，所以才需要一个什么都不画的类
@@ -19,11 +20,10 @@ import java.util.List;
  */
 
 public class BlankCoorSystem extends View {
-    Paint paint = new Paint();
-    ChartOption chartOption;
-    Anchor anchor;
-    Charts[] charts;
-    List<Point> list;
+    protected Paint paint = new Paint();
+    protected ChartOption chartOption;
+    protected Anchor anchor;
+    private Set<Charts> charts;
 
     public BlankCoorSystem(Context context) {
         super(context);
@@ -33,7 +33,6 @@ public class BlankCoorSystem extends View {
     public BlankCoorSystem(Context context, ChartOption chartOption) {
         super(context);
         this.chartOption = chartOption;
-        this.list = chartOption.list;
         this.anchor = chartOption.anchor;
         this.charts = chartOption.charts;
     }
@@ -51,7 +50,7 @@ public class BlankCoorSystem extends View {
 
         if (null != charts)
             for (Charts c : charts) {
-                c.draw(canvas, list, paint);
+                c.draw(canvas, chartOption.list, paint);
             }
     }
 }

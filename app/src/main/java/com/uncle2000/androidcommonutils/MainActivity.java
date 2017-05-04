@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 
 import com.uncle2000.androidcommonutils.uitls.system.PermissionUtil;
+import com.uncle2000.androidcommonutils.views.chart.Constant;
 import com.uncle2000.androidcommonutils.views.chart.coorsys.BlankCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.coorsys.DescartesCoorSystem;
 import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
@@ -14,8 +15,6 @@ import com.uncle2000.androidcommonutils.views.chart.utils.AdjustData;
 import com.uncle2000.androidcommonutils.views.chart.utils.DefaultData;
 
 import java.util.List;
-
-import static com.uncle2000.androidcommonutils.views.chart.Constant.DESCARTES_COORDINATE_SYSTEM;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
                 .Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         /*****************************************************************************************/
-        Anchor anchor = new Anchor(900, 900, 0, 0);
+        Anchor anchor = new Anchor(100, 900, 0, 0);
         List<Point> list = AdjustData.adjustData2Px(DefaultData.chartData, anchor, 100, 100);
         ChartOption chartOption = new ChartOption();
         chartOption.anchor = anchor;
         chartOption.list = list;
-//        chartOption.charts=
+        chartOption.setCharts(Constant.POINTS);
 
         BlankCoorSystem system = new DescartesCoorSystem(this, chartOption);
         ll.addView(system);
