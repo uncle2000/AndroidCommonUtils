@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 
-import com.uncle2000.androidcommonutils.views.chart.model.CanvasModel;
 
 import java.util.List;
 
@@ -14,20 +13,12 @@ import java.util.List;
  */
 
 @SuppressWarnings("unchecked")
-public class Points extends ChartData {
+public class Points extends Charts {
 
-
-    public Points(CanvasModel canvasModel) {
-        super(canvasModel);
-    }
-
-    public Points(CanvasModel canvasModel, Paint paint) {
-        super(canvasModel, paint);
-    }
-
-    public void draw(Canvas canvas) {
-        this.paint.setStrokeWidth(10f);
-        canvas.drawPoints(toPoints(canvasModel.list), paint);
+    @Override
+    public void draw(Canvas canvas, List<Point> list, Paint paint) {
+        paint.setStrokeWidth(10f);
+        canvas.drawPoints(toPoints(list), paint);
     }
 
     /**

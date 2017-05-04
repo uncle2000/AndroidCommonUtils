@@ -1,12 +1,13 @@
 package com.uncle2000.androidcommonutils.views.chart.coorsys;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Point;
 
 import com.uncle2000.androidcommonutils.views.chart.model.ArrawModel;
 import com.uncle2000.androidcommonutils.views.chart.model.AxisModel;
+import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
-import com.uncle2000.androidcommonutils.views.chart.model.CoorSysModel;
 import com.uncle2000.androidcommonutils.views.chart.coorsys.coordinate.axis.Axis;
 import com.uncle2000.androidcommonutils.views.chart.model.ElementModel;
 
@@ -25,12 +26,12 @@ public class DescartesCoorSystem extends BlankCoorSystem {
     private Axis xAxis, yAxis;
     private AxisModel xModel, yModel;
 
-    public DescartesCoorSystem(CoorSysModel coorSysModel) {
-        super(coorSysModel);
+    public DescartesCoorSystem(Context context, ChartOption chartOption) {
+        super(context, chartOption);
         judgeDirection();
 
-        mkElement(xModel, 15, 80);
-        mkElement(yModel, 15, 50);
+//        mkElement(xModel, 15, 80);
+//        mkElement(yModel, 15, 50);
 
         xAxis = new Axis(xModel);
         yAxis = new Axis(yModel);
@@ -38,16 +39,16 @@ public class DescartesCoorSystem extends BlankCoorSystem {
 
 
     private void judgeDirection() {
-        if (anchor.x <= coorSysModel.width / 2) {
-            xModel = new AxisModel(coorSysModel.anchor, 90, new ArrawModel());
+        if (anchor.x <= getWidth()/ 2) {
+            xModel = new AxisModel(anchor, 90, new ArrawModel());
         } else {
-            xModel = new AxisModel(coorSysModel.anchor, 270);
+            xModel = new AxisModel(anchor, 270);
         }
 
-        if (anchor.y > coorSysModel.height / 2) {
-            yModel = new AxisModel(coorSysModel.anchor, 180);
+        if (anchor.y > getWidth() / 2) {
+            yModel = new AxisModel(anchor, 180);
         } else {
-            yModel = new AxisModel(coorSysModel.anchor, 0);
+            yModel = new AxisModel(anchor, 0);
         }
 
         yModel.offset = 15;

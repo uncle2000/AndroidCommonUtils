@@ -1,11 +1,16 @@
 package com.uncle2000.androidcommonutils.views.chart.coorsys;
 
+import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Rect;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.view.View;
 
+import com.uncle2000.androidcommonutils.views.chart.chart.Charts;
 import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
-import com.uncle2000.androidcommonutils.views.chart.model.CanvasModel;
-import com.uncle2000.androidcommonutils.views.chart.model.CoorSysModel;
+import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+
+import java.util.List;
 
 /**
  * 不一定所有的数据表格都需要坐标轴的称托，所以才需要一个什么都不画的类
@@ -13,13 +18,19 @@ import com.uncle2000.androidcommonutils.views.chart.model.CoorSysModel;
  * Created by 2000 on 2017/4/25.
  */
 
-public class BlankCoorSystem {
-    protected Anchor anchor;
-    protected CoorSysModel coorSysModel;
+public class BlankCoorSystem extends View {
+    Paint paint = new Paint();
+    ChartOption chartOption;
+    Anchor anchor;
+    Charts[] charts;
+    List<Point> list;
 
-    public BlankCoorSystem(CoorSysModel coorSysModel) {
-        this.coorSysModel = coorSysModel;
-        this.anchor = coorSysModel.getAnchor();
+    public BlankCoorSystem(Context context, ChartOption chartOption) {
+        super(context);
+        this.chartOption = chartOption;
+        this.list = chartOption.list;
+        this.anchor = chartOption.anchor;
+        this.charts = chartOption.charts;
     }
 
     public void draw(Canvas canvas) {
@@ -27,28 +38,15 @@ public class BlankCoorSystem {
     }
 
     private void drawAnchor(Canvas canvas) {
-        if (null != anchor) {
+        if (null != anchor)
             canvas.drawText(anchor.getText(),
                     anchor.x + anchor.getTextOffsetX(),
                     anchor.y + anchor.getTextOffsetY(),
                     anchor.getAnchorPaint());
-        }
-    }
 
-    /**
-     * 获得图表坐标轴的绘制范围，这样方便View去计算warp_content的时候应该占多大的位置。
-     * 每种表应该有一个默认值
-     * 如果表
-     *
-     * @return
-     */
-    public Rect getRange() {
-        Rect rect = new Rect();
-
-        return rect;
-    }
-
-    public void setAnchor(Anchor anchor) {
-        this.anchor = anchor;
+        if (null != charts)
+            for (Charts c : charts) {
+                c.draw(canvas, list, paint);
+            }
     }
 }
