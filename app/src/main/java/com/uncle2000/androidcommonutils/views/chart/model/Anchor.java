@@ -4,53 +4,40 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.support.annotation.ColorInt;
 
+import com.uncle2000.androidcommonutils.views.chart.Constant;
+
 /**
  * 锚点 坐标系的原点
  * Created by 2000 on 2017/4/20.
  */
 
 public class Anchor {
-    /**
-     * 锚点的（x,y）表现形式
-     * 这是屏幕上的点，并不是数学坐标系的原点
-     */
-    public int x = 200, y = 600;
-
-//    /**
-//     * 锚点在屏幕上的坐标
-//     */
-//    public Point screenCoor;
-    /**
-     * 数学坐标轴的原点
-     * 显示文本和计算用
-     */
-    public Point mathCoor = new Point();
-
-    /**
-     * 锚点的文字偏移，如果不偏移文字会画到原点上
-     */
-    private int textOffsetX = -10, textOffsetY = 30;
-    private float textSize = 38f;
+    public int x, y;
+    public int xMath, yMath;
+    private int textOffsetX = Constant.DEFALT_ANCHOR_TEXT_OFFSET_X;
+    private int textOffsetY = Constant.DEFALT_ANCHOR_TEXT_OFFSET_Y;
+    private float textSize = Constant.DEFALT_ANCHOR_TEXT_SIZE;
     private String text;
     @ColorInt
     private int textColor = 0xff000000;
     private Paint anchorPaint;
 
     public Anchor() {
-        this(0, 0, 0, 0);
+        this(Constant.DEFALT_ANCHOR_X, Constant.DEFALT_ANCHOR_Y,
+                Constant.DEFALT_ANCHOR_MATH_X, Constant.DEFALT_ANCHOR_MATH_Y);
     }
 
     public Anchor(int x, int y) {
-        this(x, y, 0, 0);
+        this(x, y, Constant.DEFALT_ANCHOR_MATH_X, Constant.DEFALT_ANCHOR_MATH_Y);
     }
 
-    public Anchor(float x, float y, float xMath, float yMath) {
-        this.x = (int) x;
-        this.y = (int) y;
-        mathCoor.x = (int) xMath;
-        mathCoor.y = (int) yMath;
+    public Anchor(int x, int y, int xMath, int yMath) {
+        this.x = x;
+        this.y = y;
+        this.xMath = xMath;
+        this.yMath = yMath;
 
-        text = "(" + mathCoor.x + "," + mathCoor.y + ")";
+        text = "(" + xMath + "," + yMath + ")";
     }
 
 
@@ -108,4 +95,6 @@ public class Anchor {
     public void setAnchorPaint(Paint anchorPaint) {
         this.anchorPaint = anchorPaint;
     }
+
+
 }

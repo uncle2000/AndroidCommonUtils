@@ -31,9 +31,9 @@ public class ChartOption {
     /*数据*/
     public List<Point> list;
     public Set<Charts> charts;
-    public int xScale = 1, yScale = 1;
+    public int xScale = Constant.DEFALT_CHART_X_SCALE, yScale = Constant.DEFALT_CHART_y_SCALE;
     /*********************************************************************************************/
-    public int chartPadding = 50;
+    public int chartPadding = Constant.DEFALT_CHART_PADDING;
     public int chartWidth;
     public int chartHeight;
 

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.support.annotation.Size;
+import android.util.AttributeSet;
 
+import com.uncle2000.androidcommonutils.views.chart.Constant;
 import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
 
@@ -17,19 +19,33 @@ import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
  */
 
 public class DescartesCoorSystem extends BlankCoorSystem {
-    private int xDir = 1, yDir = 1;
+    private int xDir = -1, yDir = 1;
     private int xAngle, yAngle;
 
-    public int xLength = 800, yLength = 500;
+    public int xLength = Constant.DEFALT_AXIS_X_LENGHT;
+    public int yLength = Constant.DEFALT_AXIS_Y_LENGHT;
     public boolean showArraw = true;
-    public int xOffset = 15, yOffset = 15;
+    public int xOffset = Constant.DEFALT_AXIS_OFFSET_X;
+    public int yOffset = Constant.DEFALT_AXIS_OFFSET_Y;
     /*arraw*/
-    public int arrawL = 30;
+    public int arrawL = Constant.DEFALT_ARRAW_LENGTH;
     @Size(max = 360, min = 0)
-    public int arrawAngle = 30;
+    public int arrawAngle = Constant.DEFALT_ARRAW_ANGLE;
 
     public DescartesCoorSystem(Context context) {
         super(context);
+    }
+
+    public DescartesCoorSystem(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public DescartesCoorSystem(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    public DescartesCoorSystem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     public DescartesCoorSystem(Context context, ChartOption chartOption) {
@@ -105,4 +121,6 @@ public class DescartesCoorSystem extends BlankCoorSystem {
         }
         return dir;
     }
+
+
 }

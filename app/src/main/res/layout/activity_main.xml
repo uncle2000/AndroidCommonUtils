@@ -9,4 +9,9 @@
     android:orientation="vertical"
     tools:context="com.uncle2000.androidcommonutils.MainActivity">
 
+    <com.uncle2000.androidcommonutils.views.chart.coorsys.DescartesCoorSystem
+        android:id="@+id/dcs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f3ff3f" />
 </LinearLayout>

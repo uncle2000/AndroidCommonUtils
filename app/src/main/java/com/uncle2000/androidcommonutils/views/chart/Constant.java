@@ -2,6 +2,8 @@ package com.uncle2000.androidcommonutils.views.chart;
 
 import android.support.annotation.IntDef;
 
+import com.uncle2000.androidcommonutils.uitls.equipment.ScreenUtils;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -10,6 +12,29 @@ import java.lang.annotation.RetentionPolicy;
  */
 
 public class Constant {
+    public static final int DEFALT_CHART_WIDTH = 800;
+    public static final int DEFALT_CHART_HEIGHT = 600;
+    public static final int DEFALT_CHART_PADDING = 50;
+    public static final int DEFALT_CHART_X_SCALE = 1;
+    public static final int DEFALT_CHART_y_SCALE = 1;
+
+    public static final int DEFALT_ANCHOR_X = 100;
+    public static final int DEFALT_ANCHOR_Y = 100;
+    public static final int DEFALT_ANCHOR_MATH_X = 0;
+    public static final int DEFALT_ANCHOR_MATH_Y = 0;
+    public static final float DEFALT_ANCHOR_TEXT_SIZE = 38f;
+    public static final int DEFALT_ANCHOR_TEXT_OFFSET_X = 20;
+    public static final int DEFALT_ANCHOR_TEXT_OFFSET_Y = 20;
+
+    public static final int DEFALT_AXIS_X_LENGHT = 600;
+    public static final int DEFALT_AXIS_Y_LENGHT = 300;
+    public static final int DEFALT_AXIS_OFFSET_X = 15;
+    public static final int DEFALT_AXIS_OFFSET_Y = 15;
+
+    public static final int DEFALT_ARRAW_ANGLE = 30;
+    public static final int DEFALT_ARRAW_LENGTH = 30;
+
+
 //    public static final int BLANK_COORDINATE_SYSTEM = 0;
 //    public static final int DESCARTES_COORDINATE_SYSTEM = 1;
 //    public static final int TABLE_COORDINATE_SYSTEM = 2;

@@ -29,14 +29,16 @@ public class MainActivity extends AppCompatActivity {
                 .Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         LinearLayout ll = (LinearLayout) findViewById(R.id.root_view);
+        DescartesCoorSystem dcs = (DescartesCoorSystem) findViewById(R.id.dcs);
         /*****************************************************************************************/
         Anchor anchor = new Anchor(100, 900, 0, 0);
         ChartOption chartOption = new ChartOption(DefaultData.chartData, anchor, 100, 100);
         chartOption.anchor = anchor;
         chartOption.setCharts(Constant.POINTS, Constant.DATAAREA, Constant.CROSSLINE);
 
-        BlankCoorSystem system = new DescartesCoorSystem(this, chartOption);
-        ll.addView(system);
+//        BlankCoorSystem system = new DescartesCoorSystem(this, chartOption);
+//        ll.addView(system);
+        dcs.setChartOption(chartOption);
         /*****************************************************************************************/
     }
 }

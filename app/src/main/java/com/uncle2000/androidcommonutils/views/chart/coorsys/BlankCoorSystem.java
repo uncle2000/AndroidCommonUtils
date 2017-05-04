@@ -3,9 +3,10 @@ package com.uncle2000.androidcommonutils.views.chart.coorsys;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Point;
+import android.util.AttributeSet;
 import android.view.View;
 
+import com.uncle2000.androidcommonutils.views.chart.Constant;
 import com.uncle2000.androidcommonutils.views.chart.chart.Charts;
 import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
 import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
@@ -20,6 +21,7 @@ import java.util.Set;
  */
 
 public class BlankCoorSystem extends View {
+    private Context context;
     protected Paint paint = new Paint();
     protected ChartOption chartOption;
     protected Anchor anchor;
@@ -27,19 +29,61 @@ public class BlankCoorSystem extends View {
 
     public BlankCoorSystem(Context context) {
         super(context);
+        this.context = context;
+        this.anchor = new Anchor();
+    }
+
+    public BlankCoorSystem(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        this.context = context;
+        this.anchor = new Anchor();
+    }
+
+    public BlankCoorSystem(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        this.context = context;
+        this.anchor = new Anchor();
+    }
+
+    public BlankCoorSystem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        this.context = context;
         this.anchor = new Anchor();
     }
 
     public BlankCoorSystem(Context context, ChartOption chartOption) {
         super(context);
+        this.context = context;
         this.chartOption = chartOption;
-        this.anchor = chartOption.anchor;
+        this.anchor = new Anchor(chartOption.anchor.x, chartOption.anchor.y);
         this.charts = chartOption.charts;
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+
+        int width = Constant.DEFALT_CHART_WIDTH;
+        int height = Constant.DEFALT_CHART_HEIGHT;
+
+        if (widthMode == MeasureSpec.EXACTLY) {
+            width = widthSize;
+        }
+        if (heightMode == MeasureSpec.EXACTLY) {
+            height = heightSize;
+        }
+
+        setMeasuredDimension(width, height);
+    }
+
     public void draw(Canvas canvas) {
-        chartOption.chartHeight = getHeight();
-        chartOption.chartWidth = getWidth();
+        if (null != chartOption) {
+            chartOption.chartHeight = getHeight();
+            chartOption.chartWidth = getWidth();
+        }
         drawAnchor(canvas);
     }
 
@@ -55,5 +99,11 @@ public class BlankCoorSystem extends View {
                 c.setPaint(paint);
                 c.draw(canvas);
             }
+    }
+
+    public void setChartOption(ChartOption chartOption) {
+        this.chartOption = chartOption;
+        this.anchor = chartOption.anchor;
+        this.charts = chartOption.charts;
     }
 }
