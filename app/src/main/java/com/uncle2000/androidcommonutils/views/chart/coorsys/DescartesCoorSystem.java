@@ -56,8 +56,6 @@ public class DescartesCoorSystem extends BlankCoorSystem {
     public void draw(Canvas canvas) {
         super.draw(canvas);
         judgeAngle();
-        xDir = judgeDirection2(xAngle);
-        yDir = judgeDirection2(yAngle);
 
         canvas.drawLines(new float[]{
                 //x axis
@@ -90,37 +88,30 @@ public class DescartesCoorSystem extends BlankCoorSystem {
     /**********************************************************************************************/
 
     private void judgeAngle() {
-        if (anchor.x <= getWidth() / 2) {
+        if (anchor.x < getWidth() / 2) {
             xAngle = 90;
-        } else {
+            xDir = 1;
+        } else if (anchor.x > getWidth() / 2) {
             xAngle = 270;
-        }
-
-        if (anchor.y > getWidth() / 2) {
-            yAngle = 180;
+            xDir = -1;
         } else {
+            xAngle = 90;
+            xDir = 1;
+            xLength /= 2;
+            xOffset = xLength;
+        }
+
+        if (anchor.y < getHeight() / 2) {
             yAngle = 0;
+            yDir = -1;
+        } else if (anchor.y > getHeight() / 2) {
+            yAngle = 180;
+            yDir = 1;
+        } else {
+            yAngle = 180;
+            yDir = 1;
+            yLength /= 2;
+            yOffset = yLength;
         }
     }
-
-    private int judgeDirection2(int angle) {
-        int dir = 0;
-        switch (angle % 360) {
-            case 0:
-                dir = -1;
-                break;
-            case 90:
-                dir = 1;
-                break;
-            case 180:
-                dir = 1;
-                break;
-            case 270:
-                dir = -1;
-                break;
-        }
-        return dir;
-    }
-
-
 }

@@ -3,6 +3,8 @@ package com.uncle2000.androidcommonutils.views.chart.coorsys;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -11,6 +13,7 @@ import com.uncle2000.androidcommonutils.views.chart.chart.Charts;
 import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
 import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 
+import java.security.InvalidAlgorithmParameterException;
 import java.util.List;
 import java.util.Set;
 
@@ -84,15 +87,21 @@ public class BlankCoorSystem extends View {
             chartOption.chartHeight = getHeight();
             chartOption.chartWidth = getWidth();
         }
+        paint.setColor(0xffffccff);
+        canvas.drawRect(new Rect(0, 0, getWidth(), getHeight()), paint);
+        paint.setColor(0xff000000);
         drawAnchor(canvas);
     }
 
     private void drawAnchor(Canvas canvas) {
         if (null != anchor)
-            canvas.drawText(anchor.getText(),
-                    anchor.x + anchor.getTextOffsetX(),
-                    anchor.y + anchor.getTextOffsetY(),
-                    anchor.getAnchorPaint());
+            if (anchor.x > getWidth() || anchor.y > getHeight()) {
+                throw new IllegalArgumentException();
+            }
+        canvas.drawText(anchor.getText(),
+                anchor.x + anchor.getTextOffsetX(),
+                anchor.y + anchor.getTextOffsetY(),
+                anchor.getAnchorPaint());
 
         if (null != charts)
             for (Charts c : charts) {

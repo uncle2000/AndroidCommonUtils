@@ -5,6 +5,7 @@ import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.uncle2000.androidcommonutils.uitls.system.PermissionUtil;
 import com.uncle2000.androidcommonutils.views.chart.Constant;
@@ -31,11 +32,13 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout ll = (LinearLayout) findViewById(R.id.root_view);
         DescartesCoorSystem dcs = (DescartesCoorSystem) findViewById(R.id.dcs);
         /*****************************************************************************************/
-        Anchor anchor = new Anchor(100, 900, 0, 0);
+        Anchor anchor = new Anchor(100, 300, 0, 0);
         ChartOption chartOption = new ChartOption(DefaultData.chartData, anchor, 100, 100);
         chartOption.anchor = anchor;
         chartOption.setCharts(Constant.POINTS, Constant.DATAAREA, Constant.CROSSLINE);
 
+        TextView textView=new TextView(this);
+        textView.setBackgroundColor(0xffff00ff);
 //        BlankCoorSystem system = new DescartesCoorSystem(this, chartOption);
 //        ll.addView(system);
         dcs.setChartOption(chartOption);

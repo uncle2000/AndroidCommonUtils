@@ -19,7 +19,7 @@ public class Constant {
     public static final int DEFALT_CHART_y_SCALE = 1;
 
     public static final int DEFALT_ANCHOR_X = 100;
-    public static final int DEFALT_ANCHOR_Y = 100;
+    public static final int DEFALT_ANCHOR_Y = 500;
     public static final int DEFALT_ANCHOR_MATH_X = 0;
     public static final int DEFALT_ANCHOR_MATH_Y = 0;
     public static final float DEFALT_ANCHOR_TEXT_SIZE = 38f;
