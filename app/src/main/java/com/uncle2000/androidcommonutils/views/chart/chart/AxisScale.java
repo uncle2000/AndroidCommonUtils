@@ -1,11 +1,8 @@
 package com.uncle2000.androidcommonutils.views.chart.chart;
 
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
 
-
-import java.util.List;
+import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 
 /**
  * Created by 2000 on 2017/5/4.
@@ -13,8 +10,12 @@ import java.util.List;
 
 public class AxisScale extends Charts {
 
+    public AxisScale(ChartOption chartOption) {
+        super(chartOption);
+    }
+
     @Override
-    public void draw(Canvas canvas, List<Point> list, Paint paint) {
+    public void draw(Canvas canvas) {
 
     }
 

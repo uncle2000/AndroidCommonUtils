@@ -1,9 +1,10 @@
 package com.uncle2000.androidcommonutils.views.chart.chart;
 
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Point;
 
+
+import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 
 import java.util.List;
 
@@ -15,9 +16,13 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 public class Points extends Charts {
 
+    public Points(ChartOption chartOption) {
+        super(chartOption);
+    }
+
     @Override
-    public void draw(Canvas canvas, List<Point> list, Paint paint) {
-        paint.setStrokeWidth(10f);
+    public void draw(Canvas canvas) {
+        paint.setStrokeWidth(5f);
         canvas.drawPoints(toPoints(list), paint);
     }
 

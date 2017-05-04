@@ -6,6 +6,7 @@ import android.graphics.Point;
 
 
 import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 
 import java.util.List;
 
@@ -14,10 +15,22 @@ import java.util.List;
  */
 
 public abstract class Charts {
+    ChartOption chartOption;
     protected Anchor anchor;
-    protected Paint paint;
+    protected Paint paint = new Paint();
+    protected int xScale, yScale;
+    public List<Point> list;
 
-    public abstract void draw(Canvas canvas, List<Point> list, Paint paint);
+    public Charts(ChartOption chartOption) {
+        this.chartOption = chartOption;
+        this.anchor = chartOption.anchor;
+        this.xScale = chartOption.xScale;
+        this.yScale = chartOption.yScale;
+        this.list = chartOption.list;
+        paint.setStrokeWidth(2f);
+    }
+
+    public abstract void draw(Canvas canvas);
 
     public void setPaint(Paint paint) {
         this.paint = paint;

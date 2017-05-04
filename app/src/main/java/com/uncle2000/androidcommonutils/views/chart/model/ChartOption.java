@@ -1,21 +1,25 @@
 package com.uncle2000.androidcommonutils.views.chart.model;
 
 import android.graphics.Point;
+import android.graphics.Rect;
 
 import com.uncle2000.androidcommonutils.views.chart.Constant;
 import com.uncle2000.androidcommonutils.views.chart.chart.Charts;
+import com.uncle2000.androidcommonutils.views.chart.chart.CrossLine;
+import com.uncle2000.androidcommonutils.views.chart.chart.Area;
 import com.uncle2000.androidcommonutils.views.chart.chart.Points;
+import com.uncle2000.androidcommonutils.views.chart.utils.AdjustData;
+import com.uncle2000.androidcommonutils.views.chart.utils.DefaultData;
 
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.uncle2000.androidcommonutils.views.chart.Constant.CROSSLINE;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.CURVE;
-import static com.uncle2000.androidcommonutils.views.chart.Constant.DASHLINE;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.DATAAREA;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.POINTS;
-import static com.uncle2000.androidcommonutils.views.chart.Constant.POLILINE;
 
 /**
  * Created by 2000 on 2017/5/3.
@@ -27,9 +31,18 @@ public class ChartOption {
     /*数据*/
     public List<Point> list;
     public Set<Charts> charts;
+    public int xScale = 1, yScale = 1;
+    /*********************************************************************************************/
+    public int chartPadding = 50;
+    public int chartWidth;
+    public int chartHeight;
 
-    public ChartOption() {
+    public ChartOption(List<Point> list, Anchor anchor, int xScale, int yScale) {
+        this.anchor = anchor;
+        this.xScale = xScale;
+        this.yScale = yScale;
         charts = new HashSet<>();
+        this.list = AdjustData.adjustData2Px(DefaultData.chartData, anchor, xScale, yScale);
     }
 
     public void setCharts(@Constant.DataLooks int... looks) {
@@ -42,13 +55,12 @@ public class ChartOption {
         Charts chart = null;
         switch (looks) {
             case DATAAREA:
-//                chartParents.add(new DataArea(AdjustData.canvasModel.list));
+                chart = new Area(this);
                 break;
             case POINTS:
-                chart=new Points();
+                chart = new Points(this);
                 break;
             case CURVE:
-//                chartParents.add(new Curve(AdjustData.toPoints(canvasModel.list)));
                 break;
 //            case POLILINE:
 //                chart=
@@ -57,9 +69,15 @@ public class ChartOption {
 //            case DASHLINE:
 //                charts.add(new DashLine(canvasModel));
 //                break;
+            case CROSSLINE:
+                chart = new CrossLine(this);
             default:
                 break;
         }
         charts.add(chart);
+    }
+
+    public Rect getChartRect() {
+        return new Rect(chartPadding, chartPadding, chartWidth - chartPadding, chartHeight - chartPadding);
     }
 }

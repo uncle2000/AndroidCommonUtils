@@ -38,6 +38,8 @@ public class BlankCoorSystem extends View {
     }
 
     public void draw(Canvas canvas) {
+        chartOption.chartHeight = getHeight();
+        chartOption.chartWidth = getWidth();
         drawAnchor(canvas);
     }
 
@@ -50,7 +52,8 @@ public class BlankCoorSystem extends View {
 
         if (null != charts)
             for (Charts c : charts) {
-                c.draw(canvas, chartOption.list, paint);
+                c.setPaint(paint);
+                c.draw(canvas);
             }
     }
 }

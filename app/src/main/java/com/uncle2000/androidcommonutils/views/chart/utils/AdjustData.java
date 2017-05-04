@@ -86,20 +86,6 @@ public class AdjustData {
      * @param sa
      * @return
      */
-    public static float[] toCrossLine(List<Point> sa, float crossLineW) {
-        float[] pts = new float[sa.size() * 8];
-        for (int i = 0; i < sa.size(); i++) {
-            pts[i * 8 + 0] = sa.get(i).x - crossLineW;
-            pts[i * 8 + 1] = sa.get(i).y;
-            pts[i * 8 + 2] = sa.get(i).x + crossLineW;
-            pts[i * 8 + 3] = sa.get(i).y;
-            pts[i * 8 + 4] = sa.get(i).x;
-            pts[i * 8 + 5] = sa.get(i).y - crossLineW;
-            pts[i * 8 + 6] = sa.get(i).x;
-            pts[i * 8 + 7] = sa.get(i).y + crossLineW;
-        }
-        return pts;
-    }
 
 
     /**
