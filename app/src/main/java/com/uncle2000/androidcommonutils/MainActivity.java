@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 .Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         /*****************************************************************************************/
-        Anchor anchor = new Anchor(100, 600, 0, 0);
+        Anchor anchor = new Anchor(900, 900, 0, 0);
         List<Point> list = AdjustData.adjustData2Px(DefaultData.chartData, anchor, 100, 100);
         ChartOption chartOption = new ChartOption();
         chartOption.anchor = anchor;

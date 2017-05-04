@@ -25,6 +25,11 @@ public class BlankCoorSystem extends View {
     Charts[] charts;
     List<Point> list;
 
+    public BlankCoorSystem(Context context) {
+        super(context);
+        this.anchor = new Anchor();
+    }
+
     public BlankCoorSystem(Context context, ChartOption chartOption) {
         super(context);
         this.chartOption = chartOption;

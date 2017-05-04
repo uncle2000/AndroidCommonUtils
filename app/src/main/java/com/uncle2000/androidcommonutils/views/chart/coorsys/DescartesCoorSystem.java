@@ -23,85 +23,90 @@ import java.util.List;
  */
 
 public class DescartesCoorSystem extends BlankCoorSystem {
-    private Axis xAxis, yAxis;
-    private AxisModel xModel, yModel;
+    private int xDir = 1, yDir = 1;
+    private int xAngle, yAngle;
+    public int xLength = 800, yLength = 500;
+    public boolean showArraw = true;
+    public int xOffset = 15, yOffset = 15;
+    /*arraw*/
+    public int arrawL = 30;
+    public int arrawAngle = 30;
+
+    public DescartesCoorSystem(Context context) {
+        super(context);
+    }
 
     public DescartesCoorSystem(Context context, ChartOption chartOption) {
         super(context, chartOption);
-        judgeDirection();
-
-//        mkElement(xModel, 15, 80);
-//        mkElement(yModel, 15, 50);
-
-        xAxis = new Axis(xModel);
-        yAxis = new Axis(yModel);
-    }
-
-
-    private void judgeDirection() {
-        if (anchor.x <= getWidth()/ 2) {
-            xModel = new AxisModel(anchor, 90, new ArrawModel());
-        } else {
-            xModel = new AxisModel(anchor, 270);
-        }
-
-        if (anchor.y > getWidth() / 2) {
-            yModel = new AxisModel(anchor, 180);
-        } else {
-            yModel = new AxisModel(anchor, 0);
-        }
-
-        yModel.offset = 15;
+        paint.setStrokeWidth(2f);
     }
 
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        xAxis.draw(canvas);
-        yAxis.draw(canvas);
+        judgeAngle();
+        xDir = judgeDirection2(xAngle);
+        yDir = judgeDirection2(yAngle);
+
+        canvas.drawLines(new float[]{
+                //x axis
+                anchor.x - xOffset * xDir, anchor.y,
+                anchor.x + xLength * xDir, anchor.y,
+                //y axis
+                anchor.x, anchor.y + yOffset * yDir,
+                anchor.x, anchor.y - yLength * yDir,
+        }, paint);
+
+        if (showArraw) {
+            Point xArraw1 = Utils.getPoint(anchor.x + xLength * xDir, anchor.y, xAngle - arrawAngle + 180, arrawL);
+            Point xArraw2 = Utils.getPoint(anchor.x + xLength * xDir, anchor.y, xAngle + arrawAngle + 180, arrawL);
+            Point yArraw1 = Utils.getPoint(anchor.x, anchor.y - yLength * yDir, yAngle - arrawAngle, arrawL);
+            Point yArraw2 = Utils.getPoint(anchor.x, anchor.y - yLength * yDir, yAngle + arrawAngle, arrawL);
+            canvas.drawLines(new float[]{
+                    anchor.x + xLength * xDir, anchor.y,
+                    xArraw1.x, xArraw1.y,
+                    anchor.x + xLength * xDir, anchor.y,
+                    xArraw2.x, xArraw2.y,
+                    anchor.x, anchor.y - yLength * yDir,
+                    yArraw1.x, yArraw1.y,
+                    anchor.x, anchor.y - yLength * yDir,
+                    yArraw2.x, yArraw2.y,
+            }, paint);
+        }
     }
 
-    private void mkElement(AxisModel model, int normalLength, int normalSpan) {
-        Point nPoint1 = Utils.getPoint(anchor.x, anchor.y, model.angle - 90, normalLength);
-        Point axisPoint2 = Utils.getPoint(anchor.x, anchor.y, model.angle, normalSpan);
-        int xDiff = Math.abs(axisPoint2.x - anchor.x);
-        int yDiff = Math.abs(axisPoint2.y - anchor.y);
-        int yOffset = 15;
-        int xDir = 1, yDir = 1;
-        switch (model.angle % 360) {
-            case 0:
-                yDir = -1;
-                break;
-            case 90:
-                xDir = 1;
-                break;
-            case 180:
-                yDir = 1;
-                break;
-            case 270:
-                xDir = -1;
-                break;
+
+    /**********************************************************************************************/
+
+    private void judgeAngle() {
+        if (anchor.x <= getWidth() / 2) {
+            xAngle = 90;
+        } else {
+            xAngle = 270;
         }
 
-        List<ElementModel> list = new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
-            ElementModel m = new ElementModel();
-            if (model.angle % 180 == 0) {//x
-                m.setText("y" + i);
-            } else {
-                m.setText("x" + i);
-            }
-            if (xDir == 1 & yDir == -1) {
-                m.setLine(
-                        anchor.x + xDiff * i * xDir + yOffset,
-                        anchor.y + yDiff * i * yDir,
-                        nPoint1.x + xDiff * i * xDir + yOffset,
-                        nPoint1.y + yDiff * i * yDir);
-            } else {
-                m.setLine(anchor.x + xDiff * i * xDir, anchor.y + yDiff * i * yDir,
-                        nPoint1.x + xDiff * i * xDir, nPoint1.y + yDiff * i * yDir);
-            }
-            list.add(m);
+        if (anchor.y > getWidth() / 2) {
+            yAngle = 180;
+        } else {
+            yAngle = 0;
         }
-        model.list = list;
+    }
+
+    private int judgeDirection2(int angle) {
+        int dir = 0;
+        switch (angle % 360) {
+            case 0:
+                dir = -1;
+                break;
+            case 90:
+                dir = 1;
+                break;
+            case 180:
+                dir = 1;
+                break;
+            case 270:
+                dir = -1;
+                break;
+        }
+        return dir;
     }
 }
