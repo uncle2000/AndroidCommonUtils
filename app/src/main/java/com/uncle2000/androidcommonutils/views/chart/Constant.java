@@ -1,17 +1,31 @@
 package com.uncle2000.androidcommonutils.views.chart;
 
+import android.graphics.Point;
 import android.support.annotation.IntDef;
 
 import com.uncle2000.androidcommonutils.uitls.equipment.ScreenUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by 2000 on 2017/5/4.
  */
 
 public class Constant {
+    public static final List<Point> chartData = Arrays.asList(
+            new Point(10000, 28000),
+            new Point(20000, 32000),
+            new Point(30000, 20000),
+            new Point(40000, 40000),
+            new Point(50000, 10000),
+            new Point(60000, 10000),
+            new Point(70000, 22000),
+            new Point(80000, 25000),
+            new Point(90000, 30000));
+
     public static final int DEFALT_CHART_WIDTH = 800;
     public static final int DEFALT_CHART_HEIGHT = 600;
     public static final int DEFALT_CHART_PADDING = 50;

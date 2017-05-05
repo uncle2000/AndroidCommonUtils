@@ -1,39 +1,60 @@
-//package com.uncle2000.androidcommonutils.views.chart.datalooks;
-//
-//import android.graphics.Canvas;
-//import android.graphics.Paint;
-//import android.graphics.Rect;
-//import android.support.annotation.NonNull;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-///**
-// * 瀑布图
-// * Created by 2000 on 2017/4/25.
-// */
-//
-//public class Waterfall extends Points<List<Rect>> {
-//
-//    public Waterfall(@NonNull List<Rect> listR) {
-//        this(listR, null);
-//        init();
-//    }
-//
-//    public Waterfall(@NonNull List<Rect> listR, Paint paint) {
-//        super(listR, paint);
-//        init();
-//    }
-//
-//    private void init() {
-//        paint.setStyle(Paint.Style.STROKE);
-//    }
-//
-//    @Override
-//    public void draw(Canvas canvas) {
-//        for (Rect r : (List<Rect>) t) {
-//            canvas.drawRect(r, paint);
-//        }
-//    }
-//
-//}
+package com.uncle2000.androidcommonutils.views.chart.chart;
+
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
+
+import com.uncle2000.androidcommonutils.views.chart.chart.Points;
+import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 瀑布图
+ * Created by 2000 on 2017/4/25.
+ */
+
+public class Waterfall extends Points {
+    int pillarW;
+
+    public Waterfall(ChartOption chartOption) {
+        super(chartOption);
+    }
+
+    private void init() {
+        paint.setStyle(Paint.Style.STROKE);
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        for (Rect r : toWaterfall(list, pillarW, anchor)) {
+            canvas.drawRect(r, paint);
+        }
+    }
+
+    /**
+     * 画柱子
+     *
+     * @param sa
+     * @return
+     */
+    public static List<Rect> toWaterfall(List<Point> sa, int pillarW, Anchor anchor) {
+        List<Rect> saR = new ArrayList<>();
+        Rect rect;
+        for (int i = 0; i < sa.size(); i++) {
+            rect = new Rect(
+                    sa.get(i).x - pillarW,
+                    sa.get(i).y,
+                    sa.get(i).x + pillarW,
+                    anchor.y
+            );
+            saR.add(rect);
+        }
+        return saR;
+    }
+
+}

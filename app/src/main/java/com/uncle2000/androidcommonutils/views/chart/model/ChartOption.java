@@ -7,9 +7,14 @@ import com.uncle2000.androidcommonutils.views.chart.Constant;
 import com.uncle2000.androidcommonutils.views.chart.chart.Charts;
 import com.uncle2000.androidcommonutils.views.chart.chart.CrossLine;
 import com.uncle2000.androidcommonutils.views.chart.chart.Area;
+import com.uncle2000.androidcommonutils.views.chart.chart.Curve;
+import com.uncle2000.androidcommonutils.views.chart.chart.DashLine;
+import com.uncle2000.androidcommonutils.views.chart.chart.HorizontalLines;
+import com.uncle2000.androidcommonutils.views.chart.chart.Pillar;
 import com.uncle2000.androidcommonutils.views.chart.chart.Points;
+import com.uncle2000.androidcommonutils.views.chart.chart.Polyline;
+import com.uncle2000.androidcommonutils.views.chart.chart.Waterfall;
 import com.uncle2000.androidcommonutils.views.chart.utils.AdjustData;
-import com.uncle2000.androidcommonutils.views.chart.utils.DefaultData;
 
 
 import java.util.HashSet;
@@ -18,8 +23,13 @@ import java.util.Set;
 
 import static com.uncle2000.androidcommonutils.views.chart.Constant.CROSSLINE;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.CURVE;
+import static com.uncle2000.androidcommonutils.views.chart.Constant.DASHLINE;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.DATAAREA;
+import static com.uncle2000.androidcommonutils.views.chart.Constant.HORIZONTAL;
+import static com.uncle2000.androidcommonutils.views.chart.Constant.PILLAR;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.POINTS;
+import static com.uncle2000.androidcommonutils.views.chart.Constant.POLILINE;
+import static com.uncle2000.androidcommonutils.views.chart.Constant.WATERFALL;
 
 /**
  * Created by 2000 on 2017/5/3.
@@ -62,16 +72,25 @@ public class ChartOption {
                 chart = new Points(this);
                 break;
             case CURVE:
+                chart = new Curve(this);
                 break;
-//            case POLILINE:
-//                chart=
-//                charts.add(new Polyline(canvasModel));
-//                break;
-//            case DASHLINE:
-//                charts.add(new DashLine(canvasModel));
-//                break;
+            case POLILINE:
+                chart = new Polyline(this);
+                break;
+            case DASHLINE:
+                chart = new DashLine(this);
+                break;
             case CROSSLINE:
                 chart = new CrossLine(this);
+                break;
+            case HORIZONTAL:
+                chart = new HorizontalLines(this);
+                break;
+            case PILLAR:
+                chart = new Pillar(this);
+                break;
+            case WATERFALL:
+                chart = new Waterfall(this);
             default:
                 break;
         }

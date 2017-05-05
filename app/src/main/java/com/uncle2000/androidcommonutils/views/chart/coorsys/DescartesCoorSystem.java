@@ -55,6 +55,7 @@ public class DescartesCoorSystem extends BlankCoorSystem {
 
     public void draw(Canvas canvas) {
         super.draw(canvas);
+        paint.setStrokeWidth(2f);
         judgeAngle();
 
         canvas.drawLines(new float[]{

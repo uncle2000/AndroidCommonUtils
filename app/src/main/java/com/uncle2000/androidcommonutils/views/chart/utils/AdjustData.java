@@ -93,44 +93,8 @@ public class AdjustData {
 //    }
 
 
-    /**
-     * 画折线
-     *
-     * @param sa
-     * @return
-     */
-    public static float[] toCurve(List<Point> sa) {
-        float[] pts = new float[(sa.size() - 1) * 4];
-        for (int i = 0; i < sa.size() - 1; i++) {
-            pts[i * 4] = sa.get(i).x;
-            pts[i * 4 + 1] = sa.get(i).y;
-            pts[i * 4 + 2] = sa.get(i + 1).x;
-            pts[i * 4 + 3] = sa.get(i + 1).y;
-        }
-        return pts;
-    }
 
 
-    /**
-     * 画柱子
-     *
-     * @param sa
-     * @return
-     */
-    public static List<Rect> toPillar(List<Point> sa) {
-        List<Rect> saR = new ArrayList<>();
-        Rect rect;
-        for (int i = 0; i < sa.size(); i++) {
-//            rect = new Rect(
-//                    chartDataCopy[i].x - pillarW,
-//                    chartDataCopy[i].y,
-//                    chartDataCopy[i].x + pillarW,
-//                    maxTableY
-//            );
-//            saR.put( rect);
-        }
-        return saR;
-    }
 
 
 }

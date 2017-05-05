@@ -102,7 +102,7 @@ public class BlankCoorSystem extends View {
 
         if (null != charts)
             for (Charts c : charts) {
-                c.setPaint(paint);
+//                c.setPaint(paint);
                 c.draw(canvas);
             }
     }
