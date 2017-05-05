@@ -22,15 +22,45 @@ public class AdjustData {
     }
 
     public static List<Point> adjustData2Px(@NonNull @Size(min = 1) List<Point> orign, Anchor anchor, float scaleX, float scaleY) {
-        float oX, oY;
-        oX = anchor.x;
-        oY = anchor.y;
-
         List<Point> temp = new ArrayList<>();
         for (Point p : orign) {
             temp.add(new Point(
-                    (int) (oX + p.x / scaleX),
-                    (int) (oY - p.y / scaleY)
+                    (int) (anchor.x + (p.x - anchor.xMath) / scaleX),
+                    (int) (anchor.y - (p.y - anchor.yMath) / scaleY)
+            ));
+        }
+        return temp;
+    }
+
+    public static List<Point> reversalData(@NonNull @Size(min = 1) List<Point> orign, Anchor anchor,
+                                           boolean reversalX, boolean reversalY) {
+        if (!reversalX && !reversalY) {
+            return orign;
+        }
+        int x, y;
+        List<Point> temp = new ArrayList<>();
+        for (Point p : orign) {
+            if (reversalX) {
+                y = 2 * anchor.y - p.y;
+            } else {
+                y = p.y;
+            }
+            if (reversalY) {
+                x = 2 * anchor.x - p.x;
+            } else {
+                x = p.x;
+            }
+            temp.add(new Point(x, y));
+        }
+        return temp;
+    }
+
+    public static List<Point> px2MathPoint(@NonNull @Size(min = 1) List<Point> orign, Anchor anchor, float scaleX, float scaleY) {
+        List<Point> temp = new ArrayList<>();
+        for (Point p : orign) {
+            temp.add(new Point(
+                    (int) (anchor.xMath + scaleX * (p.x - anchor.x)),
+                    (int) (anchor.yMath + scaleY * (anchor.y - p.y))
             ));
         }
         return temp;
@@ -80,31 +110,6 @@ public class AdjustData {
         return pts;
     }
 
-    /**
-     * 画十字线
-     *
-     * @param sa
-     * @return
-     */
-
-
-    /**
-     * 画横线
-     *
-     * @param sa
-     * @return
-     */
-    public static float[] toHorizontal(List<Point> sa) {
-        float[] pts = new float[(sa.size() - 1) * 4];
-        for (int i = 0; i < sa.size() - 1; i++) {
-            pts[i * 4] = sa.get(i).x;
-            pts[i * 4 + 1] = sa.get(i).y;
-            pts[i * 4 + 2] = sa.get(i + 1).x;
-            pts[i * 4 + 3] = sa.get(i).y;
-        }
-        return pts;
-    }
-
 
     /**
      * 画柱子
@@ -127,15 +132,5 @@ public class AdjustData {
         return saR;
     }
 
-    /**
-     * @param sa
-     * @return
-     */
-    public static List<Rect> adjustData2Sa(List<Point> sa) {
-        List<Rect> saR = new ArrayList<>();
-        Rect rect;
-//        ConvertData.pointA2RectA(chartDataCopy, pillarW);
-        return saR;
-    }
 
 }

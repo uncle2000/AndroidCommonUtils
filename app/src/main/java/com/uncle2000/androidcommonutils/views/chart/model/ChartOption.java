@@ -42,7 +42,8 @@ public class ChartOption {
         this.xScale = xScale;
         this.yScale = yScale;
         charts = new HashSet<>();
-        this.list = AdjustData.adjustData2Px(DefaultData.chartData, anchor, xScale, yScale);
+        this.list = AdjustData.adjustData2Px(list, anchor, xScale, yScale);
+        AdjustData.px2MathPoint(this.list, anchor, xScale, yScale);
     }
 
     public void setCharts(@Constant.DataLooks int... looks) {
