@@ -6,7 +6,8 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.model.DescartesOption;
+import com.uncle2000.androidcommonutils.views.chart.model.NormalOption;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ import java.util.List;
 
 public class DashLine extends Points {
 
-    public DashLine(ChartOption chartOption) {
-        super(chartOption);
+    public DashLine(DescartesOption dop) {
+        super(dop);
     }
 
     private void init() {

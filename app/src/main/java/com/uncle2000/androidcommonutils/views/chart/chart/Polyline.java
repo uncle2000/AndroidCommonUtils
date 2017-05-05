@@ -5,7 +5,8 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.model.DescartesOption;
+import com.uncle2000.androidcommonutils.views.chart.model.NormalOption;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,8 @@ import java.util.List;
 
 public class Polyline extends Points {
 
-    public Polyline(ChartOption chartOption) {
-        super(chartOption);
+    public Polyline(DescartesOption dop) {
+        super(dop);
     }
 
     @Override

@@ -1,13 +1,10 @@
 package com.uncle2000.androidcommonutils.views.chart.chart;
 
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Point;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
 
-import com.uncle2000.androidcommonutils.views.chart.chart.Points;
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.model.DescartesOption;
+import com.uncle2000.androidcommonutils.views.chart.model.NormalOption;
 
 import java.util.List;
 
@@ -18,8 +15,8 @@ import java.util.List;
 
 public class Curve extends Points {
 
-    public Curve(ChartOption chartOption) {
-        super(chartOption);
+    public Curve(DescartesOption dop) {
+        super(dop);
     }
 
     @Override

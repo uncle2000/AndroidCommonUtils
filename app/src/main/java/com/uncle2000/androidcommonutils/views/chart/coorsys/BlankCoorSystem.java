@@ -3,14 +3,13 @@ package com.uncle2000.androidcommonutils.views.chart.coorsys;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.uncle2000.androidcommonutils.views.chart.Constant;
 import com.uncle2000.androidcommonutils.views.chart.chart.Charts;
 import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.model.NormalOption;
 
 import java.util.Set;
 
@@ -23,9 +22,8 @@ import java.util.Set;
 public class BlankCoorSystem extends View {
     private Context context;
     protected Paint paint = new Paint();
-    protected ChartOption chartOption;
+    protected NormalOption normalOption;
     protected Anchor anchor;
-    private Set<Charts> charts;
 
     public BlankCoorSystem(Context context) {
         super(context);
@@ -51,14 +49,6 @@ public class BlankCoorSystem extends View {
         this.anchor = new Anchor();
     }
 
-    public BlankCoorSystem(Context context, ChartOption chartOption) {
-        super(context);
-        this.context = context;
-        this.chartOption = chartOption;
-        this.anchor = new Anchor(chartOption.anchor.x, chartOption.anchor.y);
-        this.charts = chartOption.charts;
-    }
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -80,9 +70,9 @@ public class BlankCoorSystem extends View {
     }
 
     public void draw(Canvas canvas) {
-        if (null != chartOption) {
-            chartOption.chartHeight = getHeight();
-            chartOption.chartWidth = getWidth();
+        if (null != normalOption) {
+            normalOption.chartHeight = getHeight();
+            normalOption.chartWidth = getWidth();
         }
 //        paint.setColor(0xffffccff);
 //        canvas.drawRect(new Rect(0, 0, getWidth(), getHeight()), paint);
@@ -99,17 +89,5 @@ public class BlankCoorSystem extends View {
                 anchor.x + anchor.getTextOffsetX(),
                 anchor.y + anchor.getTextOffsetY(),
                 anchor.getAnchorPaint());
-
-        if (null != charts)
-            for (Charts c : charts) {
-//                c.setPaint(paint);
-                c.draw(canvas);
-            }
-    }
-
-    public void setChartOption(ChartOption chartOption) {
-        this.chartOption = chartOption;
-        this.anchor = chartOption.anchor;
-        this.charts = chartOption.charts;
     }
 }

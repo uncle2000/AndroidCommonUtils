@@ -6,7 +6,7 @@ import android.graphics.Point;
 
 
 import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.model.DescartesOption;
 
 import java.util.List;
 
@@ -15,18 +15,18 @@ import java.util.List;
  */
 
 public abstract class Charts {
-    ChartOption chartOption;
+    DescartesOption dop;
     protected Anchor anchor;
     protected Paint paint = new Paint();
     protected int xScale, yScale;
     public List<Point> list;
 
-    public Charts(ChartOption chartOption) {
-        this.chartOption = chartOption;
-        this.anchor = chartOption.anchor;
-        this.xScale = chartOption.xScale;
-        this.yScale = chartOption.yScale;
-        this.list = chartOption.list;
+    public Charts(DescartesOption dop) {
+        this.dop = dop;
+        this.anchor = dop.anchor;
+        this.xScale = dop.xScale;
+        this.yScale = dop.yScale;
+        this.list = dop.list;
         paint.setStrokeWidth(2f);
     }
 

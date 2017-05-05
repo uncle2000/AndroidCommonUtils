@@ -1,25 +1,21 @@
-//package com.uncle2000.androidcommonutils.views.chart.datalooks;
+//package com.uncle2000.androidcommonutils.views.chart.chart;
 //
 //import android.graphics.Canvas;
 //import android.graphics.Paint;
 //import android.graphics.Path;
-//import android.support.annotation.NonNull;
 //
-//import java.util.ArrayList;
+//import com.uncle2000.androidcommonutils.views.chart.model.NormalOption;
+//
 //import java.util.List;
 //
 ///**
 // * Created by 2000 on 2017/4/26.
 // */
 //
-//public class Radar extends Points<List<Path>> {
+//public class Radar extends Points {
 //
-//    public Radar(@NonNull List<Path> listP) {
-//        this(listP, null);
-//    }
-//
-//    public Radar(@NonNull List<Path> listP, Paint paint) {
-//        super(listP, paint);
+//    public Radar(NormalOption normalOption) {
+//        super(normalOption);
 //    }
 //
 //    private void init() {
@@ -33,7 +29,7 @@
 //        }
 //    }
 //
-////    public float[] adjustData2Pts(SparseArray<Point> sa) {
-////
-////    }
+//    public List<Path> toRadar(List){
+//
+//    }
 //}

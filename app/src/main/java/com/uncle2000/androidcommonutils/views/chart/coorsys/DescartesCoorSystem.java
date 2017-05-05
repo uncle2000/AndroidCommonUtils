@@ -7,8 +7,12 @@ import android.support.annotation.Size;
 import android.util.AttributeSet;
 
 import com.uncle2000.androidcommonutils.views.chart.Constant;
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.chart.Charts;
+import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
+import com.uncle2000.androidcommonutils.views.chart.model.DescartesOption;
 import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
+
+import java.util.Set;
 
 /**
  * 笛卡尔坐标系
@@ -19,6 +23,7 @@ import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
  */
 
 public class DescartesCoorSystem extends BlankCoorSystem {
+    private Set<Charts> charts;
     private int xDir = -1, yDir = 1;
     private int xAngle, yAngle;
 
@@ -48,13 +53,14 @@ public class DescartesCoorSystem extends BlankCoorSystem {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public DescartesCoorSystem(Context context, ChartOption chartOption) {
-        super(context, chartOption);
-        paint.setStrokeWidth(2f);
-    }
-
     public void draw(Canvas canvas) {
         super.draw(canvas);
+        if (null != charts)
+            for (Charts c : charts) {
+//                c.setPaint(paint);
+                c.draw(canvas);
+            }
+
         paint.setStrokeWidth(2f);
         judgeAngle();
 
@@ -114,5 +120,13 @@ public class DescartesCoorSystem extends BlankCoorSystem {
             yLength /= 2;
             yOffset = yLength;
         }
+    }
+
+    DescartesOption dop;
+    public void setDescartesOption(DescartesOption descartesOption) {
+        this.anchor = new Anchor(descartesOption.anchor.x, descartesOption.anchor.y);
+        this.dop = descartesOption;
+        this.anchor = dop.anchor;
+        this.charts = dop.charts;
     }
 }

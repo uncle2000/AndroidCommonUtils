@@ -1,5 +1,6 @@
 package com.uncle2000.androidcommonutils.views.chart.utils;
 
+import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
@@ -17,10 +18,6 @@ import java.util.List;
 
 public class AdjustData {
 
-    public static List<Point> adjustData2Px(List<Point> orign, Anchor anchor, float scale) {
-        return adjustData2Px(orign, anchor, scale, scale);
-    }
-
     public static List<Point> adjustData2Px(@NonNull @Size(min = 1) List<Point> orign, Anchor anchor, float scaleX, float scaleY) {
         List<Point> temp = new ArrayList<>();
         for (Point p : orign) {
@@ -30,6 +27,28 @@ public class AdjustData {
             ));
         }
         return temp;
+    }
+
+    public static List<Path> adjustData2RadarPx(@NonNull @Size(min = 1) List<Float> orign, Anchor anchor, int num, float scale) {
+        if (orign.size() / num <= 0) {
+            throw new IllegalArgumentException();
+        }
+        List<Point> temp = new ArrayList<>();
+        for (float f : orign) {
+            Point p = Utils.getPoint(anchor.x, anchor.y, 360 / num, f / scale);
+            temp.add(p);
+        }
+        List<Path> list = new ArrayList<>();
+        Path path = new Path();
+        for (int i = 0; i < temp.size() / num; i++) {
+            path.moveTo(temp.get(i).x, temp.get(i).y);
+            for (int j = 0; j < num; j++) {
+                path.lineTo(temp.get(i + j).x, temp.get(i + j).y);
+            }
+            list.add(path);
+        }
+
+        return list;
     }
 
     public static List<Point> reversalData(@NonNull @Size(min = 1) List<Point> orign, Anchor anchor,
@@ -65,36 +84,6 @@ public class AdjustData {
         }
         return temp;
     }
-
-//    public List<Rect> adjustData2Sa(List<Point> sa) {
-//
-//        return saR;
-//    }
-//    private void drawDataPadding(Canvas canvas) {
-//        mDatapaint.setStrokeWidth(1f);
-//        float[] pts = new float[]{
-//                minRangeX - lPadding, minRangeY - tPadding, maxRangeX + rPadding, minRangeY - tPadding,
-//                maxRangeX + rPadding, minRangeY - tPadding, maxRangeX + rPadding, maxRangeY + bPadding,
-//                maxRangeX + rPadding, maxRangeY + bPadding, minRangeX - lPadding, maxRangeY + bPadding,
-//                minRangeX - lPadding, maxRangeY + bPadding, minRangeX - lPadding, minRangeY - tPadding,
-//        };
-//        canvas.drawLines(pts, mDatapaint);
-//    }
-//
-//    private void drawDataArea(Canvas canvas) {
-//        mDatapaint.setStrokeWidth(1f);
-//        float[] pts = new float[]{
-//                minRangeX, minRangeY, maxRangeX, minRangeY,
-//                maxRangeX, minRangeY, maxRangeX, maxRangeY,
-//                maxRangeX, maxRangeY, minRangeX, maxRangeY,
-//                minRangeX, maxRangeY, minRangeX, minRangeY,
-//        };
-//        canvas.drawLines(pts, mDatapaint);
-//    }
-
-
-
-
 
 
 }

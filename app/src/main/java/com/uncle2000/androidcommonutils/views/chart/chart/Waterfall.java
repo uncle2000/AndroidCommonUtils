@@ -4,11 +4,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.support.annotation.NonNull;
 
-import com.uncle2000.androidcommonutils.views.chart.chart.Points;
 import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.model.DescartesOption;
+import com.uncle2000.androidcommonutils.views.chart.model.NormalOption;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +20,8 @@ import java.util.List;
 public class Waterfall extends Pillar {
     int pillarW;
 
-    public Waterfall(ChartOption chartOption) {
-        super(chartOption);
+    public Waterfall(DescartesOption dop) {
+        super(dop);
     }
 
     private void init() {

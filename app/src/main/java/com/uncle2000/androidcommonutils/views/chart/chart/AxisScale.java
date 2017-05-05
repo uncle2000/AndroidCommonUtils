@@ -2,7 +2,8 @@ package com.uncle2000.androidcommonutils.views.chart.chart;
 
 import android.graphics.Canvas;
 
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.model.DescartesOption;
+import com.uncle2000.androidcommonutils.views.chart.model.NormalOption;
 
 /**
  * Created by 2000 on 2017/5/4.
@@ -10,8 +11,9 @@ import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 
 public class AxisScale extends Charts {
 
-    public AxisScale(ChartOption chartOption) {
-        super(chartOption);
+
+    public AxisScale(DescartesOption dop) {
+        super(dop);
     }
 
     @Override

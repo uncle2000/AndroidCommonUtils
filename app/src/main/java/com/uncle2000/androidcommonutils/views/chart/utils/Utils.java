@@ -53,11 +53,11 @@ public class Utils {
     }
 
 //    public static void adjustData(float lPadding, float tPadding) {
-//        DefaultData.chartDataCopy = new Point[DefaultData.chartData.length];
-//        int[] a = Utils.getMaxMin(DefaultData.chartData);
-//        for (int i = 0; i < DefaultData.chartData.length; i++) {
-//            Point p = new Point(DefaultData.chartData[i].x - a[0] + (int) lPadding,
-//                    DefaultData.chartData[i].y - a[2] + (int) tPadding);
+//        DefaultData.chartDataCopy = new Point[DefaultData.defaultData.length];
+//        int[] a = Utils.getMaxMin(DefaultData.defaultData);
+//        for (int i = 0; i < DefaultData.defaultData.length; i++) {
+//            Point p = new Point(DefaultData.defaultData[i].x - a[0] + (int) lPadding,
+//                    DefaultData.defaultData[i].y - a[2] + (int) tPadding);
 //            DefaultData.chartDataCopy[i] = p;
 //        }
 //    }
@@ -70,7 +70,7 @@ public class Utils {
         return new Point(x, y);
     }
 
-    public static Point getPoint(int x1, int y1, int angle, int r) {
+    public static Point getPoint(int x1, int y1, int angle, float r) {
         angle %= 360;
         angle -= 90;
         int x = (int) (Math.cos(Math.PI * angle / 180) * r) + x1;

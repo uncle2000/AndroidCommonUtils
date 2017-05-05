@@ -4,7 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Point;
 
 
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.model.DescartesOption;
+import com.uncle2000.androidcommonutils.views.chart.model.NormalOption;
 
 import java.util.List;
 
@@ -16,8 +17,9 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 public class Points extends Charts {
 
-    public Points(ChartOption chartOption) {
-        super(chartOption);
+
+    public Points(DescartesOption dop) {
+        super(dop);
     }
 
     @Override

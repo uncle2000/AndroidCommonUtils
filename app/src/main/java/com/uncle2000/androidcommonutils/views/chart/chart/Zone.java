@@ -5,7 +5,8 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.model.DescartesOption;
+import com.uncle2000.androidcommonutils.views.chart.model.NormalOption;
 
 import java.util.List;
 
@@ -17,15 +18,16 @@ import java.util.List;
 public class Zone extends Charts {
     private int dataAreaOffset = 10;
 
-    public Zone(ChartOption chartOption) {
-        super(chartOption);
+    public Zone(DescartesOption dop) {
+        super(dop);
     }
+
 
     @Override
     public void draw(Canvas canvas) {
         paint.setStyle(Paint.Style.STROKE);
         canvas.drawRect(toZone(list), paint);
-        canvas.drawRect(chartOption.getChartRect(), paint);
+        canvas.drawRect(dop.getChartRect(), paint);
     }
 
     private Rect toZone(List<Point> sa) {

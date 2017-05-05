@@ -1,12 +1,10 @@
 package com.uncle2000.androidcommonutils.views.chart.chart;
 
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Point;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
 
-import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
+import com.uncle2000.androidcommonutils.views.chart.model.DescartesOption;
+import com.uncle2000.androidcommonutils.views.chart.model.NormalOption;
 
 import java.util.List;
 
@@ -17,8 +15,8 @@ import java.util.List;
 
 public class CrossLine extends Points {
 
-    public CrossLine(ChartOption chartOption) {
-        super(chartOption);
+    public CrossLine(DescartesOption dop) {
+        super(dop);
     }
 
     @Override

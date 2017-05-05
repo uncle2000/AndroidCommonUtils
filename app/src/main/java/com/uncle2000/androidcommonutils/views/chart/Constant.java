@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 public class Constant {
-    public static final List<Point> chartData = Arrays.asList(
+    public static final List<Point> defaultData = Arrays.asList(
             new Point(10000, 28000),
             new Point(20000, 32000),
             new Point(30000, 20000),
@@ -23,6 +23,11 @@ public class Constant {
             new Point(70000, 22000),
             new Point(80000, 25000),
             new Point(90000, 30000));
+
+    public static final List<Float> defaultDataRadar = Arrays.asList(
+            2f, 3f, 7f, 5f, 2f, 8f, 3f, 1f, 3f, 5f, 8f, 2f, 10f, 3f, 12f, 9f, 2f, 15f, 9f, 6f, 3f
+    );
+
 
     public static final int DEFALT_CHART_WIDTH = 800;
     public static final int DEFALT_CHART_HEIGHT = 600;
@@ -45,6 +50,10 @@ public class Constant {
 
     public static final int DEFALT_ARRAW_ANGLE = 30;
     public static final int DEFALT_ARRAW_LENGTH = 30;
+
+    public static final int DEFALT_AXIS_RADAR_LENGHT = 500;
+    public static final int DEFALT_AXIS_RADAR_NUM = 5;
+    public static final int DEFALT_AXIS_RADAR_SCALE = 1;
 
 
 //    public static final int BLANK_COORDINATE_SYSTEM = 0;
