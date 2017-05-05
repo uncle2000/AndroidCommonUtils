@@ -31,13 +31,14 @@ public class MainActivity extends AppCompatActivity {
         chartOption.anchor = anchor;
         chartOption.setCharts(
 //                Constant.POINTS,
-//                Constant.DATAAREA,
+//                Constant.DATA_ZONE,
 //                Constant.CROSSLINE,
 //                Constant.CURVE,
 //                Constant.DASHLINE,
-                Constant.PILLAR,
+//                Constant.PILLAR,
 //                Constant.HORIZONTAL,
-                Constant.POLILINE
+//                Constant.POLILINE,
+                Constant.AREA
         );
 
         dcs.setChartOption(chartOption);

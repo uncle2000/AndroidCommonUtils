@@ -3,8 +3,6 @@ package com.uncle2000.androidcommonutils.views.chart;
 import android.graphics.Point;
 import android.support.annotation.IntDef;
 
-import com.uncle2000.androidcommonutils.uitls.equipment.ScreenUtils;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.Arrays;
@@ -63,7 +61,7 @@ public class Constant {
 //    }
 
     public static final int CHART_DATA = 0;
-    public static final int DATAAREA = 1;
+    public static final int DATA_ZONE = 1;
     public static final int POINTS = 2;
     public static final int CURVE = 3;
     public static final int POLILINE = 4;
@@ -72,9 +70,10 @@ public class Constant {
     public static final int HORIZONTAL = 7;
     public static final int PILLAR = 8;
     public static final int WATERFALL = 9;
+    public static final int AREA = 10;
 
     @IntDef({CHART_DATA,
-            DATAAREA,
+            DATA_ZONE,
             POINTS,
             CURVE,
             POLILINE,
@@ -82,7 +81,8 @@ public class Constant {
             CROSSLINE,
             HORIZONTAL,
             PILLAR,
-            WATERFALL})
+            WATERFALL,
+            AREA})
     @Retention(RetentionPolicy.SOURCE)
     public @interface DataLooks {
     }

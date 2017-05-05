@@ -84,8 +84,8 @@ public class BlankCoorSystem extends View {
             chartOption.chartHeight = getHeight();
             chartOption.chartWidth = getWidth();
         }
-        paint.setColor(0xffffccff);
-        canvas.drawRect(new Rect(0, 0, getWidth(), getHeight()), paint);
+//        paint.setColor(0xffffccff);
+//        canvas.drawRect(new Rect(0, 0, getWidth(), getHeight()), paint);
         paint.setColor(0xff000000);
         drawAnchor(canvas);
     }

@@ -2,45 +2,62 @@ package com.uncle2000.androidcommonutils.views.chart.chart;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
-import android.graphics.Rect;
 
+import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
 import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 
+import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Created by 2000 on 2017/4/25.
+ * Created by 2000 on 2017/5/5.
  */
 
-public class Area extends Charts {
-    private int dataAreaOffset = 10;
-
+public class Area extends Polyline {
     public Area(ChartOption chartOption) {
         super(chartOption);
     }
 
     @Override
     public void draw(Canvas canvas) {
-        paint.setStyle(Paint.Style.STROKE);
-        canvas.drawRect(toArea(list), paint);
-        canvas.drawRect(chartOption.getChartRect(), paint);
-    }
-
-    private Rect toArea(List<Point> sa) {
-        int minx = Integer.MAX_VALUE, miny = Integer.MAX_VALUE, maxx = 0, maxy = 0;
-        for (Point p : sa) {
-            minx = Math.min(minx, p.x);
-            miny = Math.min(miny, p.y);
-            maxx = Math.max(maxx, p.x);
-            maxy = Math.max(maxy, p.y);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(0xffff00ff);
+        for (Path p : toArea(list, anchor, true)) {
+            canvas.drawPath(p, paint);
+            paint.setColor(paint.getColor() - 3333 );
         }
-        return new Rect(
-                minx - dataAreaOffset,
-                miny - dataAreaOffset,
-                maxx + dataAreaOffset,
-                maxy + dataAreaOffset);
     }
 
+    public static List<Path> toArea(List<Point> sa, Anchor anchor, boolean toX) {
+        List<Path> saP = new ArrayList<>();
+        Point startp;
+        Point endp;
+        for (int i = 0; i < sa.size() - 1; i++) {
+            startp = sa.get(i);
+            endp = sa.get(i + 1);
+            int wt = (startp.x + endp.x) / 2;
+            Point p3 = new Point();
+            Point p4 = new Point();
+            p3.y = startp.y;
+            p3.x = wt;
+            p4.y = endp.y;
+            p4.x = wt;
+            Path path = new Path();
+            path.moveTo(startp.x, startp.y);
+            path.cubicTo(p3.x, p3.y, p4.x, p4.y, endp.x, endp.y);
+            if (toX) {
+                path.lineTo(endp.x, anchor.y);
+                path.lineTo(startp.x, anchor.y);
+                path.lineTo(startp.x, startp.y);
+            } else {
+                path.lineTo(anchor.x, endp.y);
+                path.lineTo(anchor.x, startp.y);
+                path.lineTo(startp.x, startp.y);
+            }
+            saP.add(path);
+        }
+        return saP;
+    }
 }

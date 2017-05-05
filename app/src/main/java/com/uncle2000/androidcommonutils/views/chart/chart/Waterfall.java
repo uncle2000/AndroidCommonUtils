@@ -18,7 +18,7 @@ import java.util.List;
  * Created by 2000 on 2017/4/25.
  */
 
-public class Waterfall extends Points {
+public class Waterfall extends Pillar {
     int pillarW;
 
     public Waterfall(ChartOption chartOption) {

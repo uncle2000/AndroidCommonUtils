@@ -22,6 +22,7 @@ public class Curve extends Points {
         super(chartOption);
     }
 
+    @Override
     public void draw(Canvas canvas) {
         canvas.drawLines(toCurve(list), paint);
     }

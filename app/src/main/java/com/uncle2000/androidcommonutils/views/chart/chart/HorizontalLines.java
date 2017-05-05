@@ -25,7 +25,7 @@ public class HorizontalLines extends Points {
 
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawLines(toHorizontal(list), paint);
+       canvas.drawLines(toHorizontal(list), paint);
     }
 
     /**

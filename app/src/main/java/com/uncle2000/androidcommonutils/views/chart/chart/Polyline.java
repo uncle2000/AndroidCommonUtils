@@ -17,11 +17,11 @@ import java.util.List;
 
 public class Polyline extends Points {
 
-
     public Polyline(ChartOption chartOption) {
         super(chartOption);
     }
 
+    @Override
     public void draw(Canvas canvas) {
         paint.setStyle(Paint.Style.STROKE);
         for (Path p : toPolyline(list)) {

@@ -4,9 +4,10 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 import com.uncle2000.androidcommonutils.views.chart.Constant;
+import com.uncle2000.androidcommonutils.views.chart.chart.Area;
 import com.uncle2000.androidcommonutils.views.chart.chart.Charts;
 import com.uncle2000.androidcommonutils.views.chart.chart.CrossLine;
-import com.uncle2000.androidcommonutils.views.chart.chart.Area;
+import com.uncle2000.androidcommonutils.views.chart.chart.Zone;
 import com.uncle2000.androidcommonutils.views.chart.chart.Curve;
 import com.uncle2000.androidcommonutils.views.chart.chart.DashLine;
 import com.uncle2000.androidcommonutils.views.chart.chart.HorizontalLines;
@@ -21,10 +22,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.uncle2000.androidcommonutils.views.chart.Constant.AREA;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.CROSSLINE;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.CURVE;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.DASHLINE;
-import static com.uncle2000.androidcommonutils.views.chart.Constant.DATAAREA;
+import static com.uncle2000.androidcommonutils.views.chart.Constant.DATA_ZONE;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.HORIZONTAL;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.PILLAR;
 import static com.uncle2000.androidcommonutils.views.chart.Constant.POINTS;
@@ -65,8 +67,8 @@ public class ChartOption {
     private void addChartData(@Constant.DataLooks int looks) {
         Charts chart = null;
         switch (looks) {
-            case DATAAREA:
-                chart = new Area(this);
+            case DATA_ZONE:
+                chart = new Zone(this);
                 break;
             case POINTS:
                 chart = new Points(this);
@@ -91,6 +93,10 @@ public class ChartOption {
                 break;
             case WATERFALL:
                 chart = new Waterfall(this);
+                break;
+            case AREA:
+                chart = new Area(this);
+                break;
             default:
                 break;
         }
