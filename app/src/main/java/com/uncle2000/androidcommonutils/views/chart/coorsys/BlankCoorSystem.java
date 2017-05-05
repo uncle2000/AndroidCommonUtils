@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -13,8 +12,6 @@ import com.uncle2000.androidcommonutils.views.chart.chart.Charts;
 import com.uncle2000.androidcommonutils.views.chart.model.Anchor;
 import com.uncle2000.androidcommonutils.views.chart.model.ChartOption;
 
-import java.security.InvalidAlgorithmParameterException;
-import java.util.List;
 import java.util.Set;
 
 /**
