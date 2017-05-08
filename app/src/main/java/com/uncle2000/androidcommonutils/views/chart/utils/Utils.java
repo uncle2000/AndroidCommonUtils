@@ -70,7 +70,7 @@ public class Utils {
         return new Point(x, y);
     }
 
-    public static Point getPoint(int x1, int y1, int angle, float r) {
+    public static Point getPoint(int x1, int y1, float angle, float r) {
         angle %= 360;
         angle -= 90;
         int x = (int) (Math.cos(Math.PI * angle / 180) * r) + x1;

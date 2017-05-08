@@ -25,7 +25,7 @@ public class Constant {
             new Point(90000, 30000));
 
     public static final List<Float> defaultDataRadar = Arrays.asList(
-            2f, 3f, 7f, 5f, 2f, 8f, 3f, 1f, 3f, 5f, 8f, 2f, 10f, 3f, 12f, 9f, 2f, 15f, 9f, 6f, 3f
+            /*2f, 2f, 2f, 5f, 5f, 5f, 8f, 8f, 8f, 8f, 8f,*/ 2f, 10f, 3f, 12f, 9f, 2f, 15f, 9f, 6f, 3f
     );
 
 

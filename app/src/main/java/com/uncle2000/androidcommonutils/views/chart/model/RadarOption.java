@@ -15,11 +15,11 @@ import java.util.List;
 
 public class RadarOption extends NormalOption {
     public List<Path> list;
-    int scale = Constant.DEFALT_AXIS_RADAR_SCALE;
-    int length = Constant.DEFALT_ARRAW_LENGTH;
-    int axisNum = Constant.DEFALT_AXIS_RADAR_NUM;
+    public float scale = Constant.DEFALT_AXIS_RADAR_SCALE;
+    public int length = Constant.DEFALT_ARRAW_LENGTH;
+    public int axisNum = Constant.DEFALT_AXIS_RADAR_NUM;
 
-    public RadarOption(List<Float> list, Anchor anchor, @Size(min = 3) int axisNum, int scale, int length) {
+    public RadarOption(List<Float> list, Anchor anchor, @Size(min = 3) int axisNum, float scale, int length) {
         super(anchor);
         this.scale = scale;
         this.length = length;

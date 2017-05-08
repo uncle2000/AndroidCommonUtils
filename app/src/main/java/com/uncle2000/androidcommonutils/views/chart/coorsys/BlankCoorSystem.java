@@ -70,10 +70,6 @@ public class BlankCoorSystem extends View {
     }
 
     public void draw(Canvas canvas) {
-        if (null != normalOption) {
-            normalOption.chartHeight = getHeight();
-            normalOption.chartWidth = getWidth();
-        }
 //        paint.setColor(0xffffccff);
 //        canvas.drawRect(new Rect(0, 0, getWidth(), getHeight()), paint);
         paint.setColor(0xff000000);

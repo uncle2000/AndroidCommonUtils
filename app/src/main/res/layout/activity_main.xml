@@ -11,5 +11,10 @@
     <com.uncle2000.androidcommonutils.views.chart.coorsys.DescartesCoorSystem
         android:id="@+id/dcs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
+    <com.uncle2000.androidcommonutils.views.chart.coorsys.RadarCoorStstem
+        android:id="@+id/radar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

@@ -33,21 +33,23 @@ public class AdjustData {
         if (orign.size() / num <= 0) {
             throw new IllegalArgumentException();
         }
+        float angle = 360 / num;
         List<Point> temp = new ArrayList<>();
-        for (float f : orign) {
-            Point p = Utils.getPoint(anchor.x, anchor.y, 360 / num, f / scale);
+        for (int i = 0; i < orign.size(); i++) {
+            Point p = Utils.getPoint(anchor.x, anchor.y, angle * i, orign.get(i) / scale);
             temp.add(p);
         }
         List<Path> list = new ArrayList<>();
         Path path = new Path();
-        for (int i = 0; i < temp.size() / num; i++) {
-            path.moveTo(temp.get(i).x, temp.get(i).y);
-            for (int j = 0; j < num; j++) {
-                path.lineTo(temp.get(i + j).x, temp.get(i + j).y);
+        int buck = temp.size() / num;
+        for (int i = 0; i < buck; i++) {
+            path.moveTo(temp.get(i * num).x, temp.get(i * num).y);
+            for (int j = 1; j < num; j++) {
+                path.lineTo(temp.get(i* num + j).x, temp.get(i* num + j).y);
             }
+            path.lineTo(temp.get(i * num).x, temp.get(i * num).y);
             list.add(path);
         }
-
         return list;
     }
 

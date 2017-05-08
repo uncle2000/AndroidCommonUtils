@@ -16,8 +16,7 @@ import com.uncle2000.androidcommonutils.views.chart.utils.Utils;
  */
 
 public class RadarCoorStstem extends BlankCoorSystem {
-    private int angle;
-    private int offset;
+
 
     public int span = 90;
     public int pointNum = 5;
@@ -43,31 +42,45 @@ public class RadarCoorStstem extends BlankCoorSystem {
 
 
     public void draw(Canvas canvas) {
-        drawAnchor(canvas);
+        super.draw(canvas);
+        paint.setColor(0x20ff00ff);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(5f);
         for (Path p : radarOption.list) {
+            paint.setColor(paint.getColor() - 3333);
             canvas.drawPath(p, paint);
         }
 
-        drawRing(canvas);
+        if (null != radarOption) {
+            paint.setColor(0xff000000);
+            for (int i = 0; i < num; i++) {
+                Point p = Utils.getPoint(anchor.x, anchor.y, angle * i, 500);
+                canvas.drawLines(new float[]{
+                        anchor.x, anchor.y,
+                        p.x, p.y
+                }, paint);
+            }
+        }
+//        drawRing(canvas);
 //        drawRail(canvas);
     }
 
-    private void drawAnchor(Canvas canvas) {
-        canvas.drawText(anchor.getText(),
-                anchor.x + anchor.getTextOffsetX(),
-                anchor.y + anchor.getTextOffsetY(),
-                anchor.getAnchorPaint());
-    }
+//    private void drawAnchor(Canvas canvas) {
+//        canvas.drawText(anchor.getText(),
+//                anchor.x + anchor.getTextOffsetX(),
+//                anchor.y + anchor.getTextOffsetY(),
+//                anchor.getAnchorPaint());
+//    }
 
-    private void drawRing(Canvas canvas) {
-        for (int i = 0; i < pointNum; i++) {
-            canvas.drawCircle(
-                    anchor.x,
-                    anchor.y,
-                    span * (i + 1),
-                    radarPaint);
-        }
-    }
+//    private void drawRing(Canvas canvas) {
+//        for (int i = 0; i < pointNum; i++) {
+//            canvas.drawCircle(
+//                    anchor.x,
+//                    anchor.y,
+//                    span * (i + 1),
+//                    radarPaint);
+//        }
+//    }
 
 //    private void drawRail(Canvas canvas) {
 //        Path path = new Path();
@@ -90,4 +103,15 @@ public class RadarCoorStstem extends BlankCoorSystem {
 //        axisModel.setLength(450);
 //        return axisModel;
 //    }
+
+
+    int num;
+    int angle;
+
+    public void setRadarOption(RadarOption radarOption) {
+        this.radarOption = radarOption;
+        this.anchor = radarOption.anchor;
+        this.num = radarOption.axisNum;
+        angle = 360 / num;
+    }
 }

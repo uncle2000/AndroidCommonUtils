@@ -55,6 +55,10 @@ public class DescartesCoorSystem extends BlankCoorSystem {
 
     public void draw(Canvas canvas) {
         super.draw(canvas);
+        if (null != dop) {
+            dop.chartHeight = getHeight();
+            dop.chartWidth = getWidth();
+        }
         if (null != charts)
             for (Charts c : charts) {
 //                c.setPaint(paint);
